@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29209.152
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "GUI\GUI.csproj", "{35A82EEE-96B3-44D3-8BC9-BEC7B26D3F32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{33FC8B30-90C8-4A85-B07F-FD5C5A20CDD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{77D2C7E3-0C75-4412-A8EB-722546EDBBFD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{35A82EEE-96B3-44D3-8BC9-BEC7B26D3F32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35A82EEE-96B3-44D3-8BC9-BEC7B26D3F32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35A82EEE-96B3-44D3-8BC9-BEC7B26D3F32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35A82EEE-96B3-44D3-8BC9-BEC7B26D3F32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33FC8B30-90C8-4A85-B07F-FD5C5A20CDD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33FC8B30-90C8-4A85-B07F-FD5C5A20CDD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33FC8B30-90C8-4A85-B07F-FD5C5A20CDD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33FC8B30-90C8-4A85-B07F-FD5C5A20CDD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77D2C7E3-0C75-4412-A8EB-722546EDBBFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77D2C7E3-0C75-4412-A8EB-722546EDBBFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77D2C7E3-0C75-4412-A8EB-722546EDBBFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77D2C7E3-0C75-4412-A8EB-722546EDBBFD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D37CB905-CBB9-46B7-A094-E100B30D2B69}
+	EndGlobalSection
+EndGlobal

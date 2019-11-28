@@ -1,0 +1,1 @@
+copy GUI\bin\Debug\aswDB.db GUI\aswDB.db /y

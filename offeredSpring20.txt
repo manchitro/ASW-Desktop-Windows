@@ -1,0 +1,9 @@
+CSC 2212	Advanced Database Management Systems	CSC 2107	3/Lab	can
+CSC 3116	Computer Networks			CSC 2208	3/Lab	can
+CSC 3297	Software Project I			82 Credits	3	can
+CSC 3222	Web Technologies			CSC 3115	3/Lab	can
+CSC 3234	Advanced Operating Systems		CSC 2208	3/Lab	can
+CSC 4125	Software Development Project Management	CSC 3114	3	can
+MGT 3202	Engineering Management			ENG 2101	3	can
+CSC 4126	Software Requirement			CSC 3114	3	can
+CSC 4133	Software Quality And Testing		CSC 3114	3	can

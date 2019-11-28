@@ -1,0 +1,1 @@
+Unblock-File -Path GUI\Views\*.resx
