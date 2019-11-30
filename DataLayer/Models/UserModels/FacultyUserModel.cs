@@ -29,9 +29,9 @@ namespace DataLayer.Models
             //    throw new Exception("Invalid ID format. Please check your academic ID");
             //}
 
-            if (Password.Length < 8)
+            if (Password.Length < 6)
             {
-                throw new Exception("Weak password. Password length should be 8 at least");
+                throw new Exception("Weak password. Password length should be 6 at least");
             }
 
             if (!Password.Any(char.IsUpper) || !Password.Any(char.IsLower) || !Password.Any(char.IsDigit))

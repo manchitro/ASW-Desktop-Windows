@@ -59,7 +59,7 @@ namespace GUI.Views
             ClassController ccontroller = new ClassController();
             List<ClassModel> todaysClasses = ccontroller.GetByDateAndFacultyId(DateTime.Today.ToString("yyyy-MM-dd"), faculty.Id);
             //todaysClasses.Sort();
-            Console.WriteLine("Found " + todaysClasses.Count + "classes");
+            //Console.WriteLine("Found " + todaysClasses.Count + "classes");
             int r = 112;
             int g = 52;
             int b = 158;
@@ -214,7 +214,7 @@ namespace GUI.Views
             flowLayoutPanelTomorrow.Margin = new Padding(19, 5, 0, 0);
 
             List<ClassModel> tomorrowClasses = ccontroller.GetByDateAndFacultyId(DateTime.Today.AddDays(1).ToString("yyyy-MM-dd"), faculty.Id);
-            Console.WriteLine("Found " + todaysClasses.Count + "classes");
+            //Console.WriteLine("Found " + todaysClasses.Count + "classes");
             int r2 = 112;
             int g2 = 52;
             int b2 = 158;

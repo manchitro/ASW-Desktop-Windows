@@ -115,7 +115,7 @@ namespace GUI.Views
         private void ButtonCreate_Click(object sender, EventArgs e)
         {
             SectionModel section = new SectionModel();
-            section.SectionName = textBoxSectionName.Text;
+            section.SectionName = textBoxSectionName.Text.Trim();
             section.FacultyId = faculty.Id;
 
             SectionTimeController stcontroller = new SectionTimeController();
@@ -125,8 +125,8 @@ namespace GUI.Views
             {
                 section.IsValid();
 
-                Console.WriteLine("Section name: " + section.SectionName);
-                Console.WriteLine("Section facultyID: " + section.FacultyId);
+                //Console.WriteLine("Section name: " + section.SectionName);
+                //Console.WriteLine("Section facultyID: " + section.FacultyId);
 
                 SectionTimeModel sectionTime1 = new SectionTimeModel();
                 if (comboBoxClassType1.SelectedIndex == 0)
@@ -143,13 +143,13 @@ namespace GUI.Views
                 sectionTime1.EndTimeId = comboBoxEndTime1.SelectedIndex + 1;
                 sectionTime1.WeekDayID = comboBoxWeekDay1.SelectedIndex + 1;
 
-                Console.WriteLine("Section Time 1 info:");
-                Console.WriteLine("Start Id: " + sectionTime1.StartTimeId);
-                Console.WriteLine("End Id: " + sectionTime1.EndTimeId);
-                Console.WriteLine("Day Id: " + sectionTime1.WeekDayID);
-                Console.WriteLine("Room no: " + sectionTime1.RoomNo);
-                Console.WriteLine("Class type: " + sectionTime1.ClassType.ToString());
-                Console.WriteLine("Class length: " + (sectionTime1.EndTimeId - sectionTime1.StartTimeId).ToString());
+                //Console.WriteLine("Section Time 1 info:");
+                //Console.WriteLine("Start Id: " + sectionTime1.StartTimeId);
+                //Console.WriteLine("End Id: " + sectionTime1.EndTimeId);
+                //Console.WriteLine("Day Id: " + sectionTime1.WeekDayID);
+                //Console.WriteLine("Room no: " + sectionTime1.RoomNo);
+                //Console.WriteLine("Class type: " + sectionTime1.ClassType.ToString());
+                //Console.WriteLine("Class length: " + (sectionTime1.EndTimeId - sectionTime1.StartTimeId).ToString());
 
                 try
                 {
@@ -161,18 +161,18 @@ namespace GUI.Views
                         {
                             if (sectionTime1.StartTimeId < model.EndTimeId && sectionTime1.StartTimeId >= model.StartTimeId)
                             {
-                                Console.WriteLine("Clash 1 with\nstart id: " + model.StartTimeId + "\nend id: " + model.EndTimeId);
+                                //Console.WriteLine("Clash 1 with\nstart id: " + model.StartTimeId + "\nend id: " + model.EndTimeId);
                                 throw new Exception("Section 1 time clashes with another section. Please choose a different time");
                                 
                             }
                             if (sectionTime1.EndTimeId <= model.EndTimeId && sectionTime1.EndTimeId > model.StartTimeId)
                             {
-                                Console.WriteLine("Clash 2 with\nstart id: " + model.StartTimeId + "\nend id: " + model.EndTimeId);
+                                //Console.WriteLine("Clash 2 with\nstart id: " + model.StartTimeId + "\nend id: " + model.EndTimeId);
                                 throw new Exception("Section 1 time clashes with another section. Please choose a different time");
                             }
                             if(sectionTime1.StartTimeId < model.StartTimeId && sectionTime1.EndTimeId > model.EndTimeId)
                             {
-                                Console.WriteLine("Clash 3 with\nstart id: " + model.StartTimeId + "\nend id: " + model.EndTimeId);
+                                //Console.WriteLine("Clash 3 with\nstart id: " + model.StartTimeId + "\nend id: " + model.EndTimeId);
                                 throw new Exception("Section 1 time clashes with another section. Please choose a different time");
                             }
                         }
@@ -194,13 +194,13 @@ namespace GUI.Views
                         sectionTime2.EndTimeId = comboBoxEndTime2.SelectedIndex + 1;
                         sectionTime2.WeekDayID = comboBoxWeekDay2.SelectedIndex + 1;
 
-                        Console.WriteLine("Section Time 2 info:");
-                        Console.WriteLine("Start Id: " + sectionTime2.StartTimeId);
-                        Console.WriteLine("End Id: " + sectionTime2.EndTimeId);
-                        Console.WriteLine("Day Id: " + sectionTime2.WeekDayID);
-                        Console.WriteLine("Room no: " + sectionTime2.RoomNo);
-                        Console.WriteLine("Class type: " + sectionTime2.ClassType.ToString());
-                        Console.WriteLine("Class length: " + (sectionTime2.EndTimeId - sectionTime2.StartTimeId).ToString());
+                        //Console.WriteLine("Section Time 2 info:");
+                        //Console.WriteLine("Start Id: " + sectionTime2.StartTimeId);
+                        //Console.WriteLine("End Id: " + sectionTime2.EndTimeId);
+                        //Console.WriteLine("Day Id: " + sectionTime2.WeekDayID);
+                        //Console.WriteLine("Room no: " + sectionTime2.RoomNo);
+                        //Console.WriteLine("Class type: " + sectionTime2.ClassType.ToString());
+                        //Console.WriteLine("Class length: " + (sectionTime2.EndTimeId - sectionTime2.StartTimeId).ToString());
                     }
 
                     SectionModel createdSection = new SectionModel();
@@ -223,7 +223,7 @@ namespace GUI.Views
                                     }
                                     if (sectionTime2.StartTimeId < model.StartTimeId && sectionTime2.EndTimeId > model.EndTimeId)
                                     {
-                                        Console.WriteLine("Clash 3 with\nstart id: " + model.StartTimeId + "\nend id: " + model.EndTimeId);
+                                        //Console.WriteLine("Clash 3 with\nstart id: " + model.StartTimeId + "\nend id: " + model.EndTimeId);
                                         throw new Exception("Section 2 time clashes with another section. Please choose a different time");
                                     }
                                 }
@@ -235,7 +235,7 @@ namespace GUI.Views
                         {
                             createdSection = controller.Create(section);
 
-                            Console.WriteLine("Created section id: " + createdSection.Id);
+                            //Console.WriteLine("Created section id: " + createdSection.Id);
 
                             sectionTime1.SectionId = createdSection.Id;
                             if (!checkBoxIgnore.Checked)
@@ -259,7 +259,7 @@ namespace GUI.Views
                                     //loading screen
                                     
                                     loadingForm.Show();
-                                    Console.WriteLine("Starting loop");
+                                    //Console.WriteLine("Starting loop");
                                     foreach(StudentUserModel student in studentList)
                                     {
                                         try
@@ -304,7 +304,7 @@ namespace GUI.Views
                                         }
                                         loadingForm.Step(1);
                                     }
-                                    Console.WriteLine("Ending loop");
+                                    //Console.WriteLine("Ending loop");
                                 }
                                 loadingForm.Close();
 

@@ -83,11 +83,11 @@ namespace GUI.Views
                 Class.IsValid();
 
                 List<ClassModel> sameDayClasses = ccontroller.GetByDateAndFacultyId(Class.ClassDate, faculty.Id);
-                Console.WriteLine("Found " + sameDayClasses.Count + " classes");
+                //Console.WriteLine("Found " + sameDayClasses.Count + " classes");
                 foreach (ClassModel model in sameDayClasses)
                 {
-                    Console.WriteLine("start id: " + model.StartTimeId + " end id: " + model.EndTimeId);
-                    Console.WriteLine("this start: " + Class.StartTimeId + " this end: " + Class.EndTimeId);
+                    //Console.WriteLine("start id: " + model.StartTimeId + " end id: " + model.EndTimeId);
+                    //Console.WriteLine("this start: " + Class.StartTimeId + " this end: " + Class.EndTimeId);
 
                     if(Class.StartTimeId < model.EndTimeId && Class.StartTimeId >= model.StartTimeId)
                     {
@@ -98,7 +98,7 @@ namespace GUI.Views
                         throw new Exception("Class time clashes with another class on " + Class.ClassDate);
                     }
                 }
-                Console.WriteLine("Clash checking complete");
+                //Console.WriteLine("Clash checking complete");
                 try
                 {
                     var createdClass = ccontroller.Create(Class);
@@ -123,7 +123,7 @@ namespace GUI.Views
                             MessageBox.Show(ex.Message);
                         }
                     }
-                    Console.WriteLine("Created class id: " + createdClass.Id);
+                    //Console.WriteLine("Created class id: " + createdClass.Id);
                     MessageBox.Show("Class added on " + (createdClass.ClassDate));
                     this.Hide();
                 }

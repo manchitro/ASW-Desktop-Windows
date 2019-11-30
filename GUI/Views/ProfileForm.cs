@@ -52,9 +52,9 @@ namespace GUI.Views
             {
                 FacultyUserModel updatedModel = new FacultyUserModel();
                 updatedModel.AcademicId = faculty.AcademicId;
-                updatedModel.FirstName = textBoxFirstName.Text;
-                updatedModel.LastName = textBoxLastName.Text;
-                updatedModel.Email = textBoxEmail.Text;
+                updatedModel.FirstName = textBoxFirstName.Text.Trim();
+                updatedModel.LastName = textBoxLastName.Text.Trim();
+                updatedModel.Email = textBoxEmail.Text.ToLower().Trim();
                 updatedModel.Id = faculty.Id;
                 updatedModel.Password = faculty.Password;
 

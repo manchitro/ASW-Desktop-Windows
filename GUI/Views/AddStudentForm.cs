@@ -32,8 +32,8 @@ namespace GUI.Views
         private void ButtonAdd_Click(object sender, EventArgs e)
         {
             StudentUserModel student = new StudentUserModel();
-            student.FirstName = textBoxStudentFirstName.Text;
-            student.LastName = textBoxStudentLastName.Text;
+            student.FirstName = textBoxStudentFirstName.Text.Trim();
+            student.LastName = textBoxStudentLastName.Text.Trim();
             student.AcademicId = textBoxStudentId.Text;
 
             try
@@ -146,6 +146,15 @@ namespace GUI.Views
         {
             e.Graphics.DrawRectangle(new Pen(Color.White, 3),
                             this.DisplayRectangle);
+        }
+
+        private void textBoxStudentId_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == '-' || char.IsControl(e.KeyChar)))
+            {
+                e.Handled = true;
+                return;
+            }
         }
     }
 }

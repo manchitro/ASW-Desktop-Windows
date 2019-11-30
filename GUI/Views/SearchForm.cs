@@ -89,12 +89,14 @@ namespace GUI.Views
             SectionController scontroller = new SectionController();
             List<SectionModel> sectionList = scontroller.GetByFaculty(faculty);
 
+            dataGridViewSerial.ScrollBars = ScrollBars.None;
+
             MySortableBindingList<ProperStudentUserModel> properStudentList = new MySortableBindingList<ProperStudentUserModel>();
             foreach (SectionModel model in sectionList)
             {
                 UserController ucontroller = new UserController();
                 List<StudentUserModel> studentListByAcademicId = ucontroller.SearchByAcademidIdAndSectionId(textBoxSearch.Text, model.Id);
-                Console.WriteLine(studentListByAcademicId.Count + " student found in " + model.SectionName);
+                //Console.WriteLine(studentListByAcademicId.Count + " student found in " + model.SectionName);
                 foreach (StudentUserModel smodel in studentListByAcademicId)
                 {
                     ProperStudentUserModel properStudentModel = new ProperStudentUserModel();
@@ -108,7 +110,7 @@ namespace GUI.Views
                     properStudentList.Add(properStudentModel);
                 }
                 List<StudentUserModel> studentListByName = ucontroller.SearchByNameAndSectionId(textBoxSearch.Text, model.Id);
-                Console.WriteLine(studentListByName.Count + " student found in " + model.SectionName);
+                //Console.WriteLine(studentListByName.Count + " student found in " + model.SectionName);
                 foreach (StudentUserModel smodel in studentListByName)
                 {
                     ProperStudentUserModel properStudentModel = new ProperStudentUserModel();
@@ -121,6 +123,11 @@ namespace GUI.Views
 
                     properStudentList.Add(properStudentModel);
                 }
+            }
+
+            foreach(ProperStudentUserModel student in properStudentList)
+            {
+                dataGridViewSerial.Rows.Add();
             }
 
             dataGridViewStudentList.DataBindingComplete += (o, ev) =>
@@ -137,9 +144,6 @@ namespace GUI.Views
 
             dataGridViewStudentList.AutoGenerateColumns = false;
             dataGridViewStudentList.DataSource = properStudentList;
-
-            dataGridViewSerial.AutoGenerateColumns = false;
-            dataGridViewSerial.DataSource = properStudentList;
 
             dataGridViewStudentList.Update();
             dataGridViewStudentList.Refresh();
@@ -159,6 +163,11 @@ namespace GUI.Views
             {
                 buttonSearch.PerformClick();
             }
+        }
+
+        private void dataGridViewStudentList_Scroll(object sender, ScrollEventArgs e)
+        {
+            dataGridViewSerial.FirstDisplayedScrollingRowIndex = dataGridViewStudentList.FirstDisplayedScrollingRowIndex;
         }
     }
 

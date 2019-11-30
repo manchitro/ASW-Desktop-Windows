@@ -86,32 +86,32 @@ namespace GUI.Views
                 Class.IsValid();
 
                 List<ClassModel> sameDayClasses = ccontroller.GetByDateAndFacultyId(Class.ClassDate, faculty.Id);
-                Console.WriteLine("Found " + sameDayClasses.Count + " classes");
+                //Console.WriteLine("Found " + sameDayClasses.Count + " classes");
                 foreach (ClassModel model in sameDayClasses)
                 {
-                    Console.WriteLine("this id: " + editedClass.Id + "\nComparing with id" + model.Id);
-                    Console.WriteLine("start id: " + model.StartTimeId + " end id: " + model.EndTimeId);
-                    Console.WriteLine("this start: " + editedClass.StartTimeId + " this end: " + editedClass.EndTimeId);
+                    //Console.WriteLine("this id: " + editedClass.Id + "\nComparing with id" + model.Id);
+                    //Console.WriteLine("start id: " + model.StartTimeId + " end id: " + model.EndTimeId);
+                    //Console.WriteLine("this start: " + editedClass.StartTimeId + " this end: " + editedClass.EndTimeId);
 
                     if (Class.Id != model.Id)
                     {
                         if (editedClass.StartTimeId < model.EndTimeId && editedClass.StartTimeId >= model.StartTimeId)
                         {
-                            Console.WriteLine("clash with: " + model.ClassDate + "\nStart: " + model.StartTimeId + "\nEnd: " + model.EndTimeId);
+                            //Console.WriteLine("clash with: " + model.ClassDate + "\nStart: " + model.StartTimeId + "\nEnd: " + model.EndTimeId);
                             throw new Exception("Class time clashes with another class on " + editedClass.ClassDate);
                         }
                         if (editedClass.EndTimeId <= model.EndTimeId && editedClass.EndTimeId > model.StartTimeId)
                         {
-                            Console.WriteLine("clash with: " + model.ClassDate + "\nStart: " + model.StartTimeId + "\nEnd: " + model.EndTimeId);
+                            //Console.WriteLine("clash with: " + model.ClassDate + "\nStart: " + model.StartTimeId + "\nEnd: " + model.EndTimeId);
                             throw new Exception("Class time clashes with another class on " + editedClass.ClassDate);
                         }
                     }
                 }
-                Console.WriteLine("Clash checking complete");
+                //Console.WriteLine("Clash checking complete");
                 try
                 {
                     var NewEditedClass = ccontroller.Update(editedClass);
-                    Console.WriteLine("edited class id: " + NewEditedClass.Id);
+                    //Console.WriteLine("edited class id: " + NewEditedClass.Id);
                     MessageBox.Show("Class edited. New date: " + (NewEditedClass.ClassDate));
                     this.Hide();
                 }

@@ -25,67 +25,73 @@ namespace GUI.Views
         {
             LoadingForm loadingForm = new LoadingForm();
             loadingForm.Show();
-            loadingForm.Step(20);
-            try
+            //try
             {
                 UserController controller = new UserController();
                 Argon2Hashing hashing = new Argon2Hashing();
-                Console.WriteLine("getting pass with id: " + faculty.Id);
-                Console.WriteLine("Verification: " + hashing.VerifyHash(textBoxPassword.Text, Convert.FromBase64String(faculty.salt), Convert.FromBase64String(faculty.Password)));
+                //Console.WriteLine("getting pass with id: " + faculty.Id);
+                //Console.WriteLine("Verification: " + hashing.VerifyHash(textBoxPassword.Text, Convert.FromBase64String(faculty.salt), Convert.FromBase64String(faculty.Password)));
                 if(hashing.VerifyHash(textBoxPassword.Text, Convert.FromBase64String(faculty.salt), Convert.FromBase64String(faculty.Password)))
                 {
                     loadingForm.Step(20);
-                        if (textBoxNewPassword.Text == textBoxConfirmPassword.Text)
+                    if (textBoxNewPassword.Text == textBoxConfirmPassword.Text)
+                    {
+                        faculty.Password = textBoxNewPassword.Text;
+                        //try
                         {
-                            faculty.Password = textBoxNewPassword.Text;
-                            try
+                            faculty.IsValid();
+                            faculty.salt = Convert.ToBase64String(hashing.CreateSalt());
+                            faculty.Password = Convert.ToBase64String(hashing.HashPassword(faculty.Password, Convert.FromBase64String(faculty.salt)));
+                            loadingForm.Step(20);
+                            if(hashing.VerifyHash(textBoxNewPassword.Text, Convert.FromBase64String(faculty.salt), Convert.FromBase64String(faculty.Password)))
                             {
-                                faculty.IsValid();
-                                faculty.salt = Convert.ToBase64String(hashing.CreateSalt());
-                                faculty.Password = Convert.ToBase64String(hashing.HashPassword(faculty.Password, Convert.FromBase64String(faculty.salt)));
                                 loadingForm.Step(20);
-                                if(hashing.VerifyHash(textBoxNewPassword.Text, Convert.FromBase64String(faculty.salt), Convert.FromBase64String(faculty.Password)))
+                                //try
                                 {
-                                    try
-                                    {
-                                        controller.UpdatePasswordByUser(faculty.Id, faculty.Password, faculty.salt);
-                                        loadingForm.Step(40);
-                                        loadingForm.Close();
-                                        MessageBox.Show("Password successfully updated");
-                                        this.Hide();
-                                    }
-                                    catch(Exception ex)
-                                    {
-                                        MessageBox.Show(ex.Message);
-                                    }
+                                    controller.UpdatePasswordByUser(faculty.Id, faculty.Password, faculty.salt);
+                                    loadingForm.Step(60);
+                                    loadingForm.Close();
+                                    MessageBox.Show("Password successfully updated");
+                                    this.Hide();
                                 }
-                                else
-                                {
-                                    MessageBox.Show("Hash verification failed");
-                                }
-                                
+                                //catch(Exception ex)
+                                //{
+                                //    loadingForm.Close();
+                                //    MessageBox.Show(ex.Message);
+                                //}
                             }
-                            catch (Exception ex)
+                            else
                             {
-                                MessageBox.Show(ex.Message+" here");
+                                loadingForm.Close();
+                                MessageBox.Show("Hash verification failed");
                             }
+                                
                         }
-                        else
-                        {
-                            MessageBox.Show("Passwords do not match. Please make sure you confirm your password correctly");
-                        }
+                        //catch (Exception ex)
+                        //{
+                        //    loadingForm.Close();
+                        //    MessageBox.Show(ex.Message+" here");
+                        //}
+                    }
+                    else
+                    {
+                        loadingForm.Close();
+                        MessageBox.Show("Passwords do not match. Please make sure you confirm your password correctly");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Wrong password. Please try again");
+                    loadingForm.Close();
+                    MessageBox.Show("Wrong current password. Please try again");
                 }
-                loadingForm.Close();
             }
             
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            //catch (Exception ex)
+            //{
+
+            //    loadingForm.Close();
+            //    MessageBox.Show(ex.Message);
+            //}
         }
 
         private void ChangePasswordForm_Paint(object sender, PaintEventArgs e)

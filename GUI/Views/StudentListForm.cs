@@ -38,9 +38,9 @@ namespace GUI.Views
                 AttendanceController acontroller = new AttendanceController();
                 attendanceList = acontroller.GetAllBySection(section.Id);
 
-                Console.WriteLine("Found student: " + studentList.Count);
-                Console.WriteLine("Found classes: " + classList.Count);
-                Console.WriteLine("Found attendances: " + attendanceList.Count);
+                //Console.WriteLine("Found student: " + studentList.Count);
+                //Console.WriteLine("Found classes: " + classList.Count);
+                //Console.WriteLine("Found attendances: " + attendanceList.Count);
 
                 DataGridViewColumn sln = new DataGridViewTextBoxColumn();
                 sln.HeaderText = "#";
@@ -61,12 +61,13 @@ namespace GUI.Views
 
                 foreach(ClassModel Class in classList)
                 {
-                    DataGridViewColumn col = new DataGridViewTextBoxColumn();
+                    DataGridViewTextBoxColumn col = new DataGridViewTextBoxColumn();
                     DateTime date = DateTime.Parse(Class.ClassDate);
                     string dateMod = date.ToString("MMM-dd");
                     col.HeaderText = dateMod;
                     col.ReadOnly = false;
                     col.Width = 50;
+                    col.MaxInputLength = 1;
                     col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                     dataGridViewStudentList.Columns.Add(col);
                 }
@@ -74,7 +75,7 @@ namespace GUI.Views
                 int i = 0;
                 foreach(StudentUserModel student in studentList)
                 {
-                    Console.WriteLine("doing student no. " + i);
+                    //Console.WriteLine("doing student no. " + i);
                     StudentView view = new StudentView();
                     view.AcademicId = student.AcademicId;
                     view.FullName = student.FullName;
@@ -87,9 +88,8 @@ namespace GUI.Views
 
                     foreach (ClassModel Class in classList)
                     {
-
                         AttendanceModel att = attendanceList.Find(x => (x.ClassId == Class.Id) && (x.StudentId == student.Id));
-                        Console.WriteLine("Found attendance id: " + att.Id + " for: " + student.Id + " on: " + Class.Id + " entry: " + att.Entry);
+                        //Console.WriteLine("Found attendance id: " + att.Id + " for: " + student.Id + " on: " + Class.Id + " entry: " + att.Entry);
                         if (att.Entry == 2)
                         {
                             dataGridViewStudentList.Rows[i].Cells[c + 2].Value = "L";
@@ -373,7 +373,7 @@ namespace GUI.Views
 
         private void TextBox_KeyPress(System.Object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
-            if (!(e.KeyChar == '1' || e.KeyChar == '0' || e.KeyChar == 'l' || e.KeyChar == 'L'))
+            if (!(e.KeyChar == '1' || e.KeyChar == '0' || e.KeyChar == 'l' || e.KeyChar == 'L' || char.IsControl(e.KeyChar)))
             {
                 e.Handled = true;
                 return;
@@ -395,7 +395,7 @@ namespace GUI.Views
                 {
                     entry = 1;
                 }
-                Console.WriteLine("Changed entry of " + stuId + " on " + classId + " to " + entry);
+                //Console.WriteLine("Changed entry of " + stuId + " on " + classId + " to " + entry);
 
                 AttendanceController attendanceController = new AttendanceController();
                 try
@@ -413,6 +413,14 @@ namespace GUI.Views
         private void ButtonInfo_MouseHover(object sender, EventArgs e)
         {
             toolTipInfo.Show("Insert 1 for present, 0 for absent, L for late. Note: Late will be counted as present in Total column", buttonInfo);
+        }
+
+        private void textBoxSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+
+            }
         }
     }
 

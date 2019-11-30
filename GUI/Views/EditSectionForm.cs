@@ -95,8 +95,8 @@ namespace GUI.Views
             textBoxRoomNo1.Text = sectionTimes[0].RoomNo;
             if (!(sectionTimes.Count == 1))
                 textBoxRoomNo2.Text = sectionTimes[1].RoomNo;
-            if (!(sectionTimes.Count == 1))
-                Console.WriteLine(sectionTimes[0].Id + " " + sectionTimes[1].Id);
+            //if (!(sectionTimes.Count == 1))
+                //Console.WriteLine(sectionTimes[0].Id + " " + sectionTimes[1].Id);
 
             if ((sectionTimes.Count == 1))
             {
@@ -164,7 +164,7 @@ namespace GUI.Views
         private void ButtonSave_Click(object sender, EventArgs e)
         {
             SectionModel editedSection = section;
-            editedSection.SectionName = textBoxSectionName.Text;
+            editedSection.SectionName = textBoxSectionName.Text.Trim();
             editedSection.FacultyId = faculty.Id;
 
             SectionTimeController stcontroller = new SectionTimeController();
@@ -174,8 +174,8 @@ namespace GUI.Views
             {
                 editedSection.IsValid();
 
-                Console.WriteLine("Section name: " + section.SectionName);
-                Console.WriteLine("Section facultyID: " + section.FacultyId);
+                //Console.WriteLine("Section name: " + section.SectionName);
+                //Console.WriteLine("Section facultyID: " + section.FacultyId);
 
                 SectionTimeModel editedSectionTime1 = sectionTimes[0];
                 if (comboBoxClassType1.SelectedIndex == 0)
@@ -192,13 +192,13 @@ namespace GUI.Views
                 editedSectionTime1.EndTimeId = comboBoxEndTime1.SelectedIndex + 1;
                 editedSectionTime1.WeekDayID = comboBoxWeekDay1.SelectedIndex + 1;
 
-                Console.WriteLine("Section Time 1 info:");
-                Console.WriteLine("Start Id: " + editedSectionTime1.StartTimeId);
-                Console.WriteLine("End Id: " + editedSectionTime1.EndTimeId);
-                Console.WriteLine("Day Id: " + editedSectionTime1.WeekDayID);
-                Console.WriteLine("Room no: " + editedSectionTime1.RoomNo);
-                Console.WriteLine("Class type: " + editedSectionTime1.ClassType.ToString());
-                Console.WriteLine("Class length: " + (editedSectionTime1.EndTimeId - editedSectionTime1.StartTimeId).ToString());
+                //Console.WriteLine("Section Time 1 info:");
+                //Console.WriteLine("Start Id: " + editedSectionTime1.StartTimeId);
+                //Console.WriteLine("End Id: " + editedSectionTime1.EndTimeId);
+                //Console.WriteLine("Day Id: " + editedSectionTime1.WeekDayID);
+                //Console.WriteLine("Room no: " + editedSectionTime1.RoomNo);
+                //Console.WriteLine("Class type: " + editedSectionTime1.ClassType.ToString());
+                //Console.WriteLine("Class length: " + (editedSectionTime1.EndTimeId - editedSectionTime1.StartTimeId).ToString());
 
                 try
                 {
@@ -212,18 +212,18 @@ namespace GUI.Views
                             {
                                 if (editedSectionTime1.StartTimeId < model.EndTimeId && editedSectionTime1.StartTimeId >= model.StartTimeId)
                                 {
-                                    Console.WriteLine("Clash with\nstart id: " + model.StartTimeId + "\nend id: " + model.EndTimeId);
+                                    //Console.WriteLine("Clash with\nstart id: " + model.StartTimeId + "\nend id: " + model.EndTimeId);
                                     throw new Exception("Section 1 time clashes with another section. Please choose a different time");
 
                                 }
                                 if (editedSectionTime1.EndTimeId <= model.EndTimeId && editedSectionTime1.EndTimeId > model.StartTimeId)
                                 {
-                                    Console.WriteLine("Clash with\nstart id: " + model.StartTimeId + "\nend id: " + model.EndTimeId);
+                                    //Console.WriteLine("Clash with\nstart id: " + model.StartTimeId + "\nend id: " + model.EndTimeId);
                                     throw new Exception("Section 1 time clashes with another section. Please choose a different time");
                                 }
                                 if(editedSectionTime1.StartTimeId < model.StartTimeId && editedSectionTime1.EndTimeId > model.EndTimeId)
                                 {
-                                    Console.WriteLine("Clash with\nstart id: " + model.StartTimeId + "\nend id: " + model.EndTimeId);
+                                    //Console.WriteLine("Clash with\nstart id: " + model.StartTimeId + "\nend id: " + model.EndTimeId);
                                     throw new Exception("Section 1 time clashes with another section. Please choose a different time");
                                 }
                             }
@@ -247,13 +247,13 @@ namespace GUI.Views
                     editedSectionTime2.EndTimeId = comboBoxEndTime2.SelectedIndex + 1;
                     editedSectionTime2.WeekDayID = comboBoxWeekDay2.SelectedIndex + 1;
 
-                    Console.WriteLine("Section Time 2 info:");
-                    Console.WriteLine("Start Id: " + editedSectionTime2.StartTimeId);
-                    Console.WriteLine("End Id: " + editedSectionTime2.EndTimeId);
-                    Console.WriteLine("Day Id: " + editedSectionTime2.WeekDayID);
-                    Console.WriteLine("Room no: " + editedSectionTime2.RoomNo);
-                    Console.WriteLine("Class type: " + editedSectionTime2.ClassType.ToString());
-                    Console.WriteLine("Class length: " + (editedSectionTime2.EndTimeId - editedSectionTime2.StartTimeId).ToString());
+                    //Console.WriteLine("Section Time 2 info:");
+                    //Console.WriteLine("Start Id: " + editedSectionTime2.StartTimeId);
+                    //Console.WriteLine("End Id: " + editedSectionTime2.EndTimeId);
+                    //Console.WriteLine("Day Id: " + editedSectionTime2.WeekDayID);
+                    //Console.WriteLine("Room no: " + editedSectionTime2.RoomNo);
+                    //Console.WriteLine("Class type: " + editedSectionTime2.ClassType.ToString());
+                    //Console.WriteLine("Class length: " + (editedSectionTime2.EndTimeId - editedSectionTime2.StartTimeId).ToString());
 
                     SectionModel editedSectionRetured = new SectionModel();
                     try
@@ -278,7 +278,7 @@ namespace GUI.Views
                                         }
                                         if (editedSectionTime2.StartTimeId < model.StartTimeId && editedSectionTime2.EndTimeId > model.EndTimeId)
                                         {
-                                            Console.WriteLine("Clash with\nstart id: " + model.StartTimeId + "\nend id: " + model.EndTimeId);
+                                            //Console.WriteLine("Clash with\nstart id: " + model.StartTimeId + "\nend id: " + model.EndTimeId);
                                             throw new Exception("Section 2 time clashes with another section. Please choose a different time");
                                         }
                                     }
@@ -289,10 +289,10 @@ namespace GUI.Views
 
                         try
                         {
-                            Console.WriteLine("Updating with name and id: " + editedSection.SectionName + " " + editedSection.Id);
+                            //Console.WriteLine("Updating with name and id: " + editedSection.SectionName + " " + editedSection.Id);
                             editedSectionRetured = controller.Update(section);
 
-                            Console.WriteLine("Edited section id: " + editedSection.Id);
+                            //Console.WriteLine("Edited section id: " + editedSection.Id);
 
                             editedSectionTime1.SectionId = editedSectionRetured.Id;
                             if (!checkBoxIgnore.Checked)

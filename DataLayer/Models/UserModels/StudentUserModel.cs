@@ -13,7 +13,7 @@ namespace DataLayer.Models
         {
             base.IsValid();
 
-            var StudentIdFormat = new Regex("\\d{2}-\\d{5}-\\d{1}");
+            var StudentIdFormat = new Regex("\\d{2}-\\d{5}-[1-3]$");
             if (!StudentIdFormat.IsMatch(AcademicId))
             {
                 throw new Exception("Invalid ID format. Please check academic ID");

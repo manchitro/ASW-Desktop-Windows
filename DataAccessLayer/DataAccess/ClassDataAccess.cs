@@ -67,7 +67,7 @@ namespace DataAccessLayer
         {
             using(IDbConnection conn = SQLiteDBConnection.Get())
             {
-                Console.WriteLine("date in query: " + date);
+                //Console.WriteLine("date in query: " + date);
                 var query = @"SELECT * from Classes where ClassDate = @date AND Id IN
                                 (SELECT Id FROM Classes where SectionId IN
 	                                (SELECT Id FROM Sections WHERE FacultyId = @FacultyId));";

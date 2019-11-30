@@ -162,12 +162,12 @@ namespace GUI.Views
                 {
                     studentAtHeader.FirstName = dt.Columns[1].ColumnName.Substring(0, dt.Columns[1].ColumnName.Length - lastL);
                 }
-                Console.WriteLine("Doing header " + studentAtHeader.AcademicId + " " + studentAtHeader.LastName + ", " + studentAtHeader.FirstName);
+                //Console.WriteLine("Doing header " + studentAtHeader.AcademicId + " " + studentAtHeader.LastName + ", " + studentAtHeader.FirstName);
                 try
                 {
                     studentAtHeader.IsValid();
                     studentList.Add(studentAtHeader);
-                    Console.WriteLine("Added header");
+                    //Console.WriteLine("Added header");
                 }
                 catch (Exception ex)
                 {
@@ -197,12 +197,12 @@ namespace GUI.Views
                     {
                         student.FirstName = row[1].ToString().Substring(0, row[1].ToString().Length - (lastLength + 1));
                     }
-                    Console.WriteLine("Doing " + student.AcademicId + " " + student.LastName + ", " + student.FirstName);
+                    //Console.WriteLine("Doing " + student.AcademicId + " " + student.LastName + ", " + student.FirstName);
                     try
                     {
                         student.IsValid();
                         studentList.Add(student);
-                        Console.WriteLine("Added");
+                        //Console.WriteLine("Added");
                     }
                     catch (Exception ex)
                     {

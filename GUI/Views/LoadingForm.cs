@@ -19,7 +19,8 @@ namespace GUI.Views
 
         public void Step(int value)
         {
-            progressBar1.Value += value;
+            if((100 - progressBar1.Value) >= value)
+                progressBar1.Value += value;
         }
     }
 }

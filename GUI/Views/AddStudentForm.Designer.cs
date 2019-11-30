@@ -52,6 +52,7 @@
             this.textBoxStudentId.Name = "textBoxStudentId";
             this.textBoxStudentId.Size = new System.Drawing.Size(158, 19);
             this.textBoxStudentId.TabIndex = 31;
+            this.textBoxStudentId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStudentId_KeyPress);
             // 
             // panelNewPasswordBG
             // 

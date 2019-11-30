@@ -130,7 +130,7 @@ namespace GUI.Views
 
         private void addClassButton_Click(object sender, EventArgs e, SectionModel section)
         {
-            Console.WriteLine("add class clicked on " + section.SectionName);
+            //Console.WriteLine("add class clicked on " + section.SectionName);
             var addclass = new AddClassPopupForm(faculty, section);
             addclass.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             addclass.ShowDialog();

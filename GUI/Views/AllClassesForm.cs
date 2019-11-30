@@ -21,7 +21,7 @@ namespace GUI.Views
             {
                 ClassController ccontroller = new ClassController();
                 List<ClassModel> allClassesList = ccontroller.GetByFacultyId(faculty.Id);
-                Console.WriteLine(allClassesList.Count + " improper classes");
+                //Console.WriteLine(allClassesList.Count + " improper classes");
                 List<ProperClassModel> properClassList = new List<ProperClassModel>();
                 foreach(ClassModel model in allClassesList)
                 {
@@ -34,7 +34,7 @@ namespace GUI.Views
                     properModel.SectionID = model.SectionID;
                     properModel.StartTimeId = model.StartTimeId;
 
-                    Console.WriteLine("improper date: " + model.ClassDate + " | proper date: " + properModel.ClassDate);
+                    //Console.WriteLine("improper date: " + model.ClassDate + " | proper date: " + properModel.ClassDate);
 
                     SectionController scontroller = new SectionController();
                     properModel.SectionName = scontroller.Get(model.SectionID).SectionName;
@@ -45,7 +45,7 @@ namespace GUI.Views
                     properClassList.Add(properModel);
                 }
                 MySortableBindingList<ProperClassModel> bindingClassesList = new MySortableBindingList<ProperClassModel>(properClassList);
-                Console.WriteLine(bindingClassesList.Count + " classes found");
+                //Console.WriteLine(bindingClassesList.Count + " classes found");
                 dataGridViewClassList.AutoGenerateColumns = false;
                 dataGridViewClassList.DataSource = bindingClassesList;
                 dataGridViewSerial.AutoGenerateColumns = false;
@@ -69,7 +69,7 @@ namespace GUI.Views
         {
             if (e.Button == MouseButtons.Right)
             {
-                Console.WriteLine("Right mouse click");
+                //Console.WriteLine("Right mouse click");
                 ContextMenu m = new ContextMenu();
 
                 int currentMouseOverRow = dataGridViewClassList.HitTest(e.X, e.Y).RowIndex;

@@ -154,7 +154,7 @@ namespace GUI.Views
 
         private void studentsButton_Click(object sender, EventArgs e, SectionModel section)
         {
-            Console.WriteLine("Students clicked on " + section.SectionName);
+            //Console.WriteLine("Students clicked on " + section.SectionName);
             var students = new FormStudentList(faculty, section);
             students.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             students.Show();

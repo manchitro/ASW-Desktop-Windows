@@ -4,7 +4,6 @@ using GUI.Utils;
 using System;
 using System.Data.SQLite;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace GUI.Views
@@ -42,9 +41,9 @@ namespace GUI.Views
                     }
                     else
                     {
-                        Console.WriteLine("Got hash: " + faculty.Password);
-                        Console.WriteLine("Got salt: " + faculty.salt);
-                        Console.WriteLine("Verification: " + hashing.VerifyHash(textBoxPassword.Text, Convert.FromBase64String(faculty.salt), Convert.FromBase64String(faculty.Password)));
+                        //Console.WriteLine("Got hash: " + faculty.Password);
+                        //Console.WriteLine("Got salt: " + faculty.salt);
+                        //Console.WriteLine("Verification: " + hashing.VerifyHash(textBoxPassword.Text, Convert.FromBase64String(faculty.salt), Convert.FromBase64String(faculty.Password)));
                         loadingForm.Step(20);
                         if (hashing.VerifyHash(textBoxPassword.Text, Convert.FromBase64String(faculty.salt), Convert.FromBase64String(faculty.Password)))
                         {
@@ -127,7 +126,7 @@ namespace GUI.Views
 
         private void TextBoxIdSignUp_Click(object sender, EventArgs e)
         {
-            toolTipWarning.Show("Faculty ID format: XXXX-XXXX-X\nWarning: You cannot change your Academic ID in the future.", textBoxAcademicIdSignUp, 2000);
+            toolTipWarning.Show("Faculty ID format: XXXX-XXXX-X\nWarning: You cannot change your Academic ID in the future.", textBoxAcademicIdSignUp, 5000);
             if (textBoxAcademicIdSignUp.Text == "Academic ID")
             {
                 textBoxAcademicIdSignUp.Clear();
@@ -148,7 +147,7 @@ namespace GUI.Views
 
         private void TextBoxEmailSignup_Click(object sender, EventArgs e)
         {
-            toolTipEmail.Show("Faculty must sign up with an aiub.edu email", textBoxEmailSignup, 2000);
+            toolTipEmail.Show("Faculty must sign up with an aiub.edu email", textBoxEmailSignup, 5000);
             if (textBoxEmailSignup.Text == "Academic Email")
             {
                 textBoxEmailSignup.Clear();
@@ -159,7 +158,7 @@ namespace GUI.Views
 
         private void TextBoxPassSignUp_Click(object sender, EventArgs e)
         {
-            toolTipPass.Show("Password minimum length is 8 and must contain at least one uppercase, lowercase and digit characters", textBoxPassSignUp, 2000);
+            toolTipPass.Show("Password minimum length is 6 and must contain at least one uppercase, lowercase and digit characters", textBoxPassSignUp, 5000);
             if (textBoxPassSignUp.Text == "Password")
             {
                 textBoxPassSignUp.Clear();
@@ -203,6 +202,7 @@ namespace GUI.Views
 
         private void TextBoxIdSignUp_Leave(object sender, EventArgs e)
         {
+            toolTipWarning.Hide(textBoxAcademicIdSignUp);
             if (String.IsNullOrWhiteSpace(textBoxAcademicIdSignUp.Text))
             {
                 textBoxAcademicIdSignUp.ForeColor = Color.FromArgb(112, 112, 112);
@@ -223,6 +223,7 @@ namespace GUI.Views
 
         private void TextBoxEmailSignup_Leave(object sender, EventArgs e)
         {
+            toolTipEmail.Hide(textBoxEmailSignup);
             if (String.IsNullOrWhiteSpace(textBoxEmailSignup.Text))
             {
                 textBoxEmailSignup.ForeColor = Color.FromArgb(112, 112, 112);
@@ -233,6 +234,7 @@ namespace GUI.Views
 
         private void TextBoxPassSignUp_Leave(object sender, EventArgs e)
         {
+            toolTipPass.Hide(textBoxPassSignUp);
             if (String.IsNullOrWhiteSpace(textBoxPassSignUp.Text))
             {
                 textBoxPassSignUp.ForeColor = Color.FromArgb(112, 112, 112);
@@ -305,34 +307,41 @@ namespace GUI.Views
             {
                 if (textBoxPassSignUp.Text == textBoxConfirmPassSignUp.Text)
                 {
+                    LoadingForm loading = new LoadingForm();
+                    loading.Show();
                     FacultyUserModel faculty = new FacultyUserModel();
                     faculty.AcademicId = textBoxAcademicIdSignUp.Text;
-                    faculty.FirstName = textBoxFirstNameSignUp.Text;
-                    faculty.LastName = textBoxLastNameSignUp.Text;
-                    faculty.Email = textBoxEmailSignup.Text.ToLower();
+                    faculty.FirstName = textBoxFirstNameSignUp.Text.Trim();
+                    faculty.LastName = textBoxLastNameSignUp.Text.Trim();
+                    faculty.Email = textBoxEmailSignup.Text.ToLower().Trim();
                     faculty.Password = textBoxPassSignUp.Text;
 
                     try
                     {
                         faculty.IsValid();
-
+                        loading.Step(20);
                         //hashing now
                         Argon2Hashing hashing = new Argon2Hashing();
                         faculty.salt = Convert.ToBase64String(hashing.CreateSalt());
                         faculty.Password = Convert.ToBase64String(hashing.HashPassword(textBoxPassSignUp.Text, Convert.FromBase64String(faculty.salt)));
+                        loading.Step(20);
                         //hashing done
-                        Console.WriteLine("Salt: " + faculty.salt);
-                        Console.WriteLine("Hashed password: " + faculty.Password);
-                        Console.WriteLine("Verify hash: " + hashing.VerifyHash(textBoxPassSignUp.Text, Convert.FromBase64String(faculty.salt), Convert.FromBase64String(faculty.Password)));
-                        
+                        //Console.WriteLine("Salt: " + faculty.salt);
+                        //Console.WriteLine("Hashed password: " + faculty.Password);
+                        //Console.WriteLine("Verify hash: " + hashing.VerifyHash(textBoxPassSignUp.Text, Convert.FromBase64String(faculty.salt), Convert.FromBase64String(faculty.Password)));
+                        loading.Step(20);
                         try
                         {
                             var controller = new UserController();
                             controller.Create(faculty);
+                            loading.Step(20);
+                            loading.Close();
+                            MessageBox.Show("Account created. Please login with your email and password");
                             buttonCancel.PerformClick();
                         }
                         catch (SQLiteException ex)
                         {
+                            loading.Close();
                             if(ex.ErrorCode == 19)
                             {
                                 MessageBox.Show("An account is already registered with this email or ID");
@@ -343,11 +352,13 @@ namespace GUI.Views
                             }
                         }catch(Exception ex)
                         {
+                            loading.Close();
                             MessageBox.Show(ex.Message);
                         }
                     }
                     catch (Exception ex)
                     {
+                        loading.Close();
                         MessageBox.Show(ex.Message);
                     }
                 }
@@ -425,6 +436,30 @@ namespace GUI.Views
             {
                 buttonLogin.PerformClick();
             }
+        }
+
+        private void textBoxAcademicIdSignUp_MouseHover(object sender, EventArgs e)
+        {
+            toolTipWarning.Show("Faculty ID format: XXXX-XXXX-X\nWarning: You cannot change your Academic ID in the future.", textBoxAcademicIdSignUp, 5000);
+        }
+
+        private void textBoxEmailSignup_MouseHover(object sender, EventArgs e)
+        {
+            toolTipEmail.Show("Faculty must sign up with an aiub.edu email", textBoxEmailSignup, 5000);
+        }
+
+        private void textBoxAcademicIdSignUp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == '-' || char.IsControl(e.KeyChar)))
+            {
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void textBoxPassSignUp_MouseHover(object sender, EventArgs e)
+        {
+            toolTipPass.Show("Password minimum length is 6 and must contain at least one uppercase, lowercase and digit characters", textBoxPassSignUp, 5000);
         }
     }
 }
