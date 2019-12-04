@@ -68,6 +68,7 @@ namespace GUI.Views
                     col.ReadOnly = false;
                     col.Width = 50;
                     col.MaxInputLength = 1;
+                    col.ValueType = typeof(string);
                     col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                     dataGridViewStudentList.Columns.Add(col);
                 }
@@ -96,7 +97,7 @@ namespace GUI.Views
                         }
                         else
                         {
-                            dataGridViewStudentList.Rows[i].Cells[c + 2].Value = att.Entry;
+                            dataGridViewStudentList.Rows[i].Cells[c + 2].Value = att.Entry.ToString();
                         }
                         c++;
                     }
@@ -149,7 +150,7 @@ namespace GUI.Views
                         }
                         classNo++;
                     }
-                    row.Cells["Total"].Value = sum;
+                    row.Cells["Total"].Value = sum.ToString();
                 }
             }
         }
@@ -223,17 +224,69 @@ namespace GUI.Views
 
                 if (currentMouseOverRow >= 0)
                 {
-                    var remove = new MenuItem(string.Format("Remove " + dataGridViewStudentList.Rows[currentMouseOverRow].Cells[currentMouseOverColumn].Value.ToString() + " from section"));
-                    m.MenuItems.Add(remove);
-                    var add = new MenuItem(string.Format("Add student"));
-                    m.MenuItems.Add(add);
-                    string data = dataGridViewStudentList.Rows[currentMouseOverRow].Cells[1].Value.ToString() + "(" + dataGridViewStudentList.Rows[currentMouseOverRow].Cells[0].Value.ToString() + ")";
-                    string id = dataGridViewStudentList.Rows[currentMouseOverRow].Cells[0].Value.ToString();
-                    remove.Click += delegate (object s, EventArgs ev) { Remove_Click(sender, e, data, id); };
-                    add.Click += delegate (object s, EventArgs ev) { buttonAddStudent_Click(s, ev); };
+                    
+
+                    if(currentMouseOverColumn > 1 && currentMouseOverColumn < dataGridViewStudentList.ColumnCount - 1)
+                    {
+                        var editClass = new MenuItem(string.Format("Edit Class"));
+                        m.MenuItems.Add(editClass);
+                        var deleteClass = new MenuItem(string.Format("Delete Class"));
+                        m.MenuItems.Add(deleteClass);
+                        var clickedClass = classList[currentMouseOverColumn - 2];
+                        editClass.Click += delegate (object s, EventArgs ev) { EditClass_Click(sender, e, clickedClass); };
+                        deleteClass.Click += delegate (object s, EventArgs ev) { DeleteClass_Click(sender, e, clickedClass); };
+                    }
+                    else if(currentMouseOverColumn < 2)
+                    {
+                        var remove = new MenuItem(string.Format("Remove " + dataGridViewStudentList.Rows[currentMouseOverRow].Cells[currentMouseOverColumn].Value.ToString() + " from section"));
+                        m.MenuItems.Add(remove);
+                        var add = new MenuItem(string.Format("Add student"));
+                        m.MenuItems.Add(add);
+                        string data = dataGridViewStudentList.Rows[currentMouseOverRow].Cells[1].Value.ToString() + "(" + dataGridViewStudentList.Rows[currentMouseOverRow].Cells[0].Value.ToString() + ")";
+                        string id = dataGridViewStudentList.Rows[currentMouseOverRow].Cells[0].Value.ToString();
+                        remove.Click += delegate (object s, EventArgs ev) { Remove_Click(sender, e, data, id); };
+                        add.Click += delegate (object s, EventArgs ev) { buttonAddStudent_Click(s, ev); };
+                    }
                 }
 
                 m.Show(dataGridViewStudentList, new Point(e.X, e.Y));
+            }
+        }
+
+        private void DeleteClass_Click(object sender, MouseEventArgs e, ClassModel clickedClass)
+        {
+            var confirmResult = MessageBox.Show("Are you sure you want to delete this class?",
+                                    "Confirm Delete",
+                                    MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                ClassController ccontroller = new ClassController();
+                try
+                {
+                    AttendanceController acontroller = new AttendanceController();
+                    acontroller.DeleteAllByClass(clickedClass.Id);
+
+                    ccontroller.Delete(clickedClass);
+                    MessageBox.Show("Deleted!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void EditClass_Click(object sender, MouseEventArgs e, ClassModel clickedClass)
+        {
+            if (DateTime.Parse(clickedClass.ClassDate) >= DateTime.Today)
+            {
+                var editClass = new EditClassPopupForm(faculty, clickedClass);
+                editClass.FormClosed += new FormClosedEventHandler(dash_FormClosed);
+                editClass.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Can't edit past classes");
             }
         }
 

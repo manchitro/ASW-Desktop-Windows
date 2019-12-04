@@ -56,7 +56,6 @@ namespace GUI.Views
                         AttendanceModel attendance = new AttendanceModel();
                         attendance.StudentId = createdStudent.Id;
                         attendance.ClassId = Class.Id;
-                        attendance.Entry = -1;
                         try
                         {
                             acontroller.Create(attendance);
