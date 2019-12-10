@@ -109,7 +109,7 @@ namespace GUI.Views
                 sectionName.Font = new Font("Arial", 9.5F, System.Drawing.FontStyle.Bold);
                 sectionName.ForeColor = Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
                 sectionName.Location = new Point(8, 8);
-                sectionName.Margin = new Padding(8, 8, 4, 4);
+                sectionName.Margin = new Padding(8, 5, 4, 4);
                 sectionName.Size = new Size(188, 36);
                 sectionName.TabIndex = 0;
                 sectionName.Text = scontroller.Get(Class.SectionID).SectionName;

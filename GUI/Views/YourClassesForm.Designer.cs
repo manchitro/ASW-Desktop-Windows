@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(YourClassesForm));
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelLeft = new System.Windows.Forms.Panel();
+            this.flowTodaysClass = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelTodaysClasses = new System.Windows.Forms.Label();
             this.labelSubtitle = new System.Windows.Forms.Label();
@@ -37,31 +38,41 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.flowLayoutPanelClasses = new System.Windows.Forms.FlowLayoutPanel();
             this.panelYourSections = new System.Windows.Forms.Panel();
+            this.buttonRefresh = new System.Windows.Forms.Button();
+            this.buttonAddClass = new System.Windows.Forms.Button();
             this.buttonLogin = new System.Windows.Forms.Button();
             this.buttonBack = new System.Windows.Forms.Button();
             this.labelYourClasses = new System.Windows.Forms.Label();
             this.labelWelcome = new System.Windows.Forms.Label();
-            this.buttonAddClass = new System.Windows.Forms.Button();
-            this.buttonRefresh = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
+            this.panelLeft.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panelYourSections.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // panelLeft
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.panelLeft.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.labelSubtitle);
-            this.panel1.Controls.Add(this.labelTitle);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(333, 628);
-            this.panel1.TabIndex = 7;
+            this.panelLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.panelLeft.Controls.Add(this.flowTodaysClass);
+            this.panelLeft.Controls.Add(this.panel2);
+            this.panelLeft.Controls.Add(this.labelSubtitle);
+            this.panelLeft.Controls.Add(this.labelTitle);
+            this.panelLeft.Location = new System.Drawing.Point(0, 0);
+            this.panelLeft.Margin = new System.Windows.Forms.Padding(4);
+            this.panelLeft.Name = "panelLeft";
+            this.panelLeft.Size = new System.Drawing.Size(333, 628);
+            this.panelLeft.TabIndex = 7;
+            // 
+            // flowTodaysClass
+            // 
+            this.flowTodaysClass.AutoScroll = true;
+            this.flowTodaysClass.Location = new System.Drawing.Point(0, 232);
+            this.flowTodaysClass.Margin = new System.Windows.Forms.Padding(0);
+            this.flowTodaysClass.Name = "flowTodaysClass";
+            this.flowTodaysClass.Size = new System.Drawing.Size(333, 396);
+            this.flowTodaysClass.TabIndex = 9;
             // 
             // panel2
             // 
@@ -123,7 +134,7 @@
             this.panel3.Controls.Add(this.panelYourSections);
             this.panel3.Controls.Add(this.labelWelcome);
             this.panel3.Location = new System.Drawing.Point(331, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(821, 628);
             this.panel3.TabIndex = 8;
@@ -151,6 +162,40 @@
             this.panelYourSections.Size = new System.Drawing.Size(821, 92);
             this.panelYourSections.TabIndex = 7;
             // 
+            // buttonRefresh
+            // 
+            this.buttonRefresh.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.buttonRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(52)))), ((int)(((byte)(158)))));
+            this.buttonRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRefresh.Font = new System.Drawing.Font("Arial", 12F);
+            this.buttonRefresh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.buttonRefresh.Location = new System.Drawing.Point(416, 30);
+            this.buttonRefresh.Margin = new System.Windows.Forms.Padding(73, 32, 0, 0);
+            this.buttonRefresh.Name = "buttonRefresh";
+            this.buttonRefresh.Size = new System.Drawing.Size(100, 33);
+            this.buttonRefresh.TabIndex = 8;
+            this.buttonRefresh.Text = "Refresh";
+            this.buttonRefresh.UseVisualStyleBackColor = false;
+            this.buttonRefresh.Click += new System.EventHandler(this.ButtonRefresh_Click);
+            // 
+            // buttonAddClass
+            // 
+            this.buttonAddClass.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.buttonAddClass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(52)))), ((int)(((byte)(158)))));
+            this.buttonAddClass.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonAddClass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddClass.Font = new System.Drawing.Font("Arial", 12F);
+            this.buttonAddClass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.buttonAddClass.Location = new System.Drawing.Point(531, 30);
+            this.buttonAddClass.Margin = new System.Windows.Forms.Padding(73, 32, 0, 0);
+            this.buttonAddClass.Name = "buttonAddClass";
+            this.buttonAddClass.Size = new System.Drawing.Size(125, 33);
+            this.buttonAddClass.TabIndex = 7;
+            this.buttonAddClass.Text = "Add Class";
+            this.buttonAddClass.UseVisualStyleBackColor = false;
+            this.buttonAddClass.Click += new System.EventHandler(this.ButtonAddClass_Click);
+            // 
             // buttonLogin
             // 
             this.buttonLogin.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -175,7 +220,7 @@
             this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBack.Image = ((System.Drawing.Image)(resources.GetObject("buttonBack.Image")));
             this.buttonBack.Location = new System.Drawing.Point(0, 0);
-            this.buttonBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonBack.Margin = new System.Windows.Forms.Padding(4);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(100, 92);
             this.buttonBack.TabIndex = 1;
@@ -208,56 +253,23 @@
             this.labelWelcome.Text = "Faculty";
             this.labelWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // buttonAddClass
-            // 
-            this.buttonAddClass.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.buttonAddClass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(52)))), ((int)(((byte)(158)))));
-            this.buttonAddClass.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonAddClass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAddClass.Font = new System.Drawing.Font("Arial", 12F);
-            this.buttonAddClass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.buttonAddClass.Location = new System.Drawing.Point(531, 30);
-            this.buttonAddClass.Margin = new System.Windows.Forms.Padding(73, 32, 0, 0);
-            this.buttonAddClass.Name = "buttonAddClass";
-            this.buttonAddClass.Size = new System.Drawing.Size(125, 33);
-            this.buttonAddClass.TabIndex = 7;
-            this.buttonAddClass.Text = "Add Class";
-            this.buttonAddClass.UseVisualStyleBackColor = false;
-            this.buttonAddClass.Click += new System.EventHandler(this.ButtonAddClass_Click);
-            // 
-            // buttonRefresh
-            // 
-            this.buttonRefresh.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.buttonRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(52)))), ((int)(((byte)(158)))));
-            this.buttonRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRefresh.Font = new System.Drawing.Font("Arial", 12F);
-            this.buttonRefresh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.buttonRefresh.Location = new System.Drawing.Point(416, 30);
-            this.buttonRefresh.Margin = new System.Windows.Forms.Padding(73, 32, 0, 0);
-            this.buttonRefresh.Name = "buttonRefresh";
-            this.buttonRefresh.Size = new System.Drawing.Size(100, 33);
-            this.buttonRefresh.TabIndex = 8;
-            this.buttonRefresh.Text = "Refresh";
-            this.buttonRefresh.UseVisualStyleBackColor = false;
-            this.buttonRefresh.Click += new System.EventHandler(this.ButtonRefresh_Click);
-            // 
             // YourClassesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
             this.ClientSize = new System.Drawing.Size(1152, 629);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "YourClassesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormYourClasses";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.Load += new System.EventHandler(this.YourClassesForm_Load);
+            this.panelLeft.ResumeLayout(false);
+            this.panelLeft.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -269,7 +281,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelLeft;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label labelTodaysClasses;
         private System.Windows.Forms.Label labelSubtitle;
@@ -283,5 +295,6 @@
         private System.Windows.Forms.Button buttonLogin;
         private System.Windows.Forms.Button buttonAddClass;
         private System.Windows.Forms.Button buttonRefresh;
+        private System.Windows.Forms.FlowLayoutPanel flowTodaysClass;
     }
 }

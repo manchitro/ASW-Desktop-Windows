@@ -1,6 +1,7 @@
 ﻿using DataLayer.Models;
 using GUI.Controllers;
 using GUI.Controllers.BaseController;
+using GUI.Properties;
 using GUI.Utils;
 using System;
 using System.Collections.Generic;
@@ -59,7 +60,7 @@ namespace GUI.Views
                 FullNameCol.ReadOnly = true;
                 dataGridViewStudentList.Columns.Add(FullNameCol);
 
-                foreach(ClassModel Class in classList)
+                foreach (ClassModel Class in classList)
                 {
                     DataGridViewTextBoxColumn col = new DataGridViewTextBoxColumn();
                     DateTime date = DateTime.Parse(Class.ClassDate);
@@ -74,7 +75,7 @@ namespace GUI.Views
                 }
 
                 int i = 0;
-                foreach(StudentUserModel student in studentList)
+                foreach (StudentUserModel student in studentList)
                 {
                     //Console.WriteLine("doing student no. " + i);
                     StudentView view = new StudentView();
@@ -82,7 +83,7 @@ namespace GUI.Views
                     view.FullName = student.FullName;
                     dataGridViewStudentList.Rows.Add();
                     dataGridViewSln.Rows.Add();
-                    dataGridViewSln.Rows[i].Cells[0].Value = i+1;
+                    dataGridViewSln.Rows[i].Cells[0].Value = i + 1;
                     dataGridViewStudentList.Rows[i].Cells[0].Value = student.AcademicId;
                     dataGridViewStudentList.Rows[i].Cells[1].Value = student.FullName;
                     int c = 0;
@@ -124,7 +125,7 @@ namespace GUI.Views
                 MessageBox.Show(ex.Message);
             }
 
-            if(classList.Count != 0)
+            if (classList.Count != 0)
             {
                 DataGridViewTextBoxColumn totalCol = new DataGridViewTextBoxColumn();
                 totalCol.HeaderText = "Total";
@@ -134,17 +135,17 @@ namespace GUI.Views
                 totalCol.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dataGridViewStudentList.Columns.Add(totalCol);
 
-                foreach(DataGridViewRow row in dataGridViewStudentList.Rows)
+                foreach (DataGridViewRow row in dataGridViewStudentList.Rows)
                 {
                     int sum = 0;
                     int classNo = 0;
-                    foreach(ClassModel Class in classList)
+                    foreach (ClassModel Class in classList)
                     {
-                        if(row.Cells[classNo+2].Value.ToString() == "L" || row.Cells[classNo + 2].Value.ToString() == "l")
+                        if (row.Cells[classNo + 2].Value.ToString() == "L" || row.Cells[classNo + 2].Value.ToString() == "l")
                         {
                             sum += 1;
                         }
-                        else if(row.Cells[classNo + 2].Value.ToString() == "1")
+                        else if (row.Cells[classNo + 2].Value.ToString() == "1")
                         {
                             sum += 1;
                         }
@@ -224,9 +225,9 @@ namespace GUI.Views
 
                 if (currentMouseOverRow >= 0)
                 {
-                    
 
-                    if(currentMouseOverColumn > 1 && currentMouseOverColumn < dataGridViewStudentList.ColumnCount - 1)
+
+                    if (currentMouseOverColumn > 1 && currentMouseOverColumn < dataGridViewStudentList.ColumnCount - 1)
                     {
                         var editClass = new MenuItem(string.Format("Edit Class"));
                         m.MenuItems.Add(editClass);
@@ -236,7 +237,7 @@ namespace GUI.Views
                         editClass.Click += delegate (object s, EventArgs ev) { EditClass_Click(sender, e, clickedClass); };
                         deleteClass.Click += delegate (object s, EventArgs ev) { DeleteClass_Click(sender, e, clickedClass); };
                     }
-                    else if(currentMouseOverColumn < 2)
+                    else if (currentMouseOverColumn < 2)
                     {
                         var remove = new MenuItem(string.Format("Remove " + dataGridViewStudentList.Rows[currentMouseOverRow].Cells[currentMouseOverColumn].Value.ToString() + " from section"));
                         m.MenuItems.Add(remove);
@@ -305,7 +306,7 @@ namespace GUI.Views
                     SectionStudentController sscontroller = new SectionStudentController();
                     try
                     {
-                        foreach(ClassModel Class in classList)
+                        foreach (ClassModel Class in classList)
                         {
                             AttendanceController attendanceController = new AttendanceController();
                             attendanceController.DeleteAllByStudentInSection(gotId, section.Id);
@@ -402,7 +403,7 @@ namespace GUI.Views
 
         private void dataGridViewStudentList_SelectionChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void dataGridViewSln_SelectionChanged(object sender, EventArgs e)
@@ -412,7 +413,7 @@ namespace GUI.Views
 
         private void DataGridViewStudentList_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
 
         private void DataGridViewStudentList_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
@@ -470,17 +471,104 @@ namespace GUI.Views
 
         private void textBoxSearch_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
 
             }
         }
-    }
 
-    public class StudentView
-    {
-        public string AcademicId { get; set; }
-        public string FullName { get; set; }
-        public List<int> attendances { get; set; } = new List<int>();
+        private void FormStudentList_Load(object sender, EventArgs e)
+        {
+            flowTodaysClass.Width = panelLeft.Width + SystemInformation.VerticalScrollBarWidth;
+            ClassController ccontroller = new ClassController();
+            ClassTimeController classTimeController = new ClassTimeController();
+            List<ClassModel> todaysClasses = ccontroller.GetByDateAndFacultyId(DateTime.Today.ToString("yyyy-MM-dd"), faculty.Id);
+            int i = 0;
+            foreach (ClassModel Class in todaysClasses)
+            {
+                FlowLayoutPanel todaysClassPanel = new FlowLayoutPanel();
+                todaysClassPanel.Size = new System.Drawing.Size(250, 80);
+                todaysClassPanel.Margin = new Padding(0, 0, 0, 0);
+                if (i % 2 == 0)
+                {
+                    todaysClassPanel.BackColor = Color.FromArgb(59, 59, 59);
+                }
+                else
+                {
+                    todaysClassPanel.BackColor = Color.FromArgb(48, 48, 48);
+                }
+
+                SectionController scontroller = new SectionController();
+
+                Label sectionName = new Label();
+                sectionName.Font = new Font("Arial", 9.5F, System.Drawing.FontStyle.Bold);
+                sectionName.ForeColor = Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+                sectionName.Location = new Point(8, 8);
+                sectionName.Margin = new Padding(8, 5, 4, 4);
+                sectionName.Size = new Size(188, 36);
+                sectionName.TabIndex = 0;
+                sectionName.Text = scontroller.Get(Class.SectionID).SectionName;
+                sectionName.TextAlign = ContentAlignment.MiddleLeft;
+
+                Button qr = new Button();
+                qr.BackgroundImage = Resources.qr;
+                qr.BackgroundImageLayout = ImageLayout.Stretch;
+                qr.FlatAppearance.BorderSize = 0;
+                qr.Cursor = Cursors.Hand;
+                qr.FlatStyle = FlatStyle.Flat;
+                qr.Location = new Point(202, 8);
+                qr.Margin = new Padding(2, 8, 2, 2);
+                qr.Size = new Size(33, 33);
+                qr.TabIndex = 4;
+                qr.UseVisualStyleBackColor = true;
+
+                Label classType = new Label();
+                classType.Font = new Font("Arial", 10.2F);
+                classType.ForeColor = Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+                classType.Location = new Point(8, 48);
+                classType.Margin = new Padding(8, 0, 4, 4);
+                classType.Name = "label2";
+                classType.Size = new Size(53, 28);
+                classType.TabIndex = 1;
+                classType.Text = Class.ClassType.ToString();
+                classType.TextAlign = ContentAlignment.MiddleLeft;
+
+                Label time = new Label();
+                time.Font = new Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                time.ForeColor = Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+                time.Location = new Point(69, 48);
+                time.Margin = new Padding(4, 0, 4, 4);
+                time.Size = new Size(104, 28);
+                time.TabIndex = 2;
+                time.Text = classTimeController.Get(Class.StartTimeId).ClassTimeText + " - " + classTimeController.Get(Class.EndTimeId).ClassTimeText;
+                time.TextAlign = ContentAlignment.MiddleCenter;
+
+                Label room = new Label();
+                room.Font = new Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                room.ForeColor = Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+                room.Location = new Point(181, 48);
+                room.Margin = new Padding(4, 0, 4, 4);
+                room.Size = new Size(52, 28);
+                room.TabIndex = 3;
+                room.Text = Class.RoomNo;
+                room.TextAlign = ContentAlignment.MiddleRight;
+
+                todaysClassPanel.Controls.Add(sectionName);
+                todaysClassPanel.Controls.Add(qr);
+                todaysClassPanel.Controls.Add(classType);
+                todaysClassPanel.Controls.Add(time);
+                todaysClassPanel.Controls.Add(room);
+
+                flowTodaysClass.Controls.Add(todaysClassPanel);
+                i++;
+            }
+        }
+
+        public class StudentView
+        {
+            public string AcademicId { get; set; }
+            public string FullName { get; set; }
+            public List<int> attendances { get; set; } = new List<int>();
+        }
     }
 }
