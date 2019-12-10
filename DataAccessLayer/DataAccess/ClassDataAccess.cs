@@ -42,7 +42,7 @@ namespace DataAccessLayer
         {
             using (IDbConnection conn = SQLiteDBConnection.Get())
             {
-                var query = @"UPDATE Classes SET ClassDate = @ClassDate, StartTimeid = @StartTimeId, EndTimeId = EndTimeId,
+                var query = @"UPDATE Classes SET ClassDate = @ClassDate, StartTimeid = @StartTimeId, EndTimeId = @EndTimeId,
                                 RoomNo = @RoomNo WHERE Id = @Id";
                 conn.Execute(query, model);
             }

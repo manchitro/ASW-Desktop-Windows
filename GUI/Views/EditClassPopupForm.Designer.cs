@@ -166,7 +166,7 @@
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(76, 27);
             this.buttonEdit.TabIndex = 53;
-            this.buttonEdit.Text = "Edit";
+            this.buttonEdit.Text = "Save";
             this.buttonEdit.UseVisualStyleBackColor = false;
             this.buttonEdit.Click += new System.EventHandler(this.ButtonEdit_Click);
             // 
@@ -245,7 +245,7 @@
             this.Controls.Add(this.datePicker);
             this.Controls.Add(this.labelDate);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "EditClassPopupForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditClassPopupForm";

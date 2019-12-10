@@ -31,6 +31,7 @@ namespace GUI.Views
         private void InitializeComponent()
         {
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.flowTodaysClass = new System.Windows.Forms.FlowLayoutPanel();
             this.panelTodaysClasses = new System.Windows.Forms.Panel();
             this.labelTodaysClasses = new System.Windows.Forms.Label();
             this.labelSubtitle = new System.Windows.Forms.Label();
@@ -63,6 +64,7 @@ namespace GUI.Views
             this.panelLeft.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panelLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.panelLeft.Controls.Add(this.flowTodaysClass);
             this.panelLeft.Controls.Add(this.panelTodaysClasses);
             this.panelLeft.Controls.Add(this.labelSubtitle);
             this.panelLeft.Controls.Add(this.labelTitle);
@@ -70,6 +72,15 @@ namespace GUI.Views
             this.panelLeft.Name = "panelLeft";
             this.panelLeft.Size = new System.Drawing.Size(250, 510);
             this.panelLeft.TabIndex = 0;
+            // 
+            // flowTodaysClass
+            // 
+            this.flowTodaysClass.AutoScroll = true;
+            this.flowTodaysClass.Location = new System.Drawing.Point(0, 188);
+            this.flowTodaysClass.Margin = new System.Windows.Forms.Padding(0);
+            this.flowTodaysClass.Name = "flowTodaysClass";
+            this.flowTodaysClass.Size = new System.Drawing.Size(250, 322);
+            this.flowTodaysClass.TabIndex = 5;
             // 
             // panelTodaysClasses
             // 
@@ -433,10 +444,11 @@ namespace GUI.Views
             this.Controls.Add(this.panelRight);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(879, 548);
+            this.MinimumSize = new System.Drawing.Size(878, 547);
             this.Name = "FormDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
+            this.Load += new System.EventHandler(this.FormDashboard_Load);
             this.panelLeft.ResumeLayout(false);
             this.panelLeft.PerformLayout();
             this.panelTodaysClasses.ResumeLayout(false);
@@ -472,5 +484,6 @@ namespace GUI.Views
         private System.Windows.Forms.Label labelYourSections;
         private System.Windows.Forms.Label labelYourSectionsDesc;
         private System.Windows.Forms.Button buttonYourSections;
+        private System.Windows.Forms.FlowLayoutPanel flowTodaysClass;
     }
 }
