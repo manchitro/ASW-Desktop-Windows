@@ -84,6 +84,7 @@ namespace GUI.Views
 
         private void FormDashboard_Load(object sender, EventArgs e)
         {
+            flowTodaysClass.Width = panelLeft.Width + SystemInformation.VerticalScrollBarWidth; 
             ClassController ccontroller = new ClassController();
             ClassTimeController classTimeController = new ClassTimeController();
             List<ClassModel> todaysClasses = ccontroller.GetByDateAndFacultyId(DateTime.Today.ToString("yyyy-MM-dd"), faculty.Id);
