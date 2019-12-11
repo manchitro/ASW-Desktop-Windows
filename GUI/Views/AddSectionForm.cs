@@ -2,6 +2,7 @@
 using DataLayer.Models.BaseModels;
 using GUI.Controllers;
 using GUI.Properties;
+using QRCoder;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -94,6 +95,8 @@ namespace GUI.Views
                 qr.TabIndex = 4;
                 qr.UseVisualStyleBackColor = true;
 
+                qr.Click += delegate (object s, EventArgs ev) { qrButton_Click(sender, e, Class); };
+
                 Label classType = new Label();
                 classType.Font = new Font("Arial", 10.2F);
                 classType.ForeColor = Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
@@ -133,6 +136,59 @@ namespace GUI.Views
 
                 flowTodaysClass.Controls.Add(todaysClassPanel);
                 i++;
+            }
+        }
+
+        private void qrButton_Click(object sender, EventArgs e, ClassModel Class)
+        {
+            if (Class.QRDisplayStartTime == null)
+            {
+                //Console.WriteLine("Clicked class QR: " + Encoding.UTF8.GetString(Convert.FromBase64String(Class.QRCode)));
+                QRCodeGenerator qRCodeGenerator = new QRCodeGenerator();
+                QRCodeData data = qRCodeGenerator.CreateQrCode(Class.QRCode, QRCodeGenerator.ECCLevel.Q);
+                QRCode code = new QRCode(data);
+                Bitmap image = code.GetGraphic(50);
+
+                ClassController classController = new ClassController();
+                try
+                {
+                    var updatedClass = classController.InsertQRDisplayStartTime(Class.Id, DateTime.Now.ToString());
+
+                    var qrForm = new QRdisplayForm(Class, image);
+                    qrForm.Show();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            }
+            else
+            {
+                var confirmResult = MessageBox.Show("Are you sure you want to show QR again? Previous display time will be overwritten!",
+                                     "Confirm",
+                                     MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    //Console.WriteLine("Clicked class QR: " + Encoding.UTF8.GetString(Convert.FromBase64String(Class.QRCode)));
+                    QRCodeGenerator qRCodeGenerator = new QRCodeGenerator();
+                    QRCodeData data = qRCodeGenerator.CreateQrCode(Class.QRCode, QRCodeGenerator.ECCLevel.Q);
+                    QRCode code = new QRCode(data);
+                    Bitmap image = code.GetGraphic(50);
+
+                    ClassController classController = new ClassController();
+                    try
+                    {
+                        //var updatedClass = classController.InsertQRDisplayStartTime(Class.Id, DateTime.Now.ToString());
+
+                        var qrForm = new QRdisplayForm(Class, image);
+                        qrForm.Show();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
             }
         }
     }

@@ -5,6 +5,7 @@ using GUI.Controllers.BaseController;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Text;
 using System.Windows.Forms;
 
 namespace GUI.Views
@@ -103,29 +104,42 @@ namespace GUI.Views
                 {
                     var createdClass = ccontroller.Create(Class);
 
-                    SectionStudentController sscontroller = new SectionStudentController();
-                    List<int> sectionStudentsId = sscontroller.GetAllBySection(section.Id);
-
-                    AttendanceController acontroller = new AttendanceController();
-
-                    foreach(int StudentId in sectionStudentsId)
+                    string qrstring = createdClass.Id.ToString() + "|" + section.SectionName.ToString() + "|" + createdClass.CreatedAt.ToString();
+                    string encodedqrstring = Convert.ToBase64String(Encoding.UTF8.GetBytes(qrstring));
+                    string decodedqrstring = (Encoding.UTF8.GetString(Convert.FromBase64String(encodedqrstring)));
+                    //Console.WriteLine(decodedqrstring);
+                    try
                     {
-                        AttendanceModel attendance = new AttendanceModel();
-                        attendance.ClassId = createdClass.Id;
-                        attendance.StudentId = StudentId;
+                        ccontroller.InsertQRCode(createdClass.Id, encodedqrstring);
 
-                        try
+                        SectionStudentController sscontroller = new SectionStudentController();
+                        List<int> sectionStudentsId = sscontroller.GetAllBySection(section.Id);
+
+                        AttendanceController acontroller = new AttendanceController();
+
+                        foreach (int StudentId in sectionStudentsId)
                         {
-                            acontroller.Create(attendance);
+                            AttendanceModel attendance = new AttendanceModel();
+                            attendance.ClassId = createdClass.Id;
+                            attendance.StudentId = StudentId;
+
+                            try
+                            {
+                                acontroller.Create(attendance);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
                         }
-                        catch(Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                        }
+                        //Console.WriteLine("Created class id: " + createdClass.Id);
+                        MessageBox.Show("Class added on " + (createdClass.ClassDate));
+                        this.Hide();
                     }
-                    //Console.WriteLine("Created class id: " + createdClass.Id);
-                    MessageBox.Show("Class added on " + (createdClass.ClassDate));
-                    this.Hide();
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
                 catch (Exception ex)
                 {

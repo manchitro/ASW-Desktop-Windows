@@ -88,5 +88,41 @@ namespace DataAccessLayer
                 conn.Execute(query, parameters);
             }
         }
+
+        public ClassModel InsertQRCode (int ClassId, string QR)
+        {
+            using(IDbConnection conn = SQLiteDBConnection.Get())
+            {
+                var query = @"UPDATE Classes SET QRCode = @QR WHERE Id = @ClassId;";
+                var parameters = new DynamicParameters();
+                parameters.Add("@ClassId", ClassId);
+                parameters.Add("@QR", QR);
+                return conn.ExecuteScalar<ClassModel>(query, parameters);
+            }
+        }
+
+        public ClassModel InsertQRDisplayStartTime(int ClassId, string StartTime)
+        {
+            using(IDbConnection conn = SQLiteDBConnection.Get())
+            {
+                var query = @"UPDATE Classes SET QRDisplayStartTime = @StartTime where Id = @ClassId;";
+                var parameters = new DynamicParameters();
+                parameters.Add("@ClassId", ClassId);
+                parameters.Add("@StartTime", StartTime);
+                return conn.ExecuteScalar<ClassModel>(query, parameters);
+            }
+        }
+
+        public ClassModel InsertQRDisplayEndTime(int ClassId, string EndTime)
+        {
+            using (IDbConnection conn = SQLiteDBConnection.Get())
+            {
+                var query = @"UPDATE Classes SET QRDisplayEndTime = @EndTime where Id = @ClassId;";
+                var parameters = new DynamicParameters();
+                parameters.Add("@ClassId", ClassId);
+                parameters.Add("@EndTime", EndTime);
+                return conn.ExecuteScalar<ClassModel>(query, parameters);
+            }
+        }
     }
 }
