@@ -70,7 +70,6 @@
     <Compile Include="DataAccess\ClassDataAccess.cs" />
     <Compile Include="DataAccess\BaseDataAccess\BaseDataAccess.cs" />
     <Compile Include="DataAccess\ClassTimeDataAccess.cs" />
-    <Compile Include="DataAccess\ClassTimesDataAccess.cs" />
     <Compile Include="DataAccess\SectionStudentDataAccess.cs" />
     <Compile Include="DataAccess\WeekDayDataAccess.cs" />
     <Compile Include="DBConnections\SQLiteDBConnection.cs" />
