@@ -55,8 +55,8 @@ namespace GUI.Views
         {
             ClassModel Class = new ClassModel();
             Class.ClassDate = datePicker.Value.ToString("yyyy-MM-dd");
-            Class.StartTimeId = comboBoxStartTime.SelectedIndex + 1;
-            Class.EndTimeId = comboBoxEndTime.SelectedIndex + 1;
+            Class.StartTimeId = comboBoxStartTime.SelectedIndex;
+            Class.EndTimeId = comboBoxEndTime.SelectedIndex;
             Class.RoomNo = textBoxRoomNo.Text;
             Class.SectionID = section.Id;
             if (comboBoxClassType.SelectedIndex == 0)
@@ -102,6 +102,7 @@ namespace GUI.Views
                 //Console.WriteLine("Clash checking complete");
                 try
                 {
+                    Console.WriteLine("Creating class with date: " + Class.ClassDate);
                     var createdClass = ccontroller.Create(Class);
 
                     string qrstring = createdClass.Id.ToString() + "|" + section.SectionName.ToString() + "|" + createdClass.CreatedAt.ToString();

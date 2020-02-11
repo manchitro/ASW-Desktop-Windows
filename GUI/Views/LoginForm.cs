@@ -25,7 +25,7 @@ namespace GUI.Views
         {
             if (!(textBoxEmail.Text == "Email") && !(textBoxPassword.Text == "Password") && !(string.IsNullOrWhiteSpace(textBoxEmail.Text)) && !(string.IsNullOrWhiteSpace(textBoxPassword.Text)))
             {
-                LoadingForm loadingForm = new LoadingForm();
+                LoadingForm loadingForm = new LoadingForm("Signing in. Please wait...");
                 loadingForm.Show();
 
                 loadingForm.Step(20);
@@ -307,7 +307,7 @@ namespace GUI.Views
             {
                 if (textBoxPassSignUp.Text == textBoxConfirmPassSignUp.Text)
                 {
-                    LoadingForm loading = new LoadingForm();
+                    LoadingForm loading = new LoadingForm("Creating Account. Please wait...");
                     loading.Show();
                     FacultyUserModel faculty = new FacultyUserModel();
                     faculty.AcademicId = textBoxAcademicIdSignUp.Text;

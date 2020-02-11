@@ -23,7 +23,7 @@ namespace GUI.Views
 
         private void buttonSave_Click(object sender, System.EventArgs e)
         {
-            LoadingForm loadingForm = new LoadingForm();
+            LoadingForm loadingForm = new LoadingForm("Saving Password. Please wait...");
             loadingForm.Show();
             //try
             {

@@ -3,6 +3,7 @@ using DataAccessLayer.DBConnections;
 using DataLayer.Models;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace DataAccessLayer
@@ -13,12 +14,12 @@ namespace DataAccessLayer
 
         public override SectionTimeModel Create(SectionTimeModel model)
         {
-            using (IDbConnection conn = SQLiteDBConnection.Get())
+            using (SqlConnection conn = SQLiteDBConnection.Get())
             {
                 var query = @"INSERT INTO SectionTimes (StartTimeId, EndTimeId, WeekDayId, ClassType, RoomNo, 
                                 SectionId, CreatedAt) VALUES(@StartTimeId, @EndTimeId, @WeekDayId, @ClassType,
                                     @RoomNo, @SectionId, @CreatedAt);
-                             SELECT last_insert_rowid();";
+                             SELECT SCOPE_IDENTITY();";
                 var newId = conn.ExecuteScalar<int>(query, model);
                 model.Id = newId;
             }
@@ -28,7 +29,7 @@ namespace DataAccessLayer
 
         public override SectionTimeModel Update(SectionTimeModel model)
         {
-            using (IDbConnection conn = SQLiteDBConnection.Get())
+            using (SqlConnection conn = SQLiteDBConnection.Get())
             {
                 var query = @"UPDATE SectionTimes SET StartTimeId = @StartTimeId, EndTimeId = @EndTimeId, 
                                 WeekDayId = @WeekDayId, ClassType = @ClassType, RoomNo = @RoomNo WHERE Id = @Id";
@@ -40,7 +41,7 @@ namespace DataAccessLayer
 
         public List<SectionTimeModel> GetBySection(SectionModel section)
         {
-            using (IDbConnection conn = SQLiteDBConnection.Get())
+            using (SqlConnection conn = SQLiteDBConnection.Get())
             {
                 var query = $"SELECT * FROM SectionTimes WHERE SectionId = @Id";
                 return conn.Query<SectionTimeModel>(query, section).ToList();
@@ -49,7 +50,7 @@ namespace DataAccessLayer
 
         public void RemoveAllBySection(int SectionId)
         {
-            using (IDbConnection conn = SQLiteDBConnection.Get())
+            using (SqlConnection conn = SQLiteDBConnection.Get())
             {
                 var query = $"DELETE FROM SectionTimes WHERE SectionId = @SectionId"; 
                 var parameters = new DynamicParameters();
@@ -60,7 +61,7 @@ namespace DataAccessLayer
 
         public List<SectionTimeModel> GetByFaculty(int FacultyId)
         {
-            using(IDbConnection conn = SQLiteDBConnection.Get())
+            using(SqlConnection conn = SQLiteDBConnection.Get())
             {
                 var query = @"SELECT * FROM SectionTimes where SectionId in
                                 (SELECT Id FROM Sections WHERE FacultyId = @FacultyId)";

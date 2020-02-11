@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
 using DataAccessLayer.DBConnections;
@@ -12,11 +13,11 @@ namespace DataAccessLayer
 
         public void Create(int SectionId, int StudentId)
         {
-            using (IDbConnection conn = SQLiteDBConnection.Get())
+            using (SqlConnection conn = SQLiteDBConnection.Get())
             {
                 var query = @"INSERT INTO SectionStudents (SectionId, StudentId) 
                                    VALUES(@SectionID, @StudentID);
-                             SELECT last_insert_rowid();";
+                             SELECT SCOPE_IDENTITY();";
                 var parameters = new DynamicParameters();
                 parameters.Add("@SectionID", SectionId);
                 parameters.Add("@StudentID", StudentId);
@@ -26,7 +27,7 @@ namespace DataAccessLayer
 
         public void Remove(int SectionId, int StudentId)
         {
-            using (IDbConnection conn = SQLiteDBConnection.Get())
+            using (SqlConnection conn = SQLiteDBConnection.Get())
             {
                 var query = @"DELETE FROM SectionStudents where SectionId = @SectionId AND StudentId = @StudentId;";
                 var parameters = new DynamicParameters();
@@ -38,7 +39,7 @@ namespace DataAccessLayer
 
         public void RemoveAllBySection(int SectionId)
         {
-            using (IDbConnection conn = SQLiteDBConnection.Get())
+            using (SqlConnection conn = SQLiteDBConnection.Get())
             {
                 var query = @"DELETE FROM SectionStudents where SectionId = @SectionId;";
                 var parameters = new DynamicParameters();
@@ -49,7 +50,7 @@ namespace DataAccessLayer
 
         public List<int> GetAllBySection(int SectionId)
         {
-            using(IDbConnection conn = SQLiteDBConnection.Get())
+            using(SqlConnection conn = SQLiteDBConnection.Get())
             {
                 var query = @"SELECT StudentId from SectionStudents where SectionId = @SectionId;";
                 var parameters = new DynamicParameters();

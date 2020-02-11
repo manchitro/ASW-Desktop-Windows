@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
 using DataAccessLayer.DBConnections;
@@ -14,12 +15,13 @@ namespace DataAccessLayer
 
         public override ClassModel Create(ClassModel model)
         {
-            using (IDbConnection conn = SQLiteDBConnection.Get())
+            using (SqlConnection conn = SQLiteDBConnection.Get())
             {
+                Console.WriteLine("Got date: " + model.ClassDate);
                 var query = @"INSERT INTO Classes (ClassDate, ClassType, StartTimeId, EndTimeId, RoomNo, QRCode, QRDisplayStartTime,
                                QRDisplayEndTime, SectionId, CreatedAt) VALUES(@ClassDate, @ClassType, @StartTimeId, @EndTimeId, @RoomNo, 
                                 @QRCode, @QRDisplayStartTime, @QRDisplayEndTime, @SectionId, @CreatedAt);
-                             SELECT last_insert_rowid();";
+                             SELECT SCOPE_IDENTITY();";
                 var newId = conn.ExecuteScalar<int>(query, model);
                 model.Id = newId;
             }
@@ -29,7 +31,7 @@ namespace DataAccessLayer
 
         public List<ClassModel> GetBySectionId(int SectionId)
         {
-            using (IDbConnection conn = SQLiteDBConnection.Get())
+            using (SqlConnection conn = SQLiteDBConnection.Get())
             {
                 var query = @"SELECT * FROM Classes where SectionId = @SectionId;";
                 var parameters = new DynamicParameters();
@@ -40,7 +42,7 @@ namespace DataAccessLayer
 
         public override ClassModel Update(ClassModel model)
         {
-            using (IDbConnection conn = SQLiteDBConnection.Get())
+            using (SqlConnection conn = SQLiteDBConnection.Get())
             {
                 var query = @"UPDATE Classes SET ClassDate = @ClassDate, StartTimeid = @StartTimeId, EndTimeId = @EndTimeId,
                                 RoomNo = @RoomNo WHERE Id = @Id";
@@ -52,7 +54,7 @@ namespace DataAccessLayer
 
         public List<ClassModel> GetByFacultyId(int FacultyId)
         {
-            using (IDbConnection conn = SQLiteDBConnection.Get())
+            using (SqlConnection conn = SQLiteDBConnection.Get())
             {
                 var query = @"SELECT * from Classes where Id IN
                                 (SELECT Id FROM Classes where SectionId IN
@@ -65,7 +67,7 @@ namespace DataAccessLayer
 
         public List<ClassModel> GetByDateAndFacultyId(string date, int FacultyId)
         {
-            using(IDbConnection conn = SQLiteDBConnection.Get())
+            using(SqlConnection conn = SQLiteDBConnection.Get())
             {
                 //Console.WriteLine("date in query: " + date);
                 var query = @"SELECT * from Classes where ClassDate = @date AND Id IN
@@ -80,7 +82,7 @@ namespace DataAccessLayer
 
         public void DeleteAllBySection (int SectionId)
         {
-            using (IDbConnection conn = SQLiteDBConnection.Get())
+            using (SqlConnection conn = SQLiteDBConnection.Get())
             {
                 var query = @"DELETE FROM Classes WHERE SectionId = @SectionId;";
                 var parameters = new DynamicParameters();
@@ -91,7 +93,7 @@ namespace DataAccessLayer
 
         public ClassModel InsertQRCode (int ClassId, string QR)
         {
-            using(IDbConnection conn = SQLiteDBConnection.Get())
+            using(SqlConnection conn = SQLiteDBConnection.Get())
             {
                 var query = @"UPDATE Classes SET QRCode = @QR WHERE Id = @ClassId;";
                 var parameters = new DynamicParameters();
@@ -103,7 +105,7 @@ namespace DataAccessLayer
 
         public ClassModel InsertQRDisplayStartTime(int ClassId, string StartTime)
         {
-            using(IDbConnection conn = SQLiteDBConnection.Get())
+            using(SqlConnection conn = SQLiteDBConnection.Get())
             {
                 var query = @"UPDATE Classes SET QRDisplayStartTime = @StartTime where Id = @ClassId;";
                 var parameters = new DynamicParameters();
@@ -115,7 +117,7 @@ namespace DataAccessLayer
 
         public ClassModel InsertQRDisplayEndTime(int ClassId, string EndTime)
         {
-            using (IDbConnection conn = SQLiteDBConnection.Get())
+            using (SqlConnection conn = SQLiteDBConnection.Get())
             {
                 var query = @"UPDATE Classes SET QRDisplayEndTime = @EndTime where Id = @ClassId;";
                 var parameters = new DynamicParameters();

@@ -5,6 +5,7 @@ using Dapper;
 using DataLayer.Interfaces;
 using DataAccessLayer.Interfaces;
 using System;
+using System.Data.SqlClient;
 
 namespace DataAccessLayer
 {
@@ -14,7 +15,7 @@ namespace DataAccessLayer
 
         public virtual IEnumerable<TModel> Get()
         {
-            using (IDbConnection conn = SQLiteDBConnection.Get())
+            using (SqlConnection conn = SQLiteDBConnection.Get())
             {
                 return conn.Query<TModel>($"SELECT * FROM {TableName}");
             }
@@ -22,7 +23,7 @@ namespace DataAccessLayer
 
         public virtual TModel Get(int id)
         {
-            using (IDbConnection conn = SQLiteDBConnection.Get())
+            using (SqlConnection conn = SQLiteDBConnection.Get())
             {
                 return conn.QuerySingle<TModel>($@"SELECT * FROM {TableName} 
                                                     WHERE Id = @id", new { Id = id });
@@ -35,7 +36,7 @@ namespace DataAccessLayer
 
         public void Delete(int id)
         {
-            using(IDbConnection conn = SQLiteDBConnection.Get())
+            using(SqlConnection conn = SQLiteDBConnection.Get())
             {
                 conn.Execute($"DELETE FROM {TableName} WHERE Id = @id", new { Id = id });
             }

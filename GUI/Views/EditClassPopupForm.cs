@@ -57,8 +57,8 @@ namespace GUI.Views
             ClassModel editedClass = new ClassModel();
             editedClass.Id = Class.Id;
             editedClass.ClassDate = datePicker.Value.ToString("yyyy-MM-dd");
-            editedClass.StartTimeId = comboBoxStartTime.SelectedIndex + 1;
-            editedClass.EndTimeId = comboBoxEndTime.SelectedIndex + 1;
+            editedClass.StartTimeId = comboBoxStartTime.SelectedIndex;
+            editedClass.EndTimeId = comboBoxEndTime.SelectedIndex;
             editedClass.RoomNo = textBoxRoomNo.Text;
             if (comboBoxClassType.SelectedIndex == 0)
             {

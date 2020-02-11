@@ -195,7 +195,7 @@ namespace GUI.Views
                     }
                     else
                     {
-                        student.FirstName = row[1].ToString().Substring(0, row[1].ToString().Length - (lastLength + 1));
+                        student.FirstName = row[1].ToString().Substring(0, row[1].ToString().Length - (lastLength));
                     }
                     //Console.WriteLine("Doing " + student.AcademicId + " " + student.LastName + ", " + student.FirstName);
                     try

@@ -140,8 +140,10 @@ namespace GUI.Views
                 {
                     int sum = 0;
                     int classNo = 0;
+                    Console.WriteLine("Classes found: " + classList.Count);
                     foreach (ClassModel Class in classList)
                     {
+                        Console.WriteLine("Accessing class no. " + classNo);
                         if (row.Cells[classNo + 2].Value.ToString() == "L" || row.Cells[classNo + 2].Value.ToString() == "l")
                         {
                             sum += 1;

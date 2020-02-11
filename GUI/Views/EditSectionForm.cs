@@ -190,9 +190,9 @@ namespace GUI.Views
                 }
 
                 editedSectionTime1.RoomNo = textBoxRoomNo1.Text;
-                editedSectionTime1.StartTimeId = comboBoxStartTime1.SelectedIndex + 1;
-                editedSectionTime1.EndTimeId = comboBoxEndTime1.SelectedIndex + 1;
-                editedSectionTime1.WeekDayID = comboBoxWeekDay1.SelectedIndex + 1;
+                editedSectionTime1.StartTimeId = comboBoxStartTime1.SelectedIndex;
+                editedSectionTime1.EndTimeId = comboBoxEndTime1.SelectedIndex;
+                editedSectionTime1.WeekDayID = comboBoxWeekDay1.SelectedIndex;
 
                 //Console.WriteLine("Section Time 1 info:");
                 //Console.WriteLine("Start Id: " + editedSectionTime1.StartTimeId);
@@ -245,9 +245,9 @@ namespace GUI.Views
                         editedSectionTime2.ClassType = ClassTypes.Theory;
                     }
                     editedSectionTime2.RoomNo = textBoxRoomNo2.Text;
-                    editedSectionTime2.StartTimeId = comboBoxStartTime2.SelectedIndex + 1;
-                    editedSectionTime2.EndTimeId = comboBoxEndTime2.SelectedIndex + 1;
-                    editedSectionTime2.WeekDayID = comboBoxWeekDay2.SelectedIndex + 1;
+                    editedSectionTime2.StartTimeId = comboBoxStartTime2.SelectedIndex;
+                    editedSectionTime2.EndTimeId = comboBoxEndTime2.SelectedIndex;
+                    editedSectionTime2.WeekDayID = comboBoxWeekDay2.SelectedIndex;
 
                     //Console.WriteLine("Section Time 2 info:");
                     //Console.WriteLine("Start Id: " + editedSectionTime2.StartTimeId);

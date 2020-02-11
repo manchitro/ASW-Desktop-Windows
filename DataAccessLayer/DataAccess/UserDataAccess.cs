@@ -5,6 +5,7 @@ using DataLayer.Models.BaseModels;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -16,7 +17,7 @@ namespace DataAccessLayer
 
         //public override List<BaseUserModel> Get()
         //{
-        //    using (IDbConnection conn = SQLiteDBConnection.Get())
+        //    using (SqlConnection conn = SQLiteDBConnection.Get())
         //    {
         //        return conn.Query<dynamic, FacultyUserModel, StudentUserModel, BaseUserModel>
         //        ($"SELECT * FROM {TableName}", (baseUser, faculty, student) =>
@@ -37,7 +38,7 @@ namespace DataAccessLayer
         public FacultyUserModel ValidateLogin(string email, string password)
         {
             FacultyUserModel faculty = null;
-            using (IDbConnection conn = SQLiteDBConnection.Get())
+            using (SqlConnection conn = SQLiteDBConnection.Get())
             {
                 var query = @"SELECT * FROM Users where Email = @email AND Password = @password;";
                 var parameters = new DynamicParameters();
@@ -57,11 +58,11 @@ namespace DataAccessLayer
 
         public override BaseUserModel Create(BaseUserModel model)
         {
-            using (IDbConnection conn = SQLiteDBConnection.Get())
+            using (SqlConnection conn = SQLiteDBConnection.Get())
             {
                 var query = @"INSERT INTO Users (AcademicId, FirstName, LastName, Email, Password, Salt, CreatedAt, UserType) 
                                 VALUES(@AcademicId, @FirstName, @LastName, @Email, @Password, @Salt, @CreatedAt, @UserType);
-                            SELECT last_insert_rowid();";
+                            SELECT SCOPE_IDENTITY();";
                 var newId = conn.ExecuteScalar<int>(query, model);
                 model.Id = newId;
             }
@@ -71,7 +72,7 @@ namespace DataAccessLayer
 
         public FacultyUserModel UpdateInfo(FacultyUserModel model)
         {
-            using (IDbConnection conn = SQLiteDBConnection.Get())
+            using (SqlConnection conn = SQLiteDBConnection.Get())
             {
                 var query = @"UPDATE Users SET FirstName = @FirstName, LastName = @LastName, Email = @Email WHERE Id = @Id";
                 conn.Execute(query, model);
@@ -91,7 +92,7 @@ namespace DataAccessLayer
 
         public FacultyUserModel GetPasswordByUser(FacultyUserModel model)
         {
-            using(IDbConnection conn = SQLiteDBConnection.Get())
+            using(SqlConnection conn = SQLiteDBConnection.Get())
             {
                 var query = @"SELECT Password FROM Users where Id = @Id;";
                 var parameters = new DynamicParameters();
@@ -103,7 +104,7 @@ namespace DataAccessLayer
         public FacultyUserModel GetByEmail(string email)
         {
             FacultyUserModel faculty = null;
-            using(IDbConnection conn = SQLiteDBConnection.Get())
+            using(SqlConnection conn = SQLiteDBConnection.Get())
             {
                 var query = @"SELECT * FROM Users WHERE Email = @Email;";
                 var parameters = new DynamicParameters();
@@ -122,7 +123,7 @@ namespace DataAccessLayer
 
         public void UpdatePasswordByUser(int Id, string Password, string salt)
         {
-            using (IDbConnection conn = SQLiteDBConnection.Get())
+            using (SqlConnection conn = SQLiteDBConnection.Get())
             {
                 var query = @"UPDATE Users SET Password = @Password, Salt = @Salt WHERE Id = @Id";
                 var parameters = new DynamicParameters();
@@ -135,7 +136,7 @@ namespace DataAccessLayer
 
         public List<StudentUserModel> GetBySection (SectionModel section)
         {
-            using(IDbConnection conn = SQLiteDBConnection.Get())
+            using(SqlConnection conn = SQLiteDBConnection.Get())
             {
                 var query = @"SELECT * FROM Users where Id in (SELECT StudentId FROM SectionStudents where SectionId = @Id);";
                 return conn.Query<StudentUserModel>(query, section).ToList();
@@ -144,7 +145,7 @@ namespace DataAccessLayer
 
         public int GetIdByAcademicId(string AcademicId)
         {
-            using(IDbConnection conn = SQLiteDBConnection.Get())
+            using(SqlConnection conn = SQLiteDBConnection.Get())
             {
                 var query = @"SELECT Id FROM Users where AcademicId = @AcademicId;";
                 DynamicParameters parameters = new DynamicParameters();
@@ -155,7 +156,7 @@ namespace DataAccessLayer
 
         public StudentUserModel GetByAcademicId(string AcademicId)
         {
-            using(IDbConnection conn = SQLiteDBConnection.Get())
+            using(SqlConnection conn = SQLiteDBConnection.Get())
             {
                 var query = @"SELECT * FROM Users where AcademicId = @AcademicId;";
                 DynamicParameters parameters = new DynamicParameters();
@@ -166,7 +167,7 @@ namespace DataAccessLayer
 
         public List<StudentUserModel> SearchByAcademidIdAndSectionId(string key, int sectionId)
         {
-            using (IDbConnection conn = SQLiteDBConnection.Get())
+            using (SqlConnection conn = SQLiteDBConnection.Get())
             {
                 var query = @"SELECT * FROM Users where AcademicId like ('%' || @key || '%') AND UserType = 1 AND id in
                                 (select StudentId FROM SectionStudents where SectionId = @SectionId)";
@@ -179,7 +180,7 @@ namespace DataAccessLayer
 
         public List<StudentUserModel> SearchByNameAndSectionId(string key, int SectionId)
         {
-            using (IDbConnection conn = SQLiteDBConnection.Get())
+            using (SqlConnection conn = SQLiteDBConnection.Get())
             {
                 var query = @"SELECT * FROM Users where (FirstName like ('%' || @key || '%') OR LastName like ('%' || @key || '%')) AND UserType = 1 AND id in
                                 (select StudentId FROM SectionStudents where SectionId = @SectionId);";

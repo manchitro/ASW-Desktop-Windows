@@ -141,9 +141,9 @@ namespace GUI.Views
                 }
 
                 sectionTime1.RoomNo = textBoxRoomNo1.Text;
-                sectionTime1.StartTimeId = comboBoxStartTime1.SelectedIndex + 1;
-                sectionTime1.EndTimeId = comboBoxEndTime1.SelectedIndex + 1;
-                sectionTime1.WeekDayID = comboBoxWeekDay1.SelectedIndex + 1;
+                sectionTime1.StartTimeId = comboBoxStartTime1.SelectedIndex;
+                sectionTime1.EndTimeId = comboBoxEndTime1.SelectedIndex;
+                sectionTime1.WeekDayID = comboBoxWeekDay1.SelectedIndex;
 
                 //Console.WriteLine("Section Time 1 info:");
                 //Console.WriteLine("Start Id: " + sectionTime1.StartTimeId);
@@ -192,9 +192,9 @@ namespace GUI.Views
                             sectionTime2.ClassType = ClassTypes.Theory;
                         }
                         sectionTime2.RoomNo = textBoxRoomNo2.Text;
-                        sectionTime2.StartTimeId = comboBoxStartTime2.SelectedIndex + 1;
-                        sectionTime2.EndTimeId = comboBoxEndTime2.SelectedIndex + 1;
-                        sectionTime2.WeekDayID = comboBoxWeekDay2.SelectedIndex + 1;
+                        sectionTime2.StartTimeId = comboBoxStartTime2.SelectedIndex;
+                        sectionTime2.EndTimeId = comboBoxEndTime2.SelectedIndex;
+                        sectionTime2.WeekDayID = comboBoxWeekDay2.SelectedIndex;
 
                         //Console.WriteLine("Section Time 2 info:");
                         //Console.WriteLine("Start Id: " + sectionTime2.StartTimeId);
@@ -252,7 +252,7 @@ namespace GUI.Views
                                     controller2.Create(sectionTime2);
 
                                 MessageBox.Show(createdSection.SectionName + " created!");
-                                LoadingForm loadingForm = new LoadingForm();
+                                LoadingForm loadingForm = new LoadingForm("Creating Section. Please wait...");
 
                                 if (studentList.Count != 0)
                                 {

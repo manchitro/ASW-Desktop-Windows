@@ -12,9 +12,11 @@ namespace GUI.Views
 {
     public partial class LoadingForm : Form
     {
-        public LoadingForm()
+        public LoadingForm(string message)
         {
             InitializeComponent();
+
+            labelMessage.Text = message;
         }
 
         public void Step(int value)

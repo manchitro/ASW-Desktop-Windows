@@ -62,7 +62,7 @@ namespace GUI.Views
             {
                 foreach (DataGridViewRow row in dataGridViewSerial.Rows)
                 {
-                    row.Cells["sln"].Value = (row.Index + 1).ToString();
+                    row.Cells["sln"].Value = (row.Index).ToString();
                 }
             };
         }
