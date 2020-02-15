@@ -39,6 +39,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelWelcome = new System.Windows.Forms.Label();
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.flowTodaysClass = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelTodaysClasses = new System.Windows.Forms.Label();
             this.labelSubtitle = new System.Windows.Forms.Label();
@@ -55,7 +56,6 @@
             this.AcademicID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Section = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.flowTodaysClass = new System.Windows.Forms.FlowLayoutPanel();
             this.panelLeft.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -73,7 +73,7 @@
             this.labelWelcome.Location = new System.Drawing.Point(35, 16);
             this.labelWelcome.Margin = new System.Windows.Forms.Padding(10, 10, 30, 10);
             this.labelWelcome.Name = "labelWelcome";
-            this.labelWelcome.Size = new System.Drawing.Size(542, 33);
+            this.labelWelcome.Size = new System.Drawing.Size(548, 33);
             this.labelWelcome.TabIndex = 5;
             this.labelWelcome.Text = "Faculty";
             this.labelWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -89,8 +89,17 @@
             this.panelLeft.Controls.Add(this.labelTitle);
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(250, 510);
+            this.panelLeft.Size = new System.Drawing.Size(250, 521);
             this.panelLeft.TabIndex = 11;
+            // 
+            // flowTodaysClass
+            // 
+            this.flowTodaysClass.AutoScroll = true;
+            this.flowTodaysClass.Location = new System.Drawing.Point(0, 188);
+            this.flowTodaysClass.Margin = new System.Windows.Forms.Padding(0);
+            this.flowTodaysClass.Name = "flowTodaysClass";
+            this.flowTodaysClass.Size = new System.Drawing.Size(250, 333);
+            this.flowTodaysClass.TabIndex = 6;
             // 
             // panel2
             // 
@@ -147,13 +156,16 @@
             // 
             // panel3
             // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Controls.Add(this.dataGridViewSerial);
             this.panel3.Controls.Add(this.panelYourSections);
             this.panel3.Controls.Add(this.dataGridViewStudentList);
             this.panel3.Controls.Add(this.labelWelcome);
             this.panel3.Location = new System.Drawing.Point(248, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(616, 510);
+            this.panel3.Size = new System.Drawing.Size(622, 521);
             this.panel3.TabIndex = 12;
             // 
             // dataGridViewSerial
@@ -168,6 +180,8 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             this.dataGridViewSerial.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewSerial.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.dataGridViewSerial.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
             this.dataGridViewSerial.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewSerial.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -210,7 +224,7 @@
             this.dataGridViewSerial.RowHeadersVisible = false;
             this.dataGridViewSerial.RowHeadersWidth = 51;
             this.dataGridViewSerial.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSerial.Size = new System.Drawing.Size(35, 372);
+            this.dataGridViewSerial.Size = new System.Drawing.Size(35, 383);
             this.dataGridViewSerial.StandardTab = true;
             this.dataGridViewSerial.TabIndex = 14;
             // 
@@ -225,6 +239,8 @@
             // 
             // panelYourSections
             // 
+            this.panelYourSections.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelYourSections.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(55)))), ((int)(((byte)(47)))));
             this.panelYourSections.Controls.Add(this.buttonSearch);
             this.panelYourSections.Controls.Add(this.textBoxSearch);
@@ -238,6 +254,7 @@
             // 
             // buttonSearch
             // 
+            this.buttonSearch.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.buttonSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonSearch.FlatAppearance.BorderSize = 0;
             this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -251,6 +268,8 @@
             // 
             // textBoxSearch
             // 
+            this.textBoxSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(32)))), ((int)(((byte)(24)))));
             this.textBoxSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxSearch.Font = new System.Drawing.Font("Arial", 17F);
@@ -280,6 +299,8 @@
             // 
             // panel4
             // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(32)))), ((int)(((byte)(24)))));
             this.panel4.Location = new System.Drawing.Point(73, 16);
             this.panel4.Name = "panel4";
@@ -298,6 +319,9 @@
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             this.dataGridViewStudentList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridViewStudentList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewStudentList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
             this.dataGridViewStudentList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewStudentList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -342,9 +366,10 @@
             this.dataGridViewStudentList.RowHeadersVisible = false;
             this.dataGridViewStudentList.RowHeadersWidth = 51;
             this.dataGridViewStudentList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewStudentList.Size = new System.Drawing.Size(582, 372);
+            this.dataGridViewStudentList.Size = new System.Drawing.Size(588, 383);
             this.dataGridViewStudentList.StandardTab = true;
             this.dataGridViewStudentList.TabIndex = 13;
+            this.dataGridViewStudentList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewStudentList_CellContentClick);
             this.dataGridViewStudentList.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dataGridViewStudentList_Scroll);
             // 
             // AcademicID
@@ -371,28 +396,17 @@
             this.Section.Name = "Section";
             this.Section.Width = 300;
             // 
-            // flowTodaysClass
-            // 
-            this.flowTodaysClass.AutoScroll = true;
-            this.flowTodaysClass.Location = new System.Drawing.Point(0, 188);
-            this.flowTodaysClass.Margin = new System.Windows.Forms.Padding(0);
-            this.flowTodaysClass.Name = "flowTodaysClass";
-            this.flowTodaysClass.Size = new System.Drawing.Size(250, 322);
-            this.flowTodaysClass.TabIndex = 6;
-            // 
             // SearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
-            this.ClientSize = new System.Drawing.Size(864, 511);
+            this.ClientSize = new System.Drawing.Size(868, 522);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panelLeft);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(884, 561);
             this.Name = "SearchForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormSearch";
+            this.Text = "Attendance Scanning Wizard";
             this.Load += new System.EventHandler(this.SearchForm_Load);
             this.panelLeft.ResumeLayout(false);
             this.panelLeft.PerformLayout();

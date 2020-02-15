@@ -39,27 +39,29 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStudentList));
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.flowTodaysClass = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelTodaysClasses = new System.Windows.Forms.Label();
             this.labelSubtitle = new System.Windows.Forms.Label();
             this.labelTitle = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridViewStudentList = new System.Windows.Forms.DataGridView();
             this.dataGridViewSln = new System.Windows.Forms.DataGridView();
             this.panelYourSections = new System.Windows.Forms.Panel();
+            this.buttonInfo = new System.Windows.Forms.Button();
+            this.buttonRefresh = new System.Windows.Forms.Button();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.panelSearchBG = new System.Windows.Forms.Panel();
+            this.buttonBack = new System.Windows.Forms.Button();
             this.labelStudents = new System.Windows.Forms.Label();
             this.buttonSearh = new System.Windows.Forms.Button();
             this.labelWelcome = new System.Windows.Forms.Label();
             this.toolTipInfo = new System.Windows.Forms.ToolTip(this.components);
-            this.flowTodaysClass = new System.Windows.Forms.FlowLayoutPanel();
-            this.buttonInfo = new System.Windows.Forms.Button();
-            this.buttonRefresh = new System.Windows.Forms.Button();
-            this.buttonBack = new System.Windows.Forms.Button();
             this.panelLeft.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudentList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSln)).BeginInit();
             this.panelYourSections.SuspendLayout();
@@ -76,8 +78,17 @@
             this.panelLeft.Controls.Add(this.labelTitle);
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(250, 510);
+            this.panelLeft.Size = new System.Drawing.Size(250, 521);
             this.panelLeft.TabIndex = 7;
+            // 
+            // flowTodaysClass
+            // 
+            this.flowTodaysClass.AutoScroll = true;
+            this.flowTodaysClass.Location = new System.Drawing.Point(0, 188);
+            this.flowTodaysClass.Margin = new System.Windows.Forms.Padding(0);
+            this.flowTodaysClass.Name = "flowTodaysClass";
+            this.flowTodaysClass.Size = new System.Drawing.Size(250, 333);
+            this.flowTodaysClass.TabIndex = 8;
             // 
             // panel2
             // 
@@ -134,16 +145,31 @@
             // 
             // panel3
             // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
-            this.panel3.Controls.Add(this.dataGridViewStudentList);
-            this.panel3.Controls.Add(this.dataGridViewSln);
+            this.panel3.Controls.Add(this.panel1);
             this.panel3.Controls.Add(this.panelYourSections);
             this.panel3.Controls.Add(this.labelWelcome);
             this.panel3.Location = new System.Drawing.Point(250, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(616, 510);
+            this.panel3.Size = new System.Drawing.Size(620, 521);
             this.panel3.TabIndex = 9;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.dataGridViewStudentList);
+            this.panel1.Controls.Add(this.dataGridViewSln);
+            this.panel1.Location = new System.Drawing.Point(0, 138);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(620, 383);
+            this.panel1.TabIndex = 14;
             // 
             // dataGridViewStudentList
             // 
@@ -157,6 +183,9 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             this.dataGridViewStudentList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewStudentList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewStudentList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
             this.dataGridViewStudentList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewStudentList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -181,7 +210,7 @@
             this.dataGridViewStudentList.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewStudentList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridViewStudentList.EnableHeadersVisualStyles = false;
-            this.dataGridViewStudentList.Location = new System.Drawing.Point(30, 138);
+            this.dataGridViewStudentList.Location = new System.Drawing.Point(30, 0);
             this.dataGridViewStudentList.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridViewStudentList.MultiSelect = false;
             this.dataGridViewStudentList.Name = "dataGridViewStudentList";
@@ -197,15 +226,10 @@
             this.dataGridViewStudentList.RowHeadersVisible = false;
             this.dataGridViewStudentList.RowHeadersWidth = 51;
             this.dataGridViewStudentList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewStudentList.Size = new System.Drawing.Size(586, 372);
+            this.dataGridViewStudentList.Size = new System.Drawing.Size(587, 383);
             this.dataGridViewStudentList.StandardTab = true;
-            this.dataGridViewStudentList.TabIndex = 10;
-            this.dataGridViewStudentList.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewStudentList_CellEndEdit);
-            this.dataGridViewStudentList.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewStudentList_CellValueChanged);
-            this.dataGridViewStudentList.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.DataGridViewStudentList_EditingControlShowing);
-            this.dataGridViewStudentList.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dataGridViewStudentList_Scroll);
-            this.dataGridViewStudentList.SelectionChanged += new System.EventHandler(this.dataGridViewStudentList_SelectionChanged);
-            this.dataGridViewStudentList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridViewStudentList_MouseClick);
+            this.dataGridViewStudentList.TabIndex = 14;
+            this.dataGridViewStudentList.Scroll += new System.Windows.Forms.ScrollEventHandler(this.DataGridViewStudentList_Scroll_1);
             // 
             // dataGridViewSln
             // 
@@ -219,6 +243,8 @@
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             this.dataGridViewSln.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridViewSln.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.dataGridViewSln.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
             this.dataGridViewSln.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewSln.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -243,7 +269,7 @@
             this.dataGridViewSln.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewSln.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridViewSln.EnableHeadersVisualStyles = false;
-            this.dataGridViewSln.Location = new System.Drawing.Point(0, 138);
+            this.dataGridViewSln.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewSln.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridViewSln.MultiSelect = false;
             this.dataGridViewSln.Name = "dataGridViewSln";
@@ -260,13 +286,15 @@
             this.dataGridViewSln.RowHeadersWidth = 51;
             this.dataGridViewSln.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridViewSln.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSln.Size = new System.Drawing.Size(30, 372);
+            this.dataGridViewSln.Size = new System.Drawing.Size(30, 383);
             this.dataGridViewSln.StandardTab = true;
-            this.dataGridViewSln.TabIndex = 11;
-            this.dataGridViewSln.SelectionChanged += new System.EventHandler(this.dataGridViewSln_SelectionChanged);
+            this.dataGridViewSln.TabIndex = 15;
+            this.dataGridViewSln.SelectionChanged += new System.EventHandler(this.DataGridViewSln_SelectionChanged_1);
             // 
             // panelYourSections
             // 
+            this.panelYourSections.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelYourSections.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(143)))), ((int)(((byte)(164)))));
             this.panelYourSections.Controls.Add(this.buttonInfo);
             this.panelYourSections.Controls.Add(this.buttonRefresh);
@@ -278,16 +306,55 @@
             this.panelYourSections.Location = new System.Drawing.Point(0, 63);
             this.panelYourSections.Margin = new System.Windows.Forms.Padding(0, 20, 0, 0);
             this.panelYourSections.Name = "panelYourSections";
-            this.panelYourSections.Size = new System.Drawing.Size(616, 75);
+            this.panelYourSections.Size = new System.Drawing.Size(620, 75);
             this.panelYourSections.TabIndex = 7;
+            // 
+            // buttonInfo
+            // 
+            this.buttonInfo.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.buttonInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(143)))), ((int)(((byte)(164)))));
+            this.buttonInfo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonInfo.BackgroundImage")));
+            this.buttonInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonInfo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonInfo.FlatAppearance.BorderSize = 0;
+            this.buttonInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonInfo.Font = new System.Drawing.Font("Arial", 10F);
+            this.buttonInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.buttonInfo.Location = new System.Drawing.Point(378, 22);
+            this.buttonInfo.Margin = new System.Windows.Forms.Padding(55, 26, 0, 0);
+            this.buttonInfo.Name = "buttonInfo";
+            this.buttonInfo.Size = new System.Drawing.Size(26, 28);
+            this.buttonInfo.TabIndex = 15;
+            this.buttonInfo.UseVisualStyleBackColor = false;
+            this.buttonInfo.MouseHover += new System.EventHandler(this.ButtonInfo_MouseHover);
+            // 
+            // buttonRefresh
+            // 
+            this.buttonRefresh.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.buttonRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(143)))), ((int)(((byte)(164)))));
+            this.buttonRefresh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonRefresh.BackgroundImage")));
+            this.buttonRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonRefresh.FlatAppearance.BorderSize = 0;
+            this.buttonRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRefresh.Font = new System.Drawing.Font("Arial", 10F);
+            this.buttonRefresh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.buttonRefresh.Location = new System.Drawing.Point(417, 22);
+            this.buttonRefresh.Margin = new System.Windows.Forms.Padding(55, 26, 0, 0);
+            this.buttonRefresh.Name = "buttonRefresh";
+            this.buttonRefresh.Size = new System.Drawing.Size(26, 28);
+            this.buttonRefresh.TabIndex = 12;
+            this.buttonRefresh.UseVisualStyleBackColor = false;
+            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
             // 
             // textBoxSearch
             // 
+            this.textBoxSearch.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.textBoxSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.textBoxSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxSearch.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.textBoxSearch.Location = new System.Drawing.Point(461, 28);
+            this.textBoxSearch.Location = new System.Drawing.Point(465, 28);
             this.textBoxSearch.Margin = new System.Windows.Forms.Padding(8, 0, 0, 0);
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(144, 19);
@@ -300,12 +367,26 @@
             // 
             // panelSearchBG
             // 
+            this.panelSearchBG.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.panelSearchBG.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.panelSearchBG.Location = new System.Drawing.Point(453, 22);
+            this.panelSearchBG.Location = new System.Drawing.Point(457, 22);
             this.panelSearchBG.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.panelSearchBG.Name = "panelSearchBG";
             this.panelSearchBG.Size = new System.Drawing.Size(152, 30);
             this.panelSearchBG.TabIndex = 14;
+            // 
+            // buttonBack
+            // 
+            this.buttonBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonBack.FlatAppearance.BorderSize = 0;
+            this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBack.Image = global::GUI.Properties.Resources.back;
+            this.buttonBack.Location = new System.Drawing.Point(0, 0);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(75, 75);
+            this.buttonBack.TabIndex = 1;
+            this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.ButtonBack_Click);
             // 
             // labelStudents
             // 
@@ -322,7 +403,7 @@
             // 
             this.buttonSearh.Location = new System.Drawing.Point(500, 35);
             this.buttonSearh.Name = "buttonSearh";
-            this.buttonSearh.Size = new System.Drawing.Size(5, 5);
+            this.buttonSearh.Size = new System.Drawing.Size(0, 0);
             this.buttonSearh.TabIndex = 0;
             this.buttonSearh.Text = "button1";
             this.buttonSearh.UseVisualStyleBackColor = true;
@@ -337,7 +418,7 @@
             this.labelWelcome.Location = new System.Drawing.Point(35, 16);
             this.labelWelcome.Margin = new System.Windows.Forms.Padding(10, 10, 30, 0);
             this.labelWelcome.Name = "labelWelcome";
-            this.labelWelcome.Size = new System.Drawing.Size(542, 33);
+            this.labelWelcome.Size = new System.Drawing.Size(546, 33);
             this.labelWelcome.TabIndex = 5;
             this.labelWelcome.Text = "Faculty";
             this.labelWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -349,86 +430,25 @@
             this.toolTipInfo.ReshowDelay = 100;
             this.toolTipInfo.ShowAlways = true;
             // 
-            // flowTodaysClass
-            // 
-            this.flowTodaysClass.AutoScroll = true;
-            this.flowTodaysClass.Location = new System.Drawing.Point(0, 188);
-            this.flowTodaysClass.Margin = new System.Windows.Forms.Padding(0);
-            this.flowTodaysClass.Name = "flowTodaysClass";
-            this.flowTodaysClass.Size = new System.Drawing.Size(250, 322);
-            this.flowTodaysClass.TabIndex = 8;
-            // 
-            // buttonInfo
-            // 
-            this.buttonInfo.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.buttonInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(143)))), ((int)(((byte)(164)))));
-            this.buttonInfo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonInfo.BackgroundImage")));
-            this.buttonInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonInfo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonInfo.FlatAppearance.BorderSize = 0;
-            this.buttonInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonInfo.Font = new System.Drawing.Font("Arial", 10F);
-            this.buttonInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.buttonInfo.Location = new System.Drawing.Point(374, 22);
-            this.buttonInfo.Margin = new System.Windows.Forms.Padding(55, 26, 0, 0);
-            this.buttonInfo.Name = "buttonInfo";
-            this.buttonInfo.Size = new System.Drawing.Size(26, 28);
-            this.buttonInfo.TabIndex = 15;
-            this.buttonInfo.UseVisualStyleBackColor = false;
-            this.buttonInfo.MouseHover += new System.EventHandler(this.ButtonInfo_MouseHover);
-            // 
-            // buttonRefresh
-            // 
-            this.buttonRefresh.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.buttonRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(143)))), ((int)(((byte)(164)))));
-            this.buttonRefresh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonRefresh.BackgroundImage")));
-            this.buttonRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonRefresh.FlatAppearance.BorderSize = 0;
-            this.buttonRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRefresh.Font = new System.Drawing.Font("Arial", 10F);
-            this.buttonRefresh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.buttonRefresh.Location = new System.Drawing.Point(413, 22);
-            this.buttonRefresh.Margin = new System.Windows.Forms.Padding(55, 26, 0, 0);
-            this.buttonRefresh.Name = "buttonRefresh";
-            this.buttonRefresh.Size = new System.Drawing.Size(26, 28);
-            this.buttonRefresh.TabIndex = 12;
-            this.buttonRefresh.UseVisualStyleBackColor = false;
-            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
-            // 
-            // buttonBack
-            // 
-            this.buttonBack.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonBack.FlatAppearance.BorderSize = 0;
-            this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBack.Image = global::GUI.Properties.Resources.back;
-            this.buttonBack.Location = new System.Drawing.Point(0, 0);
-            this.buttonBack.Name = "buttonBack";
-            this.buttonBack.Size = new System.Drawing.Size(75, 75);
-            this.buttonBack.TabIndex = 1;
-            this.buttonBack.UseVisualStyleBackColor = true;
-            this.buttonBack.Click += new System.EventHandler(this.ButtonBack_Click);
-            // 
             // FormStudentList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
-            this.ClientSize = new System.Drawing.Size(864, 511);
+            this.ClientSize = new System.Drawing.Size(868, 522);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panelLeft);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.MaximizeBox = false;
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(884, 561);
             this.Name = "FormStudentList";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormStudentList";
+            this.Text = "Attendance Scanning Wizard";
             this.Load += new System.EventHandler(this.FormStudentList_Load);
             this.panelLeft.ResumeLayout(false);
             this.panelLeft.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudentList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSln)).EndInit();
             this.panelYourSections.ResumeLayout(false);
@@ -445,7 +465,6 @@
         private System.Windows.Forms.Label labelSubtitle;
         private System.Windows.Forms.Label labelTitle;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridView dataGridViewStudentList;
         private System.Windows.Forms.Panel panelYourSections;
         private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.Panel panelSearchBG;
@@ -454,9 +473,11 @@
         private System.Windows.Forms.Label labelWelcome;
         public System.Windows.Forms.Button buttonRefresh;
         private System.Windows.Forms.Button buttonSearh;
-        private System.Windows.Forms.DataGridView dataGridViewSln;
         public System.Windows.Forms.Button buttonInfo;
         private System.Windows.Forms.ToolTip toolTipInfo;
         private System.Windows.Forms.FlowLayoutPanel flowTodaysClass;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridView dataGridViewStudentList;
+        private System.Windows.Forms.DataGridView dataGridViewSln;
     }
 }

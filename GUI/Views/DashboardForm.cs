@@ -29,6 +29,9 @@ namespace GUI.Views
             var login = new LoginForm();
             login.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             login.Show();
+            login.Left = this.Left;
+            login.Top = this.Top;
+            login.Size = this.Size;
             this.Hide();
         }
 
@@ -42,6 +45,9 @@ namespace GUI.Views
             var yourSections = new YourSectionsForm(faculty);
             yourSections.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             yourSections.Show();
+            yourSections.Left = this.Left;
+            yourSections.Top = this.Top;
+            yourSections.Size = this.Size;
             this.Hide();
         }
 
@@ -50,6 +56,9 @@ namespace GUI.Views
             var yourClasses = new YourClassesForm(faculty);
             yourClasses.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             yourClasses.Show();
+            yourClasses.Left = this.Left;
+            yourClasses.Top = this.Top;
+            yourClasses.Size = this.Size;
             this.Hide();
         }
         private void ButtonAddSection_Click(object sender, EventArgs e)
@@ -57,6 +66,9 @@ namespace GUI.Views
             var addSection = new FormAddSection(faculty);
             addSection.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             addSection.Show();
+            addSection.Left = this.Left;
+            addSection.Top = this.Top;
+            addSection.Size = this.Size;
             this.Hide();
         }
 
@@ -65,6 +77,9 @@ namespace GUI.Views
             var addClass = new FormAddClass(faculty);
             addClass.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             addClass.Show();
+            addClass.Left = this.Left;
+            addClass.Top = this.Top;
+            addClass.Size = this.Size;
             this.Hide();
         }
 
@@ -73,6 +88,9 @@ namespace GUI.Views
             var search = new SearchForm(faculty);
             search.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             search.Show();
+            search.Left = this.Left;
+            search.Top = this.Top;
+            search.Size = this.Size;
             this.Hide();
         }
 
@@ -81,6 +99,9 @@ namespace GUI.Views
             var profile = new ProfileForm(faculty);
             profile.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             profile.Show();
+            profile.Left = this.Left;
+            profile.Top = this.Top;
+            profile.Size = this.Size;
             this.Hide();
         }
 

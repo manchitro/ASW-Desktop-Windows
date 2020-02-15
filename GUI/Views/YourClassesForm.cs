@@ -339,6 +339,13 @@ namespace GUI.Views
             var editClass = new EditClassPopupForm(faculty, model);
             editClass.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             editClass.ShowDialog();
+            var yourClasses = new YourClassesForm(faculty);
+            yourClasses.FormClosed += new FormClosedEventHandler(dash_FormClosed);
+            yourClasses.Show();
+            yourClasses.Left = this.Left;
+            yourClasses.Top = this.Top;
+            yourClasses.Size = this.Size;
+            this.Hide();
         }
 
         private void ButtonDelete_Click(object sender, EventArgs e, ClassModel model)
@@ -369,6 +376,9 @@ namespace GUI.Views
             var dash = new FormDashboard(faculty);
             dash.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             dash.Show();
+            dash.Left = this.Left;
+            dash.Top = this.Top;
+            dash.Size = this.Size;
             this.Hide();
         }
 
@@ -388,6 +398,9 @@ namespace GUI.Views
             var allClasses = new AllClassesForm(faculty);
             allClasses.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             allClasses.Show();
+            allClasses.Left = this.Left;
+            allClasses.Top = this.Top;
+            allClasses.Size = this.Size;
             this.Hide();
         }
 
@@ -396,6 +409,9 @@ namespace GUI.Views
             var addClass = new FormAddClass(faculty);
             addClass.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             addClass.Show();
+            addClass.Left = this.Left;
+            addClass.Top = this.Top;
+            addClass.Size = this.Size;
             this.Hide();
         }
 
@@ -404,6 +420,9 @@ namespace GUI.Views
             var yourClasses = new YourClassesForm(faculty);
             yourClasses.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             yourClasses.Show();
+            yourClasses.Left = this.Left;
+            yourClasses.Top = this.Top;
+            yourClasses.Size = this.Size;
             this.Hide();
         }
 

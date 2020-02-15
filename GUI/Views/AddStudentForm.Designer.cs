@@ -193,7 +193,7 @@
             this.Controls.Add(this.labelStudentFirstName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddStudentForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddStudentForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddStudentForm_FormClosed);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.AddStudentForm_Paint);

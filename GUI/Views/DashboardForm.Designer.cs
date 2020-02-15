@@ -70,7 +70,7 @@ namespace GUI.Views
             this.panelLeft.Controls.Add(this.labelTitle);
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(250, 510);
+            this.panelLeft.Size = new System.Drawing.Size(250, 521);
             this.panelLeft.TabIndex = 0;
             // 
             // flowTodaysClass
@@ -141,7 +141,7 @@ namespace GUI.Views
             this.labelWelcome.Location = new System.Drawing.Point(283, 39);
             this.labelWelcome.Margin = new System.Windows.Forms.Padding(30, 30, 30, 0);
             this.labelWelcome.Name = "labelWelcome";
-            this.labelWelcome.Size = new System.Drawing.Size(542, 33);
+            this.labelWelcome.Size = new System.Drawing.Size(546, 33);
             this.labelWelcome.TabIndex = 1;
             this.labelWelcome.Text = "Welcome, Faculty";
             this.labelWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -149,6 +149,10 @@ namespace GUI.Views
             // 
             // panelRight
             // 
+            this.panelRight.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelRight.AutoScroll = true;
             this.panelRight.Controls.Add(this.labelYourSections);
             this.panelRight.Controls.Add(this.labelYourSectionsDesc);
             this.panelRight.Controls.Add(this.buttonYourSections);
@@ -167,7 +171,7 @@ namespace GUI.Views
             this.panelRight.Controls.Add(this.buttonAddSection);
             this.panelRight.Location = new System.Drawing.Point(248, 0);
             this.panelRight.Name = "panelRight";
-            this.panelRight.Size = new System.Drawing.Size(616, 510);
+            this.panelRight.Size = new System.Drawing.Size(626, 521);
             this.panelRight.TabIndex = 3;
             // 
             // labelYourSections
@@ -221,7 +225,7 @@ namespace GUI.Views
             // 
             // buttonLogout
             // 
-            this.buttonLogout.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.buttonLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(76)))), ((int)(((byte)(83)))));
             this.buttonLogout.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonLogout.FlatAppearance.BorderSize = 0;
@@ -322,9 +326,9 @@ namespace GUI.Views
             this.labelAddClassesDesc.Location = new System.Drawing.Point(333, 283);
             this.labelAddClassesDesc.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.labelAddClassesDesc.Name = "labelAddClassesDesc";
-            this.labelAddClassesDesc.Size = new System.Drawing.Size(231, 16);
+            this.labelAddClassesDesc.Size = new System.Drawing.Size(192, 16);
             this.labelAddClassesDesc.TabIndex = 15;
-            this.labelAddClassesDesc.Text = "Schedule and extra lecture, lab or quiz";
+            this.labelAddClassesDesc.Text = "Schedule an extra lecture or lab";
             this.labelAddClassesDesc.Click += new System.EventHandler(this.ButtonAddClass_Click);
             // 
             // labelYourClasses
@@ -438,16 +442,14 @@ namespace GUI.Views
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
-            this.ClientSize = new System.Drawing.Size(864, 511);
+            this.ClientSize = new System.Drawing.Size(868, 522);
             this.Controls.Add(this.labelWelcome);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panelRight);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(878, 547);
+            this.MinimumSize = new System.Drawing.Size(884, 561);
             this.Name = "FormDashboard";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "q";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Attendance Scanning Wizard";
             this.Load += new System.EventHandler(this.FormDashboard_Load);
             this.panelLeft.ResumeLayout(false);
             this.panelLeft.PerformLayout();

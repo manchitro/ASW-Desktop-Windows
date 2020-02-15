@@ -169,7 +169,7 @@ namespace DataAccessLayer
         {
             using (SqlConnection conn = SQLiteDBConnection.Get())
             {
-                var query = @"SELECT * FROM Users where AcademicId like ('%' || @key || '%') AND UserType = 1 AND id in
+                var query = @"SELECT * FROM Users where AcademicId like ('%' + @key + '%') AND UserType = 1 AND id in
                                 (select StudentId FROM SectionStudents where SectionId = @SectionId)";
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("@key", key);
@@ -182,7 +182,7 @@ namespace DataAccessLayer
         {
             using (SqlConnection conn = SQLiteDBConnection.Get())
             {
-                var query = @"SELECT * FROM Users where (FirstName like ('%' || @key || '%') OR LastName like ('%' || @key || '%')) AND UserType = 1 AND id in
+                var query = @"SELECT * FROM Users where (FirstName like ('%' + @key + '%') OR LastName like ('%' + @key + '%')) AND UserType = 1 AND id in
                                 (select StudentId FROM SectionStudents where SectionId = @SectionId);";
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("@key", key);

@@ -26,6 +26,9 @@ namespace GUI.Views
             var dash = new FormDashboard(faculty);
             dash.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             dash.Show();
+            dash.Left = this.Left;
+            dash.Top = this.Top;
+            dash.Size = this.Size;
             this.Hide();
         }
 
@@ -136,7 +139,7 @@ namespace GUI.Views
             {
                 foreach (DataGridViewRow row in dataGridViewSerial.Rows)
                 {
-                    row.Cells["sln"].Value = (row.Index).ToString();
+                    row.Cells["sln"].Value = (row.Index + 1).ToString();
                 }
                 foreach (DataGridViewColumn column in dataGridViewStudentList.Columns)
                 {
@@ -317,6 +320,11 @@ namespace GUI.Views
         public class ProperStudentUserModel : StudentUserModel
         {
             public string SectionName { set; get; }
+        }
+
+        private void DataGridViewStudentList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

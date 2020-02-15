@@ -13,6 +13,7 @@ namespace GUI.Views
     public partial class AllClassesForm : Form
     {
         FacultyUserModel faculty = new FacultyUserModel();
+        List<ClassModel> allClassesList = new List<ClassModel>();
         public AllClassesForm(FacultyUserModel gotFaculty)
         {
             InitializeComponent();
@@ -22,7 +23,11 @@ namespace GUI.Views
             try
             {
                 ClassController ccontroller = new ClassController();
-                List<ClassModel> allClassesList = ccontroller.GetByFacultyId(faculty.Id);
+                allClassesList = ccontroller.GetByFacultyId(faculty.Id);
+                if(allClassesList.Count == 0)
+                {
+                    buttonDeleteAll.Hide();
+                }
                 //Console.WriteLine(allClassesList.Count + " improper classes");
                 List<ProperClassModel> properClassList = new List<ProperClassModel>();
                 foreach (ClassModel model in allClassesList)
@@ -62,7 +67,7 @@ namespace GUI.Views
             {
                 foreach (DataGridViewRow row in dataGridViewSerial.Rows)
                 {
-                    row.Cells["sln"].Value = (row.Index).ToString();
+                    row.Cells["sln"].Value = (row.Index + 1).ToString();
                 }
             };
         }
@@ -134,6 +139,9 @@ namespace GUI.Views
             var yourClasses = new YourClassesForm(faculty);
             yourClasses.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             yourClasses.Show();
+            yourClasses.Left = this.Left;
+            yourClasses.Top = this.Top;
+            yourClasses.Size = this.Size;
             this.Hide();
         }
         private void dash_FormClosed(object sender, FormClosedEventArgs e)
@@ -146,6 +154,9 @@ namespace GUI.Views
             var dash = new FormDashboard(faculty);
             dash.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             dash.Show();
+            dash.Left = this.Left;
+            dash.Top = this.Top;
+            dash.Size = this.Size;
             this.Hide();
         }
 
@@ -154,6 +165,9 @@ namespace GUI.Views
             var allClass = new AllClassesForm(faculty);
             allClass.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             allClass.Show();
+            allClass.Left = this.Left;
+            allClass.Top = this.Top;
+            allClass.Size = this.Size;
             this.Hide();
         }
 
@@ -303,6 +317,47 @@ namespace GUI.Views
         {
             public string SectionName { set; get; }
             public string Time { set; get; }
+        }
+
+        private void ButtonDeleteAll_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure you want to delete all classes? All attendance data will be deleted and this is irreversible!",
+                                "Confirm",
+                                MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                LoadingForm loadingForm = new LoadingForm("Deleting all classes. Please wait...");
+                loadingForm.Show();
+
+                ClassController ccontroller = new ClassController();
+                AttendanceController acontroller = new AttendanceController();
+                try
+                {
+                    foreach (ClassModel Class in allClassesList)
+                    {
+                        acontroller = new AttendanceController();
+                        acontroller.DeleteAllByClass(Class.Id);
+
+                        ccontroller.Delete(Class);
+                        loadingForm.Step(5);
+                    }
+                    loadingForm.Close();
+                    MessageBox.Show("All classes deleted");
+
+                    var allClass = new AllClassesForm(faculty);
+                    allClass.FormClosed += new FormClosedEventHandler(dash_FormClosed);
+                    allClass.Show();
+                    allClass.Left = this.Left;
+                    allClass.Top = this.Top;
+                    allClass.Size = this.Size;
+
+                    this.Hide();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
     }
 }

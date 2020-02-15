@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AllClassesForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -36,8 +37,19 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AllClassesForm));
-            this.flowLayoutPanelClasses = new System.Windows.Forms.FlowLayoutPanel();
+            this.panelLeft = new System.Windows.Forms.Panel();
+            this.flowTodaysClass = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.labelTodaysClasses = new System.Windows.Forms.Label();
+            this.labelSubtitle = new System.Windows.Forms.Label();
+            this.labelTitle = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panelYourSections = new System.Windows.Forms.Panel();
+            this.buttonDeleteAll = new System.Windows.Forms.Button();
+            this.buttonRefresh = new System.Windows.Forms.Button();
+            this.buttonBack = new System.Windows.Forms.Button();
+            this.labelYourClasses = new System.Windows.Forms.Label();
+            this.labelWelcome = new System.Windows.Forms.Label();
             this.dataGridViewSerial = new System.Windows.Forms.DataGridView();
             this.sln = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewClassList = new System.Windows.Forms.DataGridView();
@@ -46,37 +58,191 @@
             this.ClassTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RoomNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClassType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panelLeft = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.labelTodaysClasses = new System.Windows.Forms.Label();
-            this.labelSubtitle = new System.Windows.Forms.Label();
-            this.labelTitle = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panelYourSections = new System.Windows.Forms.Panel();
-            this.buttonRefresh = new System.Windows.Forms.Button();
-            this.buttonBack = new System.Windows.Forms.Button();
-            this.labelYourClasses = new System.Windows.Forms.Label();
-            this.labelWelcome = new System.Windows.Forms.Label();
-            this.flowTodaysClass = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanelClasses.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSerial)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClassList)).BeginInit();
             this.panelLeft.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panelYourSections.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSerial)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClassList)).BeginInit();
             this.SuspendLayout();
             // 
-            // flowLayoutPanelClasses
+            // panelLeft
             // 
-            this.flowLayoutPanelClasses.AutoScroll = true;
-            this.flowLayoutPanelClasses.Controls.Add(this.dataGridViewSerial);
-            this.flowLayoutPanelClasses.Controls.Add(this.dataGridViewClassList);
-            this.flowLayoutPanelClasses.Location = new System.Drawing.Point(0, 170);
-            this.flowLayoutPanelClasses.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanelClasses.Name = "flowLayoutPanelClasses";
-            this.flowLayoutPanelClasses.Size = new System.Drawing.Size(821, 458);
-            this.flowLayoutPanelClasses.TabIndex = 8;
+            this.panelLeft.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panelLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.panelLeft.Controls.Add(this.flowTodaysClass);
+            this.panelLeft.Controls.Add(this.panel2);
+            this.panelLeft.Controls.Add(this.labelSubtitle);
+            this.panelLeft.Controls.Add(this.labelTitle);
+            this.panelLeft.Location = new System.Drawing.Point(0, 0);
+            this.panelLeft.Name = "panelLeft";
+            this.panelLeft.Size = new System.Drawing.Size(250, 521);
+            this.panelLeft.TabIndex = 9;
+            // 
+            // flowTodaysClass
+            // 
+            this.flowTodaysClass.AutoScroll = true;
+            this.flowTodaysClass.Location = new System.Drawing.Point(0, 188);
+            this.flowTodaysClass.Margin = new System.Windows.Forms.Padding(0);
+            this.flowTodaysClass.Name = "flowTodaysClass";
+            this.flowTodaysClass.Size = new System.Drawing.Size(250, 334);
+            this.flowTodaysClass.TabIndex = 7;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.panel2.Controls.Add(this.labelTodaysClasses);
+            this.panel2.Location = new System.Drawing.Point(0, 138);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0, 30, 0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(250, 51);
+            this.panel2.TabIndex = 4;
+            // 
+            // labelTodaysClasses
+            // 
+            this.labelTodaysClasses.AutoSize = true;
+            this.labelTodaysClasses.Font = new System.Drawing.Font("Arial", 13F);
+            this.labelTodaysClasses.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.labelTodaysClasses.Location = new System.Drawing.Point(12, 14);
+            this.labelTodaysClasses.Name = "labelTodaysClasses";
+            this.labelTodaysClasses.Size = new System.Drawing.Size(140, 21);
+            this.labelTodaysClasses.TabIndex = 0;
+            this.labelTodaysClasses.Text = "Today\'s Classes";
+            // 
+            // labelSubtitle
+            // 
+            this.labelSubtitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelSubtitle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelSubtitle.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.labelSubtitle.Location = new System.Drawing.Point(59, 88);
+            this.labelSubtitle.Margin = new System.Windows.Forms.Padding(52, 20, 0, 0);
+            this.labelSubtitle.Name = "labelSubtitle";
+            this.labelSubtitle.Size = new System.Drawing.Size(126, 20);
+            this.labelSubtitle.TabIndex = 3;
+            this.labelSubtitle.Text = "Automate Your Class";
+            this.labelSubtitle.Click += new System.EventHandler(this.LabelSubtitle_Click);
+            // 
+            // labelTitle
+            // 
+            this.labelTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelTitle.AutoSize = true;
+            this.labelTitle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelTitle.Font = new System.Drawing.Font("Century Gothic", 38F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.labelTitle.Location = new System.Drawing.Point(53, 30);
+            this.labelTitle.Margin = new System.Windows.Forms.Padding(50, 0, 50, 0);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Size = new System.Drawing.Size(138, 62);
+            this.labelTitle.TabIndex = 2;
+            this.labelTitle.Text = "ASW";
+            this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelTitle.Click += new System.EventHandler(this.LabelSubtitle_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.dataGridViewSerial);
+            this.panel3.Controls.Add(this.dataGridViewClassList);
+            this.panel3.Controls.Add(this.panelYourSections);
+            this.panel3.Controls.Add(this.labelWelcome);
+            this.panel3.Location = new System.Drawing.Point(248, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(626, 528);
+            this.panel3.TabIndex = 10;
+            // 
+            // panelYourSections
+            // 
+            this.panelYourSections.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelYourSections.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(52)))), ((int)(((byte)(158)))));
+            this.panelYourSections.Controls.Add(this.buttonDeleteAll);
+            this.panelYourSections.Controls.Add(this.buttonRefresh);
+            this.panelYourSections.Controls.Add(this.buttonBack);
+            this.panelYourSections.Controls.Add(this.labelYourClasses);
+            this.panelYourSections.Location = new System.Drawing.Point(0, 64);
+            this.panelYourSections.Margin = new System.Windows.Forms.Padding(0, 20, 0, 0);
+            this.panelYourSections.Name = "panelYourSections";
+            this.panelYourSections.Size = new System.Drawing.Size(637, 75);
+            this.panelYourSections.TabIndex = 7;
+            // 
+            // buttonDeleteAll
+            // 
+            this.buttonDeleteAll.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.buttonDeleteAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(52)))), ((int)(((byte)(158)))));
+            this.buttonDeleteAll.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonDeleteAll.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.buttonDeleteAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDeleteAll.Font = new System.Drawing.Font("Arial", 12F);
+            this.buttonDeleteAll.ForeColor = System.Drawing.Color.Red;
+            this.buttonDeleteAll.Location = new System.Drawing.Point(396, 25);
+            this.buttonDeleteAll.Margin = new System.Windows.Forms.Padding(55, 26, 0, 0);
+            this.buttonDeleteAll.Name = "buttonDeleteAll";
+            this.buttonDeleteAll.Size = new System.Drawing.Size(98, 27);
+            this.buttonDeleteAll.TabIndex = 10;
+            this.buttonDeleteAll.Text = "Delete All";
+            this.buttonDeleteAll.UseVisualStyleBackColor = false;
+            this.buttonDeleteAll.Click += new System.EventHandler(this.ButtonDeleteAll_Click);
+            // 
+            // buttonRefresh
+            // 
+            this.buttonRefresh.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.buttonRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(52)))), ((int)(((byte)(158)))));
+            this.buttonRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRefresh.Font = new System.Drawing.Font("Arial", 12F);
+            this.buttonRefresh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.buttonRefresh.Location = new System.Drawing.Point(512, 25);
+            this.buttonRefresh.Margin = new System.Windows.Forms.Padding(55, 26, 0, 0);
+            this.buttonRefresh.Name = "buttonRefresh";
+            this.buttonRefresh.Size = new System.Drawing.Size(75, 27);
+            this.buttonRefresh.TabIndex = 9;
+            this.buttonRefresh.Text = "Refresh";
+            this.buttonRefresh.UseVisualStyleBackColor = false;
+            this.buttonRefresh.Click += new System.EventHandler(this.ButtonRefresh_Click);
+            // 
+            // buttonBack
+            // 
+            this.buttonBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonBack.FlatAppearance.BorderSize = 0;
+            this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBack.Image = ((System.Drawing.Image)(resources.GetObject("buttonBack.Image")));
+            this.buttonBack.Location = new System.Drawing.Point(0, 0);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(75, 75);
+            this.buttonBack.TabIndex = 1;
+            this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.ButtonBack_Click);
+            // 
+            // labelYourClasses
+            // 
+            this.labelYourClasses.AutoSize = true;
+            this.labelYourClasses.Font = new System.Drawing.Font("Arial", 17F);
+            this.labelYourClasses.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.labelYourClasses.Location = new System.Drawing.Point(81, 25);
+            this.labelYourClasses.Name = "labelYourClasses";
+            this.labelYourClasses.Size = new System.Drawing.Size(124, 26);
+            this.labelYourClasses.TabIndex = 0;
+            this.labelYourClasses.Text = "All Classes";
+            // 
+            // labelWelcome
+            // 
+            this.labelWelcome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelWelcome.Font = new System.Drawing.Font("Arial", 12F);
+            this.labelWelcome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.labelWelcome.Location = new System.Drawing.Point(35, 16);
+            this.labelWelcome.Margin = new System.Windows.Forms.Padding(10, 10, 30, 10);
+            this.labelWelcome.Name = "labelWelcome";
+            this.labelWelcome.Size = new System.Drawing.Size(552, 33);
+            this.labelWelcome.TabIndex = 5;
+            this.labelWelcome.Text = "Faculty";
+            this.labelWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // dataGridViewSerial
             // 
@@ -116,7 +282,7 @@
             this.dataGridViewSerial.DefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridViewSerial.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewSerial.EnableHeadersVisualStyles = false;
-            this.dataGridViewSerial.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewSerial.Location = new System.Drawing.Point(0, 139);
             this.dataGridViewSerial.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridViewSerial.MultiSelect = false;
             this.dataGridViewSerial.Name = "dataGridViewSerial";
@@ -131,10 +297,11 @@
             this.dataGridViewSerial.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridViewSerial.RowHeadersVisible = false;
             this.dataGridViewSerial.RowHeadersWidth = 51;
+            this.dataGridViewSerial.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridViewSerial.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSerial.Size = new System.Drawing.Size(47, 458);
+            this.dataGridViewSerial.Size = new System.Drawing.Size(34, 383);
             this.dataGridViewSerial.StandardTab = true;
-            this.dataGridViewSerial.TabIndex = 12;
+            this.dataGridViewSerial.TabIndex = 15;
             // 
             // sln
             // 
@@ -157,6 +324,8 @@
             dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             this.dataGridViewClassList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            this.dataGridViewClassList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewClassList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
             this.dataGridViewClassList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewClassList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -187,7 +356,7 @@
             this.dataGridViewClassList.DefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewClassList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewClassList.EnableHeadersVisualStyles = false;
-            this.dataGridViewClassList.Location = new System.Drawing.Point(47, 0);
+            this.dataGridViewClassList.Location = new System.Drawing.Point(34, 139);
             this.dataGridViewClassList.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridViewClassList.MultiSelect = false;
             this.dataGridViewClassList.Name = "dataGridViewClassList";
@@ -203,10 +372,9 @@
             this.dataGridViewClassList.RowHeadersVisible = false;
             this.dataGridViewClassList.RowHeadersWidth = 51;
             this.dataGridViewClassList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewClassList.Size = new System.Drawing.Size(773, 458);
+            this.dataGridViewClassList.Size = new System.Drawing.Size(592, 383);
             this.dataGridViewClassList.StandardTab = true;
-            this.dataGridViewClassList.TabIndex = 14;
-            this.dataGridViewClassList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridViewClassList_MouseClick);
+            this.dataGridViewClassList.TabIndex = 16;
             // 
             // SectionName
             // 
@@ -248,182 +416,19 @@
             this.ClassType.Name = "ClassType";
             this.ClassType.Width = 125;
             // 
-            // panelLeft
-            // 
-            this.panelLeft.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.panelLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.panelLeft.Controls.Add(this.flowTodaysClass);
-            this.panelLeft.Controls.Add(this.panel2);
-            this.panelLeft.Controls.Add(this.labelSubtitle);
-            this.panelLeft.Controls.Add(this.labelTitle);
-            this.panelLeft.Location = new System.Drawing.Point(0, 0);
-            this.panelLeft.Margin = new System.Windows.Forms.Padding(4);
-            this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(333, 628);
-            this.panelLeft.TabIndex = 9;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.panel2.Controls.Add(this.labelTodaysClasses);
-            this.panel2.Location = new System.Drawing.Point(0, 170);
-            this.panel2.Margin = new System.Windows.Forms.Padding(0, 37, 0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(333, 62);
-            this.panel2.TabIndex = 4;
-            // 
-            // labelTodaysClasses
-            // 
-            this.labelTodaysClasses.AutoSize = true;
-            this.labelTodaysClasses.Font = new System.Drawing.Font("Arial", 13F);
-            this.labelTodaysClasses.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.labelTodaysClasses.Location = new System.Drawing.Point(16, 18);
-            this.labelTodaysClasses.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelTodaysClasses.Name = "labelTodaysClasses";
-            this.labelTodaysClasses.Size = new System.Drawing.Size(170, 25);
-            this.labelTodaysClasses.TabIndex = 0;
-            this.labelTodaysClasses.Text = "Today\'s Classes";
-            // 
-            // labelSubtitle
-            // 
-            this.labelSubtitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelSubtitle.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.labelSubtitle.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.labelSubtitle.Location = new System.Drawing.Point(79, 108);
-            this.labelSubtitle.Margin = new System.Windows.Forms.Padding(69, 25, 0, 0);
-            this.labelSubtitle.Name = "labelSubtitle";
-            this.labelSubtitle.Size = new System.Drawing.Size(168, 25);
-            this.labelSubtitle.TabIndex = 3;
-            this.labelSubtitle.Text = "Automate Your Class";
-            this.labelSubtitle.Click += new System.EventHandler(this.LabelSubtitle_Click);
-            // 
-            // labelTitle
-            // 
-            this.labelTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelTitle.AutoSize = true;
-            this.labelTitle.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.labelTitle.Font = new System.Drawing.Font("Century Gothic", 38F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.labelTitle.Location = new System.Drawing.Point(71, 37);
-            this.labelTitle.Margin = new System.Windows.Forms.Padding(67, 0, 67, 0);
-            this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(170, 78);
-            this.labelTitle.TabIndex = 2;
-            this.labelTitle.Text = "ASW";
-            this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelTitle.Click += new System.EventHandler(this.LabelSubtitle_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.flowLayoutPanelClasses);
-            this.panel3.Controls.Add(this.panelYourSections);
-            this.panel3.Controls.Add(this.labelWelcome);
-            this.panel3.Location = new System.Drawing.Point(331, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(821, 628);
-            this.panel3.TabIndex = 10;
-            // 
-            // panelYourSections
-            // 
-            this.panelYourSections.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(52)))), ((int)(((byte)(158)))));
-            this.panelYourSections.Controls.Add(this.buttonRefresh);
-            this.panelYourSections.Controls.Add(this.buttonBack);
-            this.panelYourSections.Controls.Add(this.labelYourClasses);
-            this.panelYourSections.Location = new System.Drawing.Point(0, 78);
-            this.panelYourSections.Margin = new System.Windows.Forms.Padding(0, 25, 0, 0);
-            this.panelYourSections.Name = "panelYourSections";
-            this.panelYourSections.Size = new System.Drawing.Size(821, 92);
-            this.panelYourSections.TabIndex = 7;
-            // 
-            // buttonRefresh
-            // 
-            this.buttonRefresh.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.buttonRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(52)))), ((int)(((byte)(158)))));
-            this.buttonRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRefresh.Font = new System.Drawing.Font("Arial", 12F);
-            this.buttonRefresh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.buttonRefresh.Location = new System.Drawing.Point(669, 30);
-            this.buttonRefresh.Margin = new System.Windows.Forms.Padding(73, 32, 0, 0);
-            this.buttonRefresh.Name = "buttonRefresh";
-            this.buttonRefresh.Size = new System.Drawing.Size(100, 33);
-            this.buttonRefresh.TabIndex = 9;
-            this.buttonRefresh.Text = "Refresh";
-            this.buttonRefresh.UseVisualStyleBackColor = false;
-            this.buttonRefresh.Click += new System.EventHandler(this.ButtonRefresh_Click);
-            // 
-            // buttonBack
-            // 
-            this.buttonBack.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonBack.FlatAppearance.BorderSize = 0;
-            this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBack.Image = ((System.Drawing.Image)(resources.GetObject("buttonBack.Image")));
-            this.buttonBack.Location = new System.Drawing.Point(0, 0);
-            this.buttonBack.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonBack.Name = "buttonBack";
-            this.buttonBack.Size = new System.Drawing.Size(100, 92);
-            this.buttonBack.TabIndex = 1;
-            this.buttonBack.UseVisualStyleBackColor = true;
-            this.buttonBack.Click += new System.EventHandler(this.ButtonBack_Click);
-            // 
-            // labelYourClasses
-            // 
-            this.labelYourClasses.AutoSize = true;
-            this.labelYourClasses.Font = new System.Drawing.Font("Arial", 17F);
-            this.labelYourClasses.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.labelYourClasses.Location = new System.Drawing.Point(108, 31);
-            this.labelYourClasses.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelYourClasses.Name = "labelYourClasses";
-            this.labelYourClasses.Size = new System.Drawing.Size(161, 33);
-            this.labelYourClasses.TabIndex = 0;
-            this.labelYourClasses.Text = "All Classes";
-            // 
-            // labelWelcome
-            // 
-            this.labelWelcome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelWelcome.Font = new System.Drawing.Font("Arial", 12F);
-            this.labelWelcome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.labelWelcome.Location = new System.Drawing.Point(47, 20);
-            this.labelWelcome.Margin = new System.Windows.Forms.Padding(13, 12, 40, 12);
-            this.labelWelcome.Name = "labelWelcome";
-            this.labelWelcome.Size = new System.Drawing.Size(723, 41);
-            this.labelWelcome.TabIndex = 5;
-            this.labelWelcome.Text = "Faculty";
-            this.labelWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // flowTodaysClass
-            // 
-            this.flowTodaysClass.AutoScroll = true;
-            this.flowTodaysClass.Location = new System.Drawing.Point(0, 232);
-            this.flowTodaysClass.Margin = new System.Windows.Forms.Padding(0);
-            this.flowTodaysClass.Name = "flowTodaysClass";
-            this.flowTodaysClass.Size = new System.Drawing.Size(333, 396);
-            this.flowTodaysClass.TabIndex = 7;
-            // 
             // AllClassesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
-            this.ClientSize = new System.Drawing.Size(1152, 629);
+            this.ClientSize = new System.Drawing.Size(868, 522);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panel3);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MaximizeBox = false;
+            this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.MinimumSize = new System.Drawing.Size(884, 561);
             this.Name = "AllClassesForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AllClassesForm";
+            this.Text = "Attendance Scanning Wizard";
             this.Load += new System.EventHandler(this.AllClassesForm_Load);
-            this.flowLayoutPanelClasses.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSerial)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClassList)).EndInit();
             this.panelLeft.ResumeLayout(false);
             this.panelLeft.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -431,13 +436,13 @@
             this.panel3.ResumeLayout(false);
             this.panelYourSections.ResumeLayout(false);
             this.panelYourSections.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSerial)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClassList)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelClasses;
         private System.Windows.Forms.Panel panelLeft;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label labelTodaysClasses;
@@ -448,8 +453,10 @@
         private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.Label labelYourClasses;
         private System.Windows.Forms.Label labelWelcome;
-        private System.Windows.Forms.DataGridView dataGridViewSerial;
         private System.Windows.Forms.Button buttonRefresh;
+        private System.Windows.Forms.FlowLayoutPanel flowTodaysClass;
+        private System.Windows.Forms.Button buttonDeleteAll;
+        private System.Windows.Forms.DataGridView dataGridViewSerial;
         private System.Windows.Forms.DataGridViewTextBoxColumn sln;
         private System.Windows.Forms.DataGridView dataGridViewClassList;
         private System.Windows.Forms.DataGridViewTextBoxColumn SectionName;
@@ -457,6 +464,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ClassTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn RoomNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClassType;
-        private System.Windows.Forms.FlowLayoutPanel flowTodaysClass;
     }
 }

@@ -152,6 +152,9 @@ namespace GUI.Views
             var addSection = new FormAddSection(faculty);
             addSection.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             addSection.Show();
+            addSection.Left = this.Left;
+            addSection.Top = this.Top;
+            addSection.Size = this.Size;
             this.Hide();
         }
 
@@ -161,6 +164,9 @@ namespace GUI.Views
             var students = new FormStudentList(faculty, section);
             students.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             students.Show();
+            students.Left = this.Left;
+            students.Top = this.Top;
+            students.Size = this.Size;
             this.Hide();
         }
 
@@ -169,6 +175,9 @@ namespace GUI.Views
             var edit = new EditSectionForm(faculty, section, sectionTimes);
             edit.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             edit.Show();
+            edit.Left = this.Left;
+            edit.Top = this.Top;
+            edit.Size = this.Size;
             this.Hide();
         }
 
@@ -177,6 +186,9 @@ namespace GUI.Views
             var dash = new FormDashboard(faculty);
             dash.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             dash.Show();
+            dash.Left = this.Left;
+            dash.Top = this.Top;
+            dash.Size = this.Size;
             this.Hide();
         }
 
@@ -190,6 +202,9 @@ namespace GUI.Views
             var dash = new FormDashboard(faculty);
             dash.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             dash.Show();
+            dash.Left = this.Left;
+            dash.Top = this.Top;
+            dash.Size = this.Size;
             this.Hide();
         }
 
@@ -333,6 +348,17 @@ namespace GUI.Views
                     }
                 }
             }
+        }
+
+        private void ButtonAddSection_Click(object sender, EventArgs e)
+        {
+            var addSection = new FormAddSection(faculty);
+            addSection.FormClosed += new FormClosedEventHandler(dash_FormClosed);
+            addSection.Show();
+            addSection.Left = this.Left;
+            addSection.Top = this.Top;
+            addSection.Size = this.Size;
+            this.Hide();
         }
     }
 }

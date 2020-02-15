@@ -166,6 +166,8 @@ namespace GUI.Views
                 try
                 {
                     studentAtHeader.IsValid();
+                    studentAtHeader.FirstName.Trim();
+                    studentAtHeader.LastName.Trim();
                     studentList.Add(studentAtHeader);
                     //Console.WriteLine("Added header");
                 }
@@ -201,6 +203,10 @@ namespace GUI.Views
                     try
                     {
                         student.IsValid();
+                        Console.WriteLine("fname: " + student.FirstName.Replace(' ', '|'));
+                        student.FirstName = student.FirstName.Trim();
+                        student.LastName = student.LastName.Trim();
+                        Console.WriteLine("fname: " + student.FirstName.Replace(' ', '|'));
                         studentList.Add(student);
                         //Console.WriteLine("Added");
                     }

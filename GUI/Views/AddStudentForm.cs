@@ -4,6 +4,7 @@ using GUI.Controllers;
 using GUI.Controllers.BaseController;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.Drawing;
 using System.Windows.Forms;
@@ -77,7 +78,7 @@ namespace GUI.Views
                     MessageBox.Show(ex.Message);
                 }
             }
-            catch (SQLiteException ex)
+            catch (SqlException ex)
             {
                 try
                 {
@@ -99,16 +100,16 @@ namespace GUI.Views
                             students.Show();
                             this.Hide();
     }
-                        catch(SQLiteException exc)
+                        catch(SqlException exc)
                         {
-                            if(exc.ErrorCode == 19)
+                            if(exc.Number == 2627)
                             {
                                 MessageBox.Show("Error: Student already exists in this section");
                             }
                         }
                         catch(Exception exv)
                         {
-                            MessageBox.Show(exv.Message);
+                            MessageBox.Show(exv.Message + " here");
                         }
                     }
                     else if (dialogResult == DialogResult.No)

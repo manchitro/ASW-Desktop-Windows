@@ -53,6 +53,8 @@ namespace GUI.Views
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
+            LoadingForm loadingForm = new LoadingForm("Adding class. Please wait...");
+            loadingForm.Show();
             ClassModel Class = new ClassModel();
             Class.ClassDate = datePicker.Value.ToString("yyyy-MM-dd");
             Class.StartTimeId = comboBoxStartTime.SelectedIndex;
@@ -77,6 +79,8 @@ namespace GUI.Views
                     MessageBox.Show(ex.Message);
                 }
             }
+
+            loadingForm.Step(30);
             ClassController ccontroller = new ClassController();
 
             try
@@ -100,6 +104,7 @@ namespace GUI.Views
                     }
                 }
                 //Console.WriteLine("Clash checking complete");
+                loadingForm.Step(20);
                 try
                 {
                     Console.WriteLine("Creating class with date: " + Class.ClassDate);
@@ -123,9 +128,11 @@ namespace GUI.Views
                             AttendanceModel attendance = new AttendanceModel();
                             attendance.ClassId = createdClass.Id;
                             attendance.StudentId = StudentId;
+                            attendance.ScanTime = null;
 
                             try
                             {
+                                Console.WriteLine("Creating attendance with time: " + attendance.ScanTime);
                                 acontroller.Create(attendance);
                             }
                             catch (Exception ex)
@@ -133,6 +140,7 @@ namespace GUI.Views
                                 MessageBox.Show(ex.Message);
                             }
                         }
+                        loadingForm.Step(50);
                         //Console.WriteLine("Created class id: " + createdClass.Id);
                         MessageBox.Show("Class added on " + (createdClass.ClassDate));
                         this.Hide();

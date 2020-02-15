@@ -34,7 +34,7 @@ namespace GUI.Views
             comboBoxWeekDay1.DisplayMember = "WeekDayText";
             comboBoxWeekDay1.ValueMember = "Id";
 
-            comboBoxWeekDay1.SelectedIndex = sectionTimes[0].WeekDayID - 1;
+            comboBoxWeekDay1.SelectedIndex = sectionTimes[0].WeekDayID;
 
             List<WeekDayModel> dayList2 = new List<WeekDayModel>();
             WeekDayController dayController2 = new WeekDayController();
@@ -45,7 +45,7 @@ namespace GUI.Views
             comboBoxWeekDay2.ValueMember = "Id";
 
             if (!(sectionTimes.Count == 1))
-                comboBoxWeekDay2.SelectedIndex = sectionTimes[1].WeekDayID - 1;
+                comboBoxWeekDay2.SelectedIndex = sectionTimes[1].WeekDayID;
 
             List<ClassTimeModel> timeListStart1 = new List<ClassTimeModel>();
             ClassTimeController timeControllerStart1 = new ClassTimeController();
@@ -55,7 +55,7 @@ namespace GUI.Views
             comboBoxStartTime1.DisplayMember = "ClassTimeText";
             comboBoxStartTime1.ValueMember = "Id";
 
-            comboBoxStartTime1.SelectedIndex = sectionTimes[0].StartTimeId - 1;
+            comboBoxStartTime1.SelectedIndex = sectionTimes[0].StartTimeId;
 
             List<ClassTimeModel> timeListStart2 = new List<ClassTimeModel>();
             ClassTimeController timeControllerStart2 = new ClassTimeController();
@@ -65,7 +65,7 @@ namespace GUI.Views
             comboBoxStartTime2.DisplayMember = "ClassTimeText";
             comboBoxStartTime2.ValueMember = "Id";
             if (!(sectionTimes.Count == 1))
-                comboBoxStartTime2.SelectedIndex = sectionTimes[1].StartTimeId - 1;
+                comboBoxStartTime2.SelectedIndex = sectionTimes[1].StartTimeId;
 
             List<ClassTimeModel> timeListEnd1 = new List<ClassTimeModel>();
             ClassTimeController timeControllerEnd1 = new ClassTimeController();
@@ -75,7 +75,8 @@ namespace GUI.Views
             comboBoxEndTime1.DisplayMember = "ClassTimeText";
             comboBoxEndTime1.ValueMember = "Id";
 
-            comboBoxEndTime1.SelectedIndex = sectionTimes[0].EndTimeId - 1;
+
+            comboBoxEndTime1.SelectedIndex = sectionTimes[0].EndTimeId;
 
             List<ClassTimeModel> timeListEnd2 = new List<ClassTimeModel>();
             ClassTimeController timeControllerEnd2 = new ClassTimeController();
@@ -85,7 +86,7 @@ namespace GUI.Views
             comboBoxEndTime2.DisplayMember = "ClassTimeText";
             comboBoxEndTime2.ValueMember = "Id";
             if (!(sectionTimes.Count == 1))
-                comboBoxEndTime2.SelectedIndex = sectionTimes[1].EndTimeId - 1;
+                comboBoxEndTime2.SelectedIndex = sectionTimes[1].EndTimeId;
 
             comboBoxClassType1.DataSource = Enum.GetValues(typeof(ClassTypes));
             comboBoxClassType2.DataSource = Enum.GetValues(typeof(ClassTypes));
@@ -129,6 +130,9 @@ namespace GUI.Views
             var yourSections = new YourSectionsForm(faculty);
             yourSections.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             yourSections.Show();
+            yourSections.Left = this.Left;
+            yourSections.Top = this.Top;
+            yourSections.Size = this.Size;
             this.Hide();
         }
 
@@ -142,6 +146,9 @@ namespace GUI.Views
             var dash = new FormDashboard(faculty);
             dash.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             dash.Show();
+            dash.Left = this.Left;
+            dash.Top = this.Top;
+            dash.Size = this.Size;
             this.Hide();
         }
 

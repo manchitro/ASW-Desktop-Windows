@@ -25,28 +25,32 @@ namespace GUI.Views
         {
             LoadingForm loadingForm = new LoadingForm("Saving Password. Please wait...");
             loadingForm.Show();
-            //try
+            try
             {
                 UserController controller = new UserController();
                 Argon2Hashing hashing = new Argon2Hashing();
                 //Console.WriteLine("getting pass with id: " + faculty.Id);
-                //Console.WriteLine("Verification: " + hashing.VerifyHash(textBoxPassword.Text, Convert.FromBase64String(faculty.salt), Convert.FromBase64String(faculty.Password)));
-                if(hashing.VerifyHash(textBoxPassword.Text, Convert.FromBase64String(faculty.salt), Convert.FromBase64String(faculty.Password)))
+                Console.WriteLine("Password:  " + faculty.Password);
+                Console.WriteLine("Passwordd: " + Convert.FromBase64String(faculty.Password));
+                Console.WriteLine("Salt:  " + faculty.salt);
+                Console.WriteLine("Saltd: " + Convert.FromBase64String(faculty.salt));
+                Console.WriteLine("Hashed p:  " + Convert.ToBase64String(hashing.HashPassword(textBoxNewPassword.Text, Convert.FromBase64String(faculty.salt))));
+
+                if (hashing.VerifyHash(textBoxPassword.Text, Convert.FromBase64String(faculty.salt), Convert.FromBase64String(faculty.Password)))
                 {
                     loadingForm.Step(20);
                     if (textBoxNewPassword.Text == textBoxConfirmPassword.Text)
                     {
-                        faculty.Password = textBoxNewPassword.Text;
-                        //try
+                        try
                         {
                             faculty.IsValid();
                             faculty.salt = Convert.ToBase64String(hashing.CreateSalt());
-                            faculty.Password = Convert.ToBase64String(hashing.HashPassword(faculty.Password, Convert.FromBase64String(faculty.salt)));
+                            faculty.Password = Convert.ToBase64String(hashing.HashPassword(textBoxNewPassword.Text, Convert.FromBase64String(faculty.salt)));
                             loadingForm.Step(20);
                             if(hashing.VerifyHash(textBoxNewPassword.Text, Convert.FromBase64String(faculty.salt), Convert.FromBase64String(faculty.Password)))
                             {
                                 loadingForm.Step(20);
-                                //try
+                                try
                                 {
                                     controller.UpdatePasswordByUser(faculty.Id, faculty.Password, faculty.salt);
                                     loadingForm.Step(60);
@@ -54,11 +58,11 @@ namespace GUI.Views
                                     MessageBox.Show("Password successfully updated");
                                     this.Hide();
                                 }
-                                //catch(Exception ex)
-                                //{
-                                //    loadingForm.Close();
-                                //    MessageBox.Show(ex.Message);
-                                //}
+                                catch (Exception ex)
+                                {
+                                    loadingForm.Close();
+                                    MessageBox.Show(ex.Message);
+                                }
                             }
                             else
                             {
@@ -67,11 +71,11 @@ namespace GUI.Views
                             }
                                 
                         }
-                        //catch (Exception ex)
-                        //{
-                        //    loadingForm.Close();
-                        //    MessageBox.Show(ex.Message+" here");
-                        //}
+                        catch (Exception ex)
+                        {
+                            loadingForm.Close();
+                            MessageBox.Show(ex.Message);
+                        }
                     }
                     else
                     {
@@ -85,13 +89,13 @@ namespace GUI.Views
                     MessageBox.Show("Wrong current password. Please try again");
                 }
             }
-            
-            //catch (Exception ex)
-            //{
 
-            //    loadingForm.Close();
-            //    MessageBox.Show(ex.Message);
-            //}
+            catch (Exception ex)
+            {
+
+                loadingForm.Close();
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ChangePasswordForm_Paint(object sender, PaintEventArgs e)

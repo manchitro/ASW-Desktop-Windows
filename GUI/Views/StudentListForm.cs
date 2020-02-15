@@ -31,12 +31,13 @@ namespace GUI.Views
             labelWelcome.Text = faculty.FullName;
             labelStudents.Text = "Students of " + section.SectionName;
 
-            try
+            //try
             {
                 UserController controller = new UserController();
                 studentList = controller.GetBySection(section);
                 ClassController ccontroller = new ClassController();
                 classList = ccontroller.GetBySectionId(section.Id);
+                List<ClassModel> sortedClassList = classList.OrderBy(x => x.ClassDate).ToList();
                 AttendanceController acontroller = new AttendanceController();
                 attendanceList = acontroller.GetAllBySection(section.Id);
 
@@ -61,7 +62,7 @@ namespace GUI.Views
                 FullNameCol.ReadOnly = true;
                 dataGridViewStudentList.Columns.Add(FullNameCol);
 
-                foreach (ClassModel Class in classList)
+                foreach (ClassModel Class in sortedClassList)
                 {
                     DataGridViewTextBoxColumn col = new DataGridViewTextBoxColumn();
                     DateTime date = DateTime.Parse(Class.ClassDate);
@@ -121,10 +122,10 @@ namespace GUI.Views
                     column.SortMode = DataGridViewColumnSortMode.Automatic;
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message + " here");
+            //}
 
             if (classList.Count != 0)
             {
@@ -169,6 +170,9 @@ namespace GUI.Views
             var yourSection = new YourSectionsForm(faculty);
             yourSection.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             yourSection.Show();
+            yourSection.Left = this.Left;
+            yourSection.Top = this.Top;
+            yourSection.Size = this.Size;
             this.Hide();
         }
 
@@ -228,17 +232,19 @@ namespace GUI.Views
 
                 if (currentMouseOverRow >= 0)
                 {
-
-
                     if (currentMouseOverColumn > 1 && currentMouseOverColumn < dataGridViewStudentList.ColumnCount - 1)
                     {
                         var editClass = new MenuItem(string.Format("Edit Class"));
                         m.MenuItems.Add(editClass);
                         var deleteClass = new MenuItem(string.Format("Delete Class"));
                         m.MenuItems.Add(deleteClass);
+                        var addClass = new MenuItem(string.Format("Add Class"));
+                        m.MenuItems.Add(addClass);
+
                         var clickedClass = classList[currentMouseOverColumn - 2];
                         editClass.Click += delegate (object s, EventArgs ev) { EditClass_Click(sender, e, clickedClass); };
                         deleteClass.Click += delegate (object s, EventArgs ev) { DeleteClass_Click(sender, e, clickedClass); };
+                        addClass.Click += delegate (object s, EventArgs ev) { AddClass_Click(sender, e, clickedClass); };
                     }
                     else if (currentMouseOverColumn < 2)
                     {
@@ -255,6 +261,13 @@ namespace GUI.Views
 
                 m.Show(dataGridViewStudentList, new Point(e.X, e.Y));
             }
+        }
+
+        private void AddClass_Click(object sender, MouseEventArgs e, ClassModel clickedClass)
+        {
+            var addclass = new AddClassPopupForm(faculty, section);
+            addclass.FormClosed += new FormClosedEventHandler(dash_FormClosed);
+            addclass.ShowDialog();
         }
 
         private void DeleteClass_Click(object sender, MouseEventArgs e, ClassModel clickedClass)
@@ -383,6 +396,9 @@ namespace GUI.Views
             var students = new FormStudentList(faculty, section);
             students.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             students.Show();
+            students.Left = this.Left;
+            students.Top = this.Top;
+            students.Size = this.Size;
             this.Hide();
         }
 
@@ -391,6 +407,9 @@ namespace GUI.Views
             var dash = new FormDashboard(faculty);
             dash.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             dash.Show();
+            dash.Left = this.Left;
+            dash.Top = this.Top;
+            dash.Size = this.Size;
             this.Hide();
         }
 
@@ -416,7 +435,8 @@ namespace GUI.Views
 
         private void DataGridViewStudentList_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-
+            dataGridViewStudentList.Update();
+            dataGridViewStudentList.Refresh();
         }
 
         private void DataGridViewStudentList_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
@@ -627,6 +647,16 @@ namespace GUI.Views
             public string AcademicId { get; set; }
             public string FullName { get; set; }
             public List<int> attendances { get; set; } = new List<int>();
+        }
+
+        private void DataGridViewSln_SelectionChanged_1(object sender, EventArgs e)
+        {
+            dataGridViewSln.ClearSelection();
+        }
+
+        private void DataGridViewStudentList_Scroll_1(object sender, ScrollEventArgs e)
+        {
+            this.dataGridViewSln.FirstDisplayedScrollingRowIndex = dataGridViewStudentList.FirstDisplayedScrollingRowIndex;
         }
     }
 }

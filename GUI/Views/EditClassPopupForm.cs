@@ -35,7 +35,7 @@ namespace GUI.Views
             comboBoxStartTime.DataSource = timeListStart;
             comboBoxStartTime.DisplayMember = "ClassTimeText";
             comboBoxStartTime.ValueMember = "Id";
-            comboBoxStartTime.SelectedIndex = Class.StartTimeId-1;
+            comboBoxStartTime.SelectedIndex = Class.StartTimeId;
 
             List<ClassTimeModel> timeListEnd = new List<ClassTimeModel>();
             ClassTimeController timeControllerEnd = new ClassTimeController();
@@ -44,7 +44,7 @@ namespace GUI.Views
             comboBoxEndTime.DataSource = timeListEnd;
             comboBoxEndTime.DisplayMember = "ClassTimeText";
             comboBoxEndTime.ValueMember = "Id";
-            comboBoxEndTime.SelectedIndex = Class.EndTimeId-1;
+            comboBoxEndTime.SelectedIndex = Class.EndTimeId;
 
             comboBoxClassType.DataSource = Enum.GetValues(typeof(ClassTypes));
             comboBoxClassType.SelectedIndex = Convert.ToInt32(Class.ClassType);

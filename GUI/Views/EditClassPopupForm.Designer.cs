@@ -247,7 +247,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "EditClassPopupForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "EditClassPopupForm";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.EditClassPopupForm_Paint);
             this.ResumeLayout(false);

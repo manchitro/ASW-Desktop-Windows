@@ -44,7 +44,7 @@ namespace DataAccessLayer
             using(SqlConnection conn = SQLiteDBConnection.Get())
             {
                 var query = @"SELECT * FROM Attendances where ClassId in
-                                (SELECT Id from Classes where SectionId  = @SectionId);";
+                                (SELECT Id from Classes where SectionId = @SectionId);";
                 var parameters = new DynamicParameters();
                 parameters.Add("@SectionId", SectionId);
                 return conn.Query<AttendanceModel>(query, parameters).ToList();

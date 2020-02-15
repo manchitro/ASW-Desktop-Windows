@@ -6,6 +6,7 @@ using GUI.Properties;
 using QRCoder;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.Drawing;
 using System.Windows.Forms;
@@ -80,6 +81,9 @@ namespace GUI.Views
             var addSection = new FormAddSection(faculty);
             addSection.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             addSection.Show();
+            addSection.Left = this.Left;
+            addSection.Top = this.Top;
+            addSection.Size = addSection.Size;
             this.Hide();
         }
 
@@ -93,6 +97,9 @@ namespace GUI.Views
             var dash = new FormDashboard(faculty);
             dash.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             dash.Show();
+            dash.Left = this.Left;
+            dash.Top = this.Top;
+            dash.Size = this.Size;
             this.Hide();
         }
 
@@ -272,11 +279,11 @@ namespace GUI.Views
                                                 SectionStudentController sscontroller = new SectionStudentController();
                                                 sscontroller.Create(createdSection.Id, student.Id);
                                             }
-                                            catch (SQLiteException exc)
+                                            catch (SqlException exc)
                                             {
-                                                if (exc.ErrorCode == 19)
+                                                if (exc.Number == 2627)
                                                 {
-                                                    MessageBox.Show("Error: Student already exists in this section");
+                                                    MessageBox.Show("Error: Student: " + student.AcademicId + "already exists in this section");
                                                 }
                                             }
                                             catch (Exception ex)
@@ -284,7 +291,7 @@ namespace GUI.Views
                                                 MessageBox.Show(ex.Message);
                                             }
                                         }
-                                        catch (SQLiteException ex)
+                                        catch (SqlException ex)
                                         {
                                             var existingStudent = ucontroller.GetByAcademicId(student.AcademicId);
                                             try
@@ -292,11 +299,11 @@ namespace GUI.Views
                                                 SectionStudentController sscontroller = new SectionStudentController();
                                                 sscontroller.Create(createdSection.Id, existingStudent.Id);
                                             }
-                                            catch (SQLiteException exc)
+                                            catch (SqlException exc)
                                             {
-                                                if (exc.ErrorCode == 19)
+                                                if (exc.Number == 2627)
                                                 {
-                                                    MessageBox.Show("Error: Student already exists in this section");
+                                                    MessageBox.Show("Error: Student: " + student.AcademicId + "already exists in this section");
                                                 }
                                             }
                                             catch (Exception exc)

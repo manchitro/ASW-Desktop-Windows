@@ -234,7 +234,7 @@
             this.Controls.Add(this.labelDate);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddClassPopupForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddClassPopupForm";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.AddClassPopupForm_Paint);
             this.ResumeLayout(false);

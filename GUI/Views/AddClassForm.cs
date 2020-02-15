@@ -143,6 +143,9 @@ namespace GUI.Views
             var dash = new FormDashboard(faculty);
             dash.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             dash.Show();
+            dash.Left = this.Left;
+            dash.Top = this.Left;
+            dash.Size = this.Size;
             this.Hide();
         }
 
@@ -151,6 +154,9 @@ namespace GUI.Views
             var addSection = new FormAddSection(faculty);
             addSection.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             addSection.Show();
+            addSection.Left = this.Left;
+            addSection.Top = this.Left;
+            addSection.Size = this.Size;
             this.Hide();
         }
 

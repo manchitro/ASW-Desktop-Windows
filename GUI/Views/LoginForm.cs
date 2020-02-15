@@ -2,6 +2,7 @@
 using GUI.Controllers;
 using GUI.Utils;
 using System;
+using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.Drawing;
 using System.Windows.Forms;
@@ -52,6 +53,9 @@ namespace GUI.Views
                             var dash = new FormDashboard(faculty);
                             dash.FormClosed += new FormClosedEventHandler(dash_FormClosed);
                             dash.Show();
+                            dash.Left = this.Left;
+                            dash.Top = this.Top;
+                            dash.Size = this.Size;
                             this.Hide();
                         }
                         else
@@ -339,10 +343,10 @@ namespace GUI.Views
                             MessageBox.Show("Account created. Please login with your email and password");
                             buttonCancel.PerformClick();
                         }
-                        catch (SQLiteException ex)
+                        catch (SqlException ex)
                         {
                             loading.Close();
-                            if(ex.ErrorCode == 19)
+                            if(ex.Number == 2627)
                             {
                                 MessageBox.Show("An account is already registered with this email or ID");
                             }

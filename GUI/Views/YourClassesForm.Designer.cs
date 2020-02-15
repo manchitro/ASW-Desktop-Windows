@@ -60,28 +60,27 @@
             this.panelLeft.Controls.Add(this.labelSubtitle);
             this.panelLeft.Controls.Add(this.labelTitle);
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
-            this.panelLeft.Margin = new System.Windows.Forms.Padding(4);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(333, 628);
+            this.panelLeft.Size = new System.Drawing.Size(250, 521);
             this.panelLeft.TabIndex = 7;
             // 
             // flowTodaysClass
             // 
             this.flowTodaysClass.AutoScroll = true;
-            this.flowTodaysClass.Location = new System.Drawing.Point(0, 232);
+            this.flowTodaysClass.Location = new System.Drawing.Point(0, 188);
             this.flowTodaysClass.Margin = new System.Windows.Forms.Padding(0);
             this.flowTodaysClass.Name = "flowTodaysClass";
-            this.flowTodaysClass.Size = new System.Drawing.Size(333, 396);
+            this.flowTodaysClass.Size = new System.Drawing.Size(250, 322);
             this.flowTodaysClass.TabIndex = 9;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.panel2.Controls.Add(this.labelTodaysClasses);
-            this.panel2.Location = new System.Drawing.Point(0, 170);
-            this.panel2.Margin = new System.Windows.Forms.Padding(0, 37, 0, 0);
+            this.panel2.Location = new System.Drawing.Point(0, 138);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0, 30, 0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(333, 62);
+            this.panel2.Size = new System.Drawing.Size(250, 51);
             this.panel2.TabIndex = 4;
             // 
             // labelTodaysClasses
@@ -89,10 +88,9 @@
             this.labelTodaysClasses.AutoSize = true;
             this.labelTodaysClasses.Font = new System.Drawing.Font("Arial", 13F);
             this.labelTodaysClasses.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.labelTodaysClasses.Location = new System.Drawing.Point(16, 18);
-            this.labelTodaysClasses.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelTodaysClasses.Location = new System.Drawing.Point(12, 14);
             this.labelTodaysClasses.Name = "labelTodaysClasses";
-            this.labelTodaysClasses.Size = new System.Drawing.Size(170, 25);
+            this.labelTodaysClasses.Size = new System.Drawing.Size(140, 21);
             this.labelTodaysClasses.TabIndex = 0;
             this.labelTodaysClasses.Text = "Today\'s Classes";
             // 
@@ -103,10 +101,10 @@
             this.labelSubtitle.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelSubtitle.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.labelSubtitle.Location = new System.Drawing.Point(79, 108);
-            this.labelSubtitle.Margin = new System.Windows.Forms.Padding(69, 25, 0, 0);
+            this.labelSubtitle.Location = new System.Drawing.Point(59, 88);
+            this.labelSubtitle.Margin = new System.Windows.Forms.Padding(52, 20, 0, 0);
             this.labelSubtitle.Name = "labelSubtitle";
-            this.labelSubtitle.Size = new System.Drawing.Size(168, 25);
+            this.labelSubtitle.Size = new System.Drawing.Size(126, 20);
             this.labelSubtitle.TabIndex = 3;
             this.labelSubtitle.Text = "Automate Your Class";
             this.labelSubtitle.Click += new System.EventHandler(this.ButtonBack_Click);
@@ -119,10 +117,10 @@
             this.labelTitle.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelTitle.Font = new System.Drawing.Font("Century Gothic", 38F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.labelTitle.Location = new System.Drawing.Point(71, 37);
-            this.labelTitle.Margin = new System.Windows.Forms.Padding(67, 0, 67, 0);
+            this.labelTitle.Location = new System.Drawing.Point(53, 30);
+            this.labelTitle.Margin = new System.Windows.Forms.Padding(50, 0, 50, 0);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(170, 78);
+            this.labelTitle.Size = new System.Drawing.Size(138, 62);
             this.labelTitle.TabIndex = 2;
             this.labelTitle.Text = "ASW";
             this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -130,50 +128,54 @@
             // 
             // panel3
             // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Controls.Add(this.flowLayoutPanelClasses);
             this.panel3.Controls.Add(this.panelYourSections);
             this.panel3.Controls.Add(this.labelWelcome);
-            this.panel3.Location = new System.Drawing.Point(331, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4);
+            this.panel3.Location = new System.Drawing.Point(248, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(821, 628);
+            this.panel3.Size = new System.Drawing.Size(620, 521);
             this.panel3.TabIndex = 8;
             // 
             // flowLayoutPanelClasses
             // 
             this.flowLayoutPanelClasses.AutoScroll = true;
-            this.flowLayoutPanelClasses.Location = new System.Drawing.Point(0, 170);
+            this.flowLayoutPanelClasses.Location = new System.Drawing.Point(0, 138);
             this.flowLayoutPanelClasses.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanelClasses.Name = "flowLayoutPanelClasses";
-            this.flowLayoutPanelClasses.Size = new System.Drawing.Size(821, 458);
+            this.flowLayoutPanelClasses.Size = new System.Drawing.Size(616, 372);
             this.flowLayoutPanelClasses.TabIndex = 8;
             // 
             // panelYourSections
             // 
+            this.panelYourSections.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelYourSections.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(52)))), ((int)(((byte)(158)))));
             this.panelYourSections.Controls.Add(this.buttonRefresh);
             this.panelYourSections.Controls.Add(this.buttonAddClass);
             this.panelYourSections.Controls.Add(this.buttonLogin);
             this.panelYourSections.Controls.Add(this.buttonBack);
             this.panelYourSections.Controls.Add(this.labelYourClasses);
-            this.panelYourSections.Location = new System.Drawing.Point(0, 78);
-            this.panelYourSections.Margin = new System.Windows.Forms.Padding(0, 25, 0, 0);
+            this.panelYourSections.Location = new System.Drawing.Point(0, 64);
+            this.panelYourSections.Margin = new System.Windows.Forms.Padding(0, 20, 0, 0);
             this.panelYourSections.Name = "panelYourSections";
-            this.panelYourSections.Size = new System.Drawing.Size(821, 92);
+            this.panelYourSections.Size = new System.Drawing.Size(620, 75);
             this.panelYourSections.TabIndex = 7;
             // 
             // buttonRefresh
             // 
-            this.buttonRefresh.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.buttonRefresh.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.buttonRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(52)))), ((int)(((byte)(158)))));
             this.buttonRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRefresh.Font = new System.Drawing.Font("Arial", 12F);
             this.buttonRefresh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.buttonRefresh.Location = new System.Drawing.Point(416, 30);
-            this.buttonRefresh.Margin = new System.Windows.Forms.Padding(73, 32, 0, 0);
+            this.buttonRefresh.Location = new System.Drawing.Point(316, 25);
+            this.buttonRefresh.Margin = new System.Windows.Forms.Padding(55, 26, 0, 0);
             this.buttonRefresh.Name = "buttonRefresh";
-            this.buttonRefresh.Size = new System.Drawing.Size(100, 33);
+            this.buttonRefresh.Size = new System.Drawing.Size(75, 27);
             this.buttonRefresh.TabIndex = 8;
             this.buttonRefresh.Text = "Refresh";
             this.buttonRefresh.UseVisualStyleBackColor = false;
@@ -181,16 +183,16 @@
             // 
             // buttonAddClass
             // 
-            this.buttonAddClass.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.buttonAddClass.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.buttonAddClass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(52)))), ((int)(((byte)(158)))));
             this.buttonAddClass.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonAddClass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddClass.Font = new System.Drawing.Font("Arial", 12F);
             this.buttonAddClass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.buttonAddClass.Location = new System.Drawing.Point(531, 30);
-            this.buttonAddClass.Margin = new System.Windows.Forms.Padding(73, 32, 0, 0);
+            this.buttonAddClass.Location = new System.Drawing.Point(402, 25);
+            this.buttonAddClass.Margin = new System.Windows.Forms.Padding(55, 26, 0, 0);
             this.buttonAddClass.Name = "buttonAddClass";
-            this.buttonAddClass.Size = new System.Drawing.Size(125, 33);
+            this.buttonAddClass.Size = new System.Drawing.Size(94, 27);
             this.buttonAddClass.TabIndex = 7;
             this.buttonAddClass.Text = "Add Class";
             this.buttonAddClass.UseVisualStyleBackColor = false;
@@ -198,16 +200,16 @@
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.buttonLogin.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.buttonLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(52)))), ((int)(((byte)(158)))));
             this.buttonLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLogin.Font = new System.Drawing.Font("Arial", 12F);
             this.buttonLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.buttonLogin.Location = new System.Drawing.Point(669, 30);
-            this.buttonLogin.Margin = new System.Windows.Forms.Padding(73, 32, 0, 0);
+            this.buttonLogin.Location = new System.Drawing.Point(506, 25);
+            this.buttonLogin.Margin = new System.Windows.Forms.Padding(55, 26, 0, 0);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(100, 33);
+            this.buttonLogin.Size = new System.Drawing.Size(75, 27);
             this.buttonLogin.TabIndex = 6;
             this.buttonLogin.Text = "View All";
             this.buttonLogin.UseVisualStyleBackColor = false;
@@ -220,9 +222,8 @@
             this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBack.Image = ((System.Drawing.Image)(resources.GetObject("buttonBack.Image")));
             this.buttonBack.Location = new System.Drawing.Point(0, 0);
-            this.buttonBack.Margin = new System.Windows.Forms.Padding(4);
             this.buttonBack.Name = "buttonBack";
-            this.buttonBack.Size = new System.Drawing.Size(100, 92);
+            this.buttonBack.Size = new System.Drawing.Size(75, 75);
             this.buttonBack.TabIndex = 1;
             this.buttonBack.UseVisualStyleBackColor = true;
             this.buttonBack.Click += new System.EventHandler(this.ButtonBack_Click);
@@ -232,10 +233,9 @@
             this.labelYourClasses.AutoSize = true;
             this.labelYourClasses.Font = new System.Drawing.Font("Arial", 17F);
             this.labelYourClasses.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.labelYourClasses.Location = new System.Drawing.Point(108, 31);
-            this.labelYourClasses.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelYourClasses.Location = new System.Drawing.Point(81, 25);
             this.labelYourClasses.Name = "labelYourClasses";
-            this.labelYourClasses.Size = new System.Drawing.Size(186, 33);
+            this.labelYourClasses.Size = new System.Drawing.Size(146, 26);
             this.labelYourClasses.TabIndex = 0;
             this.labelYourClasses.Text = "Your Classes";
             // 
@@ -245,28 +245,25 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelWelcome.Font = new System.Drawing.Font("Arial", 12F);
             this.labelWelcome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.labelWelcome.Location = new System.Drawing.Point(47, 20);
-            this.labelWelcome.Margin = new System.Windows.Forms.Padding(13, 12, 40, 12);
+            this.labelWelcome.Location = new System.Drawing.Point(35, 16);
+            this.labelWelcome.Margin = new System.Windows.Forms.Padding(10, 10, 30, 10);
             this.labelWelcome.Name = "labelWelcome";
-            this.labelWelcome.Size = new System.Drawing.Size(723, 41);
+            this.labelWelcome.Size = new System.Drawing.Size(546, 33);
             this.labelWelcome.TabIndex = 5;
             this.labelWelcome.Text = "Faculty";
             this.labelWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // YourClassesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
-            this.ClientSize = new System.Drawing.Size(1152, 629);
+            this.ClientSize = new System.Drawing.Size(868, 522);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panel3);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(884, 561);
             this.Name = "YourClassesForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormYourClasses";
+            this.Text = "Attendance Scanning Wizard";
             this.Load += new System.EventHandler(this.YourClassesForm_Load);
             this.panelLeft.ResumeLayout(false);
             this.panelLeft.PerformLayout();

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(YourSectionsForm));
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.flowTodaysClass = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelTodaysClasses = new System.Windows.Forms.Label();
             this.labelSubtitle = new System.Windows.Forms.Label();
@@ -38,9 +39,9 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.flowLayoutPanelSections = new System.Windows.Forms.FlowLayoutPanel();
             this.panelYourSections = new System.Windows.Forms.Panel();
+            this.buttonAddSection = new System.Windows.Forms.Button();
             this.buttonBack = new System.Windows.Forms.Button();
             this.labelYourSections = new System.Windows.Forms.Label();
-            this.flowTodaysClass = new System.Windows.Forms.FlowLayoutPanel();
             this.panelLeft.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -58,8 +59,17 @@
             this.panelLeft.Controls.Add(this.labelTitle);
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(250, 510);
+            this.panelLeft.Size = new System.Drawing.Size(250, 521);
             this.panelLeft.TabIndex = 4;
+            // 
+            // flowTodaysClass
+            // 
+            this.flowTodaysClass.AutoScroll = true;
+            this.flowTodaysClass.Location = new System.Drawing.Point(0, 188);
+            this.flowTodaysClass.Margin = new System.Windows.Forms.Padding(0);
+            this.flowTodaysClass.Name = "flowTodaysClass";
+            this.flowTodaysClass.Size = new System.Drawing.Size(250, 322);
+            this.flowTodaysClass.TabIndex = 7;
             // 
             // panel2
             // 
@@ -123,19 +133,22 @@
             this.labelWelcome.Location = new System.Drawing.Point(35, 16);
             this.labelWelcome.Margin = new System.Windows.Forms.Padding(10, 10, 30, 0);
             this.labelWelcome.Name = "labelWelcome";
-            this.labelWelcome.Size = new System.Drawing.Size(542, 33);
+            this.labelWelcome.Size = new System.Drawing.Size(548, 33);
             this.labelWelcome.TabIndex = 5;
             this.labelWelcome.Text = "Faculty";
             this.labelWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel3
             // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Controls.Add(this.flowLayoutPanelSections);
             this.panel3.Controls.Add(this.panelYourSections);
             this.panel3.Controls.Add(this.labelWelcome);
             this.panel3.Location = new System.Drawing.Point(248, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(616, 510);
+            this.panel3.Size = new System.Drawing.Size(622, 521);
             this.panel3.TabIndex = 6;
             // 
             // flowLayoutPanelSections
@@ -149,7 +162,10 @@
             // 
             // panelYourSections
             // 
+            this.panelYourSections.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelYourSections.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(143)))), ((int)(((byte)(164)))));
+            this.panelYourSections.Controls.Add(this.buttonAddSection);
             this.panelYourSections.Controls.Add(this.buttonBack);
             this.panelYourSections.Controls.Add(this.labelYourSections);
             this.panelYourSections.Location = new System.Drawing.Point(0, 63);
@@ -157,6 +173,23 @@
             this.panelYourSections.Name = "panelYourSections";
             this.panelYourSections.Size = new System.Drawing.Size(616, 75);
             this.panelYourSections.TabIndex = 7;
+            // 
+            // buttonAddSection
+            // 
+            this.buttonAddSection.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.buttonAddSection.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(143)))), ((int)(((byte)(164)))));
+            this.buttonAddSection.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonAddSection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddSection.Font = new System.Drawing.Font("Arial", 12F);
+            this.buttonAddSection.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.buttonAddSection.Location = new System.Drawing.Point(502, 26);
+            this.buttonAddSection.Margin = new System.Windows.Forms.Padding(55, 26, 0, 0);
+            this.buttonAddSection.Name = "buttonAddSection";
+            this.buttonAddSection.Size = new System.Drawing.Size(75, 27);
+            this.buttonAddSection.TabIndex = 9;
+            this.buttonAddSection.Text = "Add";
+            this.buttonAddSection.UseVisualStyleBackColor = false;
+            this.buttonAddSection.Click += new System.EventHandler(this.ButtonAddSection_Click);
             // 
             // buttonBack
             // 
@@ -182,29 +215,17 @@
             this.labelYourSections.TabIndex = 0;
             this.labelYourSections.Text = "Your Sections";
             // 
-            // flowTodaysClass
-            // 
-            this.flowTodaysClass.AutoScroll = true;
-            this.flowTodaysClass.Location = new System.Drawing.Point(0, 188);
-            this.flowTodaysClass.Margin = new System.Windows.Forms.Padding(0);
-            this.flowTodaysClass.Name = "flowTodaysClass";
-            this.flowTodaysClass.Size = new System.Drawing.Size(250, 322);
-            this.flowTodaysClass.TabIndex = 7;
-            // 
             // YourSectionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
-            this.ClientSize = new System.Drawing.Size(864, 511);
+            this.ClientSize = new System.Drawing.Size(868, 522);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panel3);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(884, 561);
             this.Name = "YourSectionsForm";
-            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormYourSections";
+            this.Text = "Attendance Scanning Wizard";
             this.Load += new System.EventHandler(this.FormYourSections_Load);
             this.panelLeft.ResumeLayout(false);
             this.panelLeft.PerformLayout();
@@ -231,5 +252,6 @@
         private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelSections;
         private System.Windows.Forms.FlowLayoutPanel flowTodaysClass;
+        private System.Windows.Forms.Button buttonAddSection;
     }
 }

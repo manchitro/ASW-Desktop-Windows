@@ -25,6 +25,9 @@ namespace GUI.Views
             var dash = new FormDashboard(faculty);
             dash.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             dash.Show();
+            dash.Left = this.Left;
+            dash.Top = this.Top;
+            dash.Size = this.Size;
             this.Hide();
         }
 
@@ -39,6 +42,9 @@ namespace GUI.Views
             var createManual = new CreateManualFrom(faculty, studentList);
             createManual.FormClosed += new FormClosedEventHandler(dash_FormClosed);
             createManual.Show();
+            createManual.Left = this.Left;
+            createManual.Top = this.Top;
+            createManual.Size = this.Size;
             this.Hide();
         }
 
