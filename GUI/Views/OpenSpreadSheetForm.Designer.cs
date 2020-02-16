@@ -51,9 +51,10 @@
             this.labelDisclaimer.AutoSize = true;
             this.labelDisclaimer.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Underline);
             this.labelDisclaimer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.labelDisclaimer.Location = new System.Drawing.Point(25, 27);
+            this.labelDisclaimer.Location = new System.Drawing.Point(38, 42);
+            this.labelDisclaimer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelDisclaimer.Name = "labelDisclaimer";
-            this.labelDisclaimer.Size = new System.Drawing.Size(113, 25);
+            this.labelDisclaimer.Size = new System.Drawing.Size(163, 36);
             this.labelDisclaimer.TabIndex = 1;
             this.labelDisclaimer.Text = "Disclaimer";
             // 
@@ -63,10 +64,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelWarning.Font = new System.Drawing.Font("Arial", 11F);
             this.labelWarning.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.labelWarning.Location = new System.Drawing.Point(27, 62);
-            this.labelWarning.Margin = new System.Windows.Forms.Padding(10, 10, 30, 10);
+            this.labelWarning.Location = new System.Drawing.Point(40, 95);
+            this.labelWarning.Margin = new System.Windows.Forms.Padding(15, 15, 45, 15);
             this.labelWarning.Name = "labelWarning";
-            this.labelWarning.Size = new System.Drawing.Size(611, 95);
+            this.labelWarning.Size = new System.Drawing.Size(916, 146);
             this.labelWarning.TabIndex = 6;
             this.labelWarning.Text = resources.GetString("labelWarning.Text");
             // 
@@ -77,10 +78,10 @@
             this.labelFileName.AutoSize = true;
             this.labelFileName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFileName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.labelFileName.Location = new System.Drawing.Point(27, 173);
-            this.labelFileName.Margin = new System.Windows.Forms.Padding(10, 10, 30, 10);
+            this.labelFileName.Location = new System.Drawing.Point(40, 266);
+            this.labelFileName.Margin = new System.Windows.Forms.Padding(15, 15, 45, 15);
             this.labelFileName.Name = "labelFileName";
-            this.labelFileName.Size = new System.Drawing.Size(92, 19);
+            this.labelFileName.Size = new System.Drawing.Size(138, 29);
             this.labelFileName.TabIndex = 7;
             this.labelFileName.Text = "File name :";
             // 
@@ -90,19 +91,19 @@
             this.textBoxFileName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxFileName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxFileName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.textBoxFileName.Location = new System.Drawing.Point(131, 173);
-            this.textBoxFileName.Margin = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.textBoxFileName.Location = new System.Drawing.Point(196, 266);
+            this.textBoxFileName.Margin = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.textBoxFileName.Name = "textBoxFileName";
-            this.textBoxFileName.Size = new System.Drawing.Size(447, 19);
+            this.textBoxFileName.Size = new System.Drawing.Size(670, 28);
             this.textBoxFileName.TabIndex = 13;
             // 
             // panelSectionNameBG
             // 
             this.panelSectionNameBG.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.panelSectionNameBG.Location = new System.Drawing.Point(123, 167);
-            this.panelSectionNameBG.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.panelSectionNameBG.Location = new System.Drawing.Point(184, 257);
+            this.panelSectionNameBG.Margin = new System.Windows.Forms.Padding(4, 0, 0, 0);
             this.panelSectionNameBG.Name = "panelSectionNameBG";
-            this.panelSectionNameBG.Size = new System.Drawing.Size(455, 30);
+            this.panelSectionNameBG.Size = new System.Drawing.Size(682, 46);
             this.panelSectionNameBG.TabIndex = 14;
             // 
             // buttonBrowse
@@ -113,10 +114,10 @@
             this.buttonBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBrowse.Font = new System.Drawing.Font("Arial", 10F);
             this.buttonBrowse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.buttonBrowse.Location = new System.Drawing.Point(586, 168);
-            this.buttonBrowse.Margin = new System.Windows.Forms.Padding(55, 26, 0, 0);
+            this.buttonBrowse.Location = new System.Drawing.Point(879, 258);
+            this.buttonBrowse.Margin = new System.Windows.Forms.Padding(82, 40, 0, 0);
             this.buttonBrowse.Name = "buttonBrowse";
-            this.buttonBrowse.Size = new System.Drawing.Size(52, 26);
+            this.buttonBrowse.Size = new System.Drawing.Size(78, 40);
             this.buttonBrowse.TabIndex = 15;
             this.buttonBrowse.Text = "...";
             this.buttonBrowse.UseVisualStyleBackColor = false;
@@ -131,10 +132,10 @@
             this.buttonNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNext.Font = new System.Drawing.Font("Arial", 12F);
             this.buttonNext.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.buttonNext.Location = new System.Drawing.Point(441, 218);
-            this.buttonNext.Margin = new System.Windows.Forms.Padding(55, 26, 0, 0);
+            this.buttonNext.Location = new System.Drawing.Point(662, 335);
+            this.buttonNext.Margin = new System.Windows.Forms.Padding(82, 40, 0, 0);
             this.buttonNext.Name = "buttonNext";
-            this.buttonNext.Size = new System.Drawing.Size(90, 31);
+            this.buttonNext.Size = new System.Drawing.Size(135, 48);
             this.buttonNext.TabIndex = 17;
             this.buttonNext.Text = "Next";
             this.buttonNext.UseVisualStyleBackColor = false;
@@ -149,10 +150,10 @@
             this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCancel.Font = new System.Drawing.Font("Arial", 12F);
             this.buttonCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.buttonCancel.Location = new System.Drawing.Point(548, 218);
-            this.buttonCancel.Margin = new System.Windows.Forms.Padding(55, 26, 0, 0);
+            this.buttonCancel.Location = new System.Drawing.Point(822, 335);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(82, 40, 0, 0);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(90, 31);
+            this.buttonCancel.Size = new System.Drawing.Size(135, 48);
             this.buttonCancel.TabIndex = 18;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = false;
@@ -165,10 +166,10 @@
             this.labelSheet.AutoSize = true;
             this.labelSheet.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSheet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.labelSheet.Location = new System.Drawing.Point(27, 225);
-            this.labelSheet.Margin = new System.Windows.Forms.Padding(10, 10, 30, 10);
+            this.labelSheet.Location = new System.Drawing.Point(40, 346);
+            this.labelSheet.Margin = new System.Windows.Forms.Padding(15, 15, 45, 15);
             this.labelSheet.Name = "labelSheet";
-            this.labelSheet.Size = new System.Drawing.Size(63, 19);
+            this.labelSheet.Size = new System.Drawing.Size(92, 29);
             this.labelSheet.TabIndex = 18;
             this.labelSheet.Text = "Sheet :";
             // 
@@ -180,9 +181,10 @@
             this.comboBoxSheet.Font = new System.Drawing.Font("Arial", 12F);
             this.comboBoxSheet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.comboBoxSheet.FormattingEnabled = true;
-            this.comboBoxSheet.Location = new System.Drawing.Point(123, 221);
+            this.comboBoxSheet.Location = new System.Drawing.Point(184, 340);
+            this.comboBoxSheet.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboBoxSheet.Name = "comboBoxSheet";
-            this.comboBoxSheet.Size = new System.Drawing.Size(283, 26);
+            this.comboBoxSheet.Size = new System.Drawing.Size(422, 35);
             this.comboBoxSheet.TabIndex = 16;
             this.comboBoxSheet.SelectedIndexChanged += new System.EventHandler(this.comboBoxSheet_SelectedIndexChanged);
             // 
@@ -199,14 +201,15 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewStudenList.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewStudenList.Location = new System.Drawing.Point(31, 287);
+            this.dataGridViewStudenList.Location = new System.Drawing.Point(46, 442);
+            this.dataGridViewStudenList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridViewStudenList.Name = "dataGridViewStudenList";
             this.dataGridViewStudenList.ReadOnly = true;
             this.dataGridViewStudenList.RowHeadersWidth = 51;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             this.dataGridViewStudenList.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewStudenList.Size = new System.Drawing.Size(607, 259);
+            this.dataGridViewStudenList.Size = new System.Drawing.Size(910, 398);
             this.dataGridViewStudenList.TabIndex = 19;
             // 
             // labelPreview
@@ -216,19 +219,19 @@
             this.labelPreview.AutoSize = true;
             this.labelPreview.Font = new System.Drawing.Font("Arial", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPreview.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.labelPreview.Location = new System.Drawing.Point(28, 264);
-            this.labelPreview.Margin = new System.Windows.Forms.Padding(10, 10, 30, 10);
+            this.labelPreview.Location = new System.Drawing.Point(42, 406);
+            this.labelPreview.Margin = new System.Windows.Forms.Padding(15, 15, 45, 15);
             this.labelPreview.Name = "labelPreview";
-            this.labelPreview.Size = new System.Drawing.Size(100, 18);
+            this.labelPreview.Size = new System.Drawing.Size(151, 28);
             this.labelPreview.TabIndex = 21;
             this.labelPreview.Text = "File Preview";
             // 
             // OpenSpreadSheetForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
-            this.ClientSize = new System.Drawing.Size(675, 567);
+            this.ClientSize = new System.Drawing.Size(1012, 872);
             this.ControlBox = false;
             this.Controls.Add(this.labelPreview);
             this.Controls.Add(this.dataGridViewStudenList);
@@ -244,10 +247,11 @@
             this.Controls.Add(this.labelDisclaimer);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "OpenSpreadSheetForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OpenSpreadSheetForm";
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.OpenSpreadSheetForm_Paint);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.OpenSpreadSheetForm_tt);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudenList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

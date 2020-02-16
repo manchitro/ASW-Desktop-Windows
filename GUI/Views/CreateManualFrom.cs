@@ -317,6 +317,10 @@ namespace GUI.Views
                                 }
                                 loadingForm.Close();
 
+                                AutoClassAddForm autoClassAddForm = new AutoClassAddForm(createdSection);
+                                autoClassAddForm.FormClosed += new FormClosedEventHandler(dash_FormClosed);
+                                autoClassAddForm.ShowDialog();
+
                                 buttonBack.PerformClick();
                             }
                             catch (Exception ex)

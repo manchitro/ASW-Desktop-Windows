@@ -124,6 +124,12 @@
     <Compile Include="Views\AllClassesForm.Designer.cs">
       <DependentUpon>AllClassesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\AutoClassAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AutoClassAddForm.Designer.cs">
+      <DependentUpon>AutoClassAddForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ChangePasswordForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -244,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AllClassesForm.resx">
       <DependentUpon>AllClassesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AutoClassAddForm.resx">
+      <DependentUpon>AutoClassAddForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ChangePasswordForm.resx">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>

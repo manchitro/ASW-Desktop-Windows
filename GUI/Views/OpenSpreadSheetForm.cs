@@ -66,7 +66,7 @@ namespace GUI.Views
             this.Hide();
         }
 
-        private void OpenSpreadSheetForm_Paint(object sender, PaintEventArgs e)
+        private void OpenSpreadSheetForm_tt(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawRectangle(new Pen(Color.White, 3),
                             this.DisplayRectangle);
@@ -122,6 +122,7 @@ namespace GUI.Views
                         var createManual = new CreateManualFrom(faculty, GenerateStudents(dt));
                         createManual.FormClosed += new FormClosedEventHandler(dash_FormClosed);
                         createManual.Show();
+                        createManual.StartPosition = FormStartPosition.CenterScreen;
                         this.Hide();
                     }
                     catch (Exception ex)
