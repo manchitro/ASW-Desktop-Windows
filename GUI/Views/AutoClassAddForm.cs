@@ -16,6 +16,7 @@ namespace GUI.Views
     {
         SectionModel section = new SectionModel();
         List<SectionTimeModel> sectionTimes = new List<SectionTimeModel>();
+        List<ClassModel> allGeneratedClasses = new List<ClassModel>();
         List<ClassModel> classesToBeAdded = new List<ClassModel>();
         public AutoClassAddForm(SectionModel gotSection)
         {
@@ -63,15 +64,16 @@ namespace GUI.Views
                     check.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
                     check.Location = new System.Drawing.Point(6, 6);
                     check.Margin = new System.Windows.Forms.Padding(6);
-                    check.Name = "checkBox1";
+                    check.Name = classNo.ToString();
                     check.Size = new System.Drawing.Size(98, 31);
                     check.TabIndex = 3;
                     check.Text = class1.ClassType + " :- " + class1.ClassDate + "(" + DateTime.Parse(class1.ClassDate).DayOfWeek + ") at " + classTimes[class1.StartTimeId].ClassTimeText;
                     check.Checked = true;
                     check.UseVisualStyleBackColor = true;
-                    check.CheckedChanged += delegate (object s, EventArgs ev) { Check_CheckedChanged(sender, e, check.Text); };
+                    check.CheckedChanged += Check_CheckedChanged;
 
                     flowClass.Controls.Add(check);
+                    allGeneratedClasses.Add(class1);
                     classesToBeAdded.Add(class1);
                     classNo++;
 
@@ -97,16 +99,17 @@ namespace GUI.Views
                     check2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
                     check2.Location = new System.Drawing.Point(6, 6);
                     check2.Margin = new System.Windows.Forms.Padding(6);
-                    check2.Name = "checkBox1";
+                    check2.Name = classNo.ToString();
                     check2.Size = new System.Drawing.Size(98, 31);
                     check2.TabIndex = 3;
                     check2.Text = class2.ClassType + " :- " + class2.ClassDate + "(" + DateTime.Parse(class2.ClassDate).DayOfWeek + ") at " + classTimes[class2.StartTimeId].ClassTimeText;
                     check2.Checked = true;
                     check2.UseVisualStyleBackColor = true;
-                    check2.CheckedChanged += delegate (object s, EventArgs ev) { Check_CheckedChanged(sender, e, check.Text); };
+                    check2.CheckedChanged += Check_CheckedChanged;
 
                     flowClass2.Controls.Add(check2);
                     classesToBeAdded.Add(class2);
+                    allGeneratedClasses.Add(class2);
                     classNo++;
 
                     flowClassList.Controls.Add(flowClass);
@@ -143,16 +146,17 @@ namespace GUI.Views
                     check.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
                     check.Location = new System.Drawing.Point(6, 6);
                     check.Margin = new System.Windows.Forms.Padding(6);
-                    check.Name = "checkBox1";
+                    check.Name = classNo.ToString();
                     check.Size = new System.Drawing.Size(98, 31);
                     check.TabIndex = 3;
                     check.Text = week + 1 + ": " + class1.ClassType + " :- " + class1.ClassDate + "(" + DateTime.Parse(class1.ClassDate).DayOfWeek + ") at " + classTimes[class1.StartTimeId].ClassTimeText;
                     check.Checked = true;
                     check.UseVisualStyleBackColor = true;
-                    check.CheckedChanged += delegate (object s, EventArgs ev) { Check_CheckedChanged(sender, e, check.Text); };
+                    check.CheckedChanged += Check_CheckedChanged;
 
                     flowClass.Controls.Add(check);
                     classesToBeAdded.Add(class1);
+                    allGeneratedClasses.Add(class1);
                     classNo++;
 
                     flowClassList.Controls.Add(flowClass);
@@ -161,10 +165,19 @@ namespace GUI.Views
             
         }
 
-        private void Check_CheckedChanged(object sender, EventArgs e, string text)
+        private void Check_CheckedChanged(object sender, EventArgs e)
         {
-            //Console.WriteLine("Recieved text: " + text);
-
+            CheckBox checkbox = (CheckBox)sender;
+            if (!checkbox.Checked)
+            {
+                //Console.WriteLine("Class removed date: " + classesToBeAdded[int.Parse(checkbox.Name)].ClassDate + " " + allGeneratedClasses[int.Parse(checkbox.Name)].ClassDate);
+                classesToBeAdded.RemoveAll(c => c.ClassDate == allGeneratedClasses[int.Parse(checkbox.Name)].ClassDate);
+            }
+            else
+            {
+                //Console.WriteLine("Class added date: " + classesToBeAdded[int.Parse(checkbox.Name)].ClassDate + " " + allGeneratedClasses[int.Parse(checkbox.Name)].ClassDate);
+                classesToBeAdded.Add(allGeneratedClasses[int.Parse(checkbox.Name)]);
+            }
             labelClassesSelected.Text = classesToBeAdded.Count + " classes selected";
         }
 
@@ -177,6 +190,24 @@ namespace GUI.Views
         {
             e.Graphics.DrawRectangle(new Pen(Color.Black, 3),
                             this.DisplayRectangle);
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ClassController ccontroller = new ClassController();
+                foreach (ClassModel Class in classesToBeAdded)
+                {
+                    var createdClass = ccontroller.Create(Class);
+                    Console.WriteLine(createdClass.Id + " " + createdClass.ClassDate);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
